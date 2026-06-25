@@ -146,7 +146,10 @@
       <!-- COLONNA SINISTRA: INPUT -->
       <div>
         <div class="card">
-          <div class="card-label">Dettagli Vendita</div>
+          <div class="card-head">
+            <span class="card-head-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
+            <span class="card-head-label">Dettagli Vendita</span>
+          </div>
 
           <div class="field">
             <label for="inp-prezzo">Prezzo di vendita</label>
@@ -229,40 +232,41 @@
       <!-- COLONNA DESTRA: RISULTATI -->
       <div>
         <div class="card">
-          <div class="card-label">Resoconto Guadagno</div>
-
-          <div class="kpi-box neutral" id="kpi-box">
-            <div class="kpi-box-label">
-              Guadagno Netto (Stimato)
-              <span class="stima-pill">~ stima</span>
-            </div>
-            <div class="kpi-box-value" id="res-netto">€ 0,00</div>
-            <div class="badge ok" id="res-badge">Inserisci un prezzo</div>
+          <div class="card-head">
+            <span class="card-head-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <span class="card-head-label">Risultato Stimato</span>
           </div>
 
-          <div class="kpi-mini-grid">
-            <div class="kpi-mini">
-              <div class="kpi-mini-label">Margine</div>
-              <div class="kpi-mini-value" id="res-margine">—</div>
+          <div class="result-hero" id="kpi-box">
+            <div class="result-hero-top">
+              <span class="result-hero-coin"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg></span>
+              <span class="result-hero-label">Ti resta</span>
+              <span class="stima-pill">stima <span class="stima-i" title="Valore stimato: le tariffe possono variare">ⓘ</span></span>
+              <span class="result-hero-value" id="res-netto">€ 0,00</span>
             </div>
-            <div class="kpi-mini">
-              <div class="kpi-mini-label">Totale Acquirente</div>
-              <div class="kpi-mini-value" id="res-acq">€ 0,00</div>
+            <div class="result-hero-rows">
+              <div class="result-hero-row"><span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Margine</span><span class="rh-v" id="res-margine">—</span></div>
+              <div class="result-hero-row"><span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Totale acquirente</span><span class="rh-v" id="res-acq">€ 0,00</span></div>
             </div>
+            <div class="badge ok" id="res-badge" style="display:none">Inserisci un prezzo</div>
           </div>
 
-          <div class="breakdown">
+          <div class="breakdown breakdown-card">
             <div class="br-row"><span class="br-key">Prezzo di vendita (tu incassi)</span><span class="br-val" id="br-prezzo">€ 0,00</span></div>
             <div class="br-row" id="br-sped-row" style="display:none"><span class="br-key">− Spedizione</span><span class="br-val neg" id="br-sped"></span></div>
             <div class="br-row" id="br-imb-row" style="display:none"><span class="br-key">− Imballaggio</span><span class="br-val neg" id="br-imb"></span></div>
-            <div class="br-row" id="br-bump-row" style="display:none"><span class="br-key">− Bump</span><span class="br-val neg" id="br-bump"></span></div>
+            <div class="br-row" id="br-bump-row" style="display:none"><span class="br-key">− Bump (in evidenza)</span><span class="br-val neg" id="br-bump"></span></div>
             <div class="br-row" id="br-costo-row" style="display:none"><span class="br-key">− Costo d'acquisto</span><span class="br-val neg" id="br-costo"></span></div>
-            <div class="br-row total"><span class="br-key">= Guadagno Netto Stimato</span><span class="br-val pos" id="br-netto">€ 0,00</span></div>
+            <div class="br-row total"><span class="br-key">= Guadagno netto (stima)</span><span class="br-val pos" id="br-netto">€ 0,00</span></div>
             <div class="br-row br-info" id="br-comm-row"><span class="br-key" id="br-comm-key">Commissione (a carico dell'acquirente)</span><span class="br-val" id="br-comm">€ 0,00</span></div>
           </div>
 
+          <div class="result-warning">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Questo è un risultato stimato e non garantito. Le commissioni, le condizioni e le promozioni di Vinted possono variare nel tempo e influire sul guadagno finale.</span>
+          </div>
+
           <!-- SIMULATORE OFFERTE -->
-          <hr class="sep">
           <button class="offerte-toggle" id="offerte-toggle" onclick="toggleOfferte()" aria-expanded="false">
             <span class="offerte-toggle-left">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
@@ -309,10 +313,13 @@
             </div>
           </div>
 
-          <!-- COPIA DATI CHAT -->
+          <!-- COPIA MESSAGGIO -->
           <button class="btn-copy" id="btn-copy" onclick="copiaTesto()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copia Dati per la Chat
+            <span class="btn-copy-main">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copia messaggio per l'acquirente
+            </span>
+            <span class="btn-copy-sub">Mostra in modo chiaro cosa vedrà e quanto lo costerà.</span>
           </button>
 
         </div>

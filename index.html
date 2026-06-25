@@ -52,11 +52,15 @@
   --r-md:.625rem; --r-lg:.875rem; --r-xl:1.25rem; --transition:160ms cubic-bezier(.16,1,.3,1);
 }
 @media(prefers-color-scheme:dark){
-  :root{--bg:#141310;--surface:#1f1d19;--surface-2:#1a1916;--surface-offset:#26241f;
+  :root:not([data-theme="light"]){--bg:#141310;--surface:#1f1d19;--surface-2:#1a1916;--surface-offset:#26241f;
   --border:rgba(255,253,245,.10);--divider:rgba(255,253,245,.07);
   --text:#ece9e1;--text-muted:#a3a097;--text-faint:#6f6c64;
   --primary:#4f98a3;--primary-light:#1e3535;--primary-soft:#1a2a2a;--success:#5cc98c;--gold-bg:#2a2417;}
 }
+:root[data-theme="dark"]{--bg:#141310;--surface:#1f1d19;--surface-2:#1a1916;--surface-offset:#26241f;
+  --border:rgba(255,253,245,.10);--divider:rgba(255,253,245,.07);
+  --text:#ece9e1;--text-muted:#a3a097;--text-faint:#6f6c64;
+  --primary:#4f98a3;--primary-light:#1e3535;--primary-soft:#1a2a2a;--success:#5cc98c;--gold-bg:#2a2417;}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Plus Jakarta Sans','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100dvh;-webkit-font-smoothing:antialiased}
@@ -72,6 +76,8 @@ a{text-decoration:none;color:inherit}
 .nav a{font-size:.9375rem;font-weight:600;color:var(--text-muted);transition:color var(--transition)}
 .nav a:hover{color:var(--text)}
 .nav a.active{color:var(--primary)}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:transparent;border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:all var(--transition)}
+.theme-toggle:hover{background:var(--surface-offset);color:var(--text)}
 
 /* HERO */
 .hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:3.5rem 1.75rem}
@@ -194,9 +200,9 @@ section{padding:2.45rem 0 2.98rem}
   .pcard{padding:1.4rem 1.4rem}
   .pcard h3{font-size:1.15rem}
   .preview .pv-highlight .pv-v{font-size:1.35rem}
-  /* Nav su telefono: solo FAQ */
-  .nav a.active,.nav a[href="/cardmarket/"]{display:none}
-  .nav{gap:0}
+  /* Su telefono: niente bottoni CTA, mostra direttamente l'Esempio rapido */
+  .cta-row{display:none}
+  .nav{gap:.5rem}
 }
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="32bd0902-d674-47aa-b30a-34f65ac11e08"></script>
@@ -210,12 +216,31 @@ section{padding:2.45rem 0 2.98rem}
       <span>Quanto<span class="logo-accent">Tengo</span></span>
     </a>
     <nav class="nav">
-      <a href="/vinted/" class="active">Vinted</a>
-      <a href="/cardmarket/">Cardmarket</a>
       <a href="/vinted/#faq">FAQ</a>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
     </nav>
   </div>
 </header>
+
+<script>
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  var moon=document.querySelector('.icon-moon'), sun=document.querySelector('.icon-sun');
+  if(moon&&sun){ moon.style.display = t==='dark'?'none':''; sun.style.display = t==='dark'?'':'none'; }
+}
+function toggleTheme(){
+  var cur=document.documentElement.getAttribute('data-theme');
+  if(!cur){ cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'; }
+  applyTheme(cur==='dark'?'light':'dark');
+}
+(function(){
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(prefersDark?'dark':'light');
+})();
+</script>
 
 <main>
   <!-- HERO -->
@@ -236,7 +261,7 @@ section{padding:2.45rem 0 2.98rem}
       <div class="trust-row">
         <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Gratis</span>
         <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Senza registrazione</span>
-        <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Dati sul tuo dispositivo</span>
+        <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>I tuoi dati restano privati</span>
       </div>
     </div>
 

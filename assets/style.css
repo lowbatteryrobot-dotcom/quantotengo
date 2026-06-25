@@ -18,6 +18,8 @@
   --accent:         #01696f;
   --accent-name:    #01696f;
   --coin-gold:      #f6d78b;
+  --coin-gold-deep: #d9a93c;
+  --gold-bg:        #fdf6e3;
   --success:        #437a22;
   --success-bg:     #edf5e6;
   --success-border: rgba(67,122,34,0.15);
@@ -48,6 +50,8 @@
   --accent:         #4f98a3;
   --accent-name:    #4f98a3;
   --coin-gold:      #f2cf75;
+  --coin-gold-deep: #d9a93c;
+  --gold-bg:        #2a2417;
   --success:        #6daa45;
   --success-bg:     #1e2e15;
   --success-border: rgba(109,170,69,0.2);
@@ -114,6 +118,33 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 /* CARDS */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.5rem;box-shadow:var(--shadow-sm)}
 .card-label{font-size:.6875rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1.25rem;display:flex;align-items:center;justify-content:space-between}
+
+/* CARD HEAD con icona (nuovo layout) */
+.card-head{display:flex;align-items:center;gap:.6rem;margin-bottom:1.4rem}
+.card-head-icon{width:34px;height:34px;border-radius:10px;background:var(--primary-light);color:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-head-label{font-size:.8125rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* RESULT HERO — "Ti resta" in evidenza dorata */
+.result-hero{background:var(--gold-bg);border:1px solid var(--coin-gold);border-radius:var(--r-lg);padding:1.1rem 1.25rem;margin-bottom:1rem}
+.result-hero-top{display:flex;align-items:center;gap:.6rem}
+.result-hero-coin{width:30px;height:30px;border-radius:50%;background:var(--coin-gold);color:#7a5a12;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.result-hero-label{font-size:1.0625rem;font-weight:800;color:var(--text)}
+.result-hero-value{margin-left:auto;font-size:1.75rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.result-hero-rows{margin-top:.9rem;padding-top:.85rem;border-top:1px solid rgba(150,120,40,.18);display:flex;flex-direction:column;gap:.55rem}
+.result-hero-row{display:flex;align-items:center;justify-content:space-between;font-size:.875rem}
+.result-hero-row .rh-k{display:flex;align-items:center;gap:.5rem;color:var(--text-muted);font-weight:600}
+.result-hero-row .rh-k svg{color:var(--text-faint)}
+.result-hero-row .rh-v{font-weight:700;font-variant-numeric:tabular-nums;color:var(--text)}
+#res-margine{color:var(--success)}
+.stima-pill{display:inline-flex;align-items:center;gap:.25rem;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px .45rem;border-radius:999px;background:var(--coin-gold);color:#7a5a12;border:1px solid rgba(150,120,40,.25)}
+.stima-i{cursor:help;opacity:.8}
+
+/* BREAKDOWN come card separata */
+.breakdown-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:.85rem 1.1rem;margin-bottom:1rem}
+
+/* WARNING note */
+.result-warning{display:flex;gap:.6rem;align-items:flex-start;background:var(--gold-bg);border:1px solid var(--coin-gold);border-radius:var(--r-md);padding:.75rem .9rem;font-size:.75rem;color:var(--text-muted);line-height:1.45;margin-bottom:1rem}
+.result-warning svg{color:var(--coin-gold-deep);flex-shrink:0;margin-top:1px}
 
 /* INPUTS */
 .field{margin-bottom:1rem}
@@ -227,7 +258,9 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .offerte-toggle-left svg{color:var(--accent)}
 
 /* COPY BUTTON */
-.btn-copy{width:100%;padding:.875rem 1rem;background:var(--primary);color:white;border-radius:var(--r-lg);font-size:.8125rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border:none;cursor:pointer;transition:background var(--transition),box-shadow var(--transition);display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem}
+.btn-copy{width:100%;padding:.85rem 1rem;background:var(--accent);color:white;border-radius:var(--r-lg);border:none;cursor:pointer;transition:background var(--transition),box-shadow var(--transition);display:flex;flex-direction:column;align-items:center;gap:.2rem;margin-top:1rem}
+.btn-copy-main{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.875rem;font-weight:700}
+.btn-copy-sub{font-size:.6875rem;font-weight:500;opacity:.85;font-weight:400}
 .btn-copy:hover{background:var(--primary-hover);box-shadow:var(--shadow-md)}
 .btn-copy.copied{background:var(--success)}
 

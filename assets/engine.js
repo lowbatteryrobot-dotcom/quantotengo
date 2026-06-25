@@ -84,7 +84,7 @@ function calcola() {
   const margine = prezzo > 0 ? (netto / prezzo) * 100 : 0;
 
   const box = document.getElementById('kpi-box');
-  box.className = 'kpi-box ' + (prezzo === 0 ? 'neutral' : netto < 0 ? 'bad' : margine < 20 ? 'warn' : '');
+  box.className = 'result-hero ' + (prezzo === 0 ? 'state-neutral' : netto < 0 ? 'state-bad' : margine < 20 ? 'state-warn' : 'state-good');
   document.getElementById('res-netto').textContent = prezzo === 0 ? '\u20AC 0,00' : fmt(netto);
 
   let btext, bcls;
@@ -319,12 +319,21 @@ function copiaTesto() {
     alert('Inserisci prima un prezzo di vendita.');
     return;
   }
-  const comm = prezzo * TARIFFE.commissionePercent + TARIFFE.commissioneFixed;
-  const totAcq = (prezzo + comm).toFixed(2).replace('.', ',');
+  const comm = getCommissione(prezzo);
   const p = prezzo.toFixed(2).replace('.', ',');
-  const testo = `Ciao! Per massima trasparenza: il prezzo dell'articolo \u00e8 \u20AC${p}. Vinted aggiunge automaticamente la Protezione Acquisti, quindi il totale sar\u00e0 \u20AC${totAcq} (escluse le spese di spedizione, che scegli tu nell'app). Fammi sapere se ti va bene! \ud83d\ude0a\n\nP.S. Se vuoi calcolare anche tu il tuo guadagno: QuantoTengo.it`;
+  let testo;
+  if (commissioneACaricoVenditore()) {
+    // Es. Cardmarket: la commissione la paga il venditore, il compratore paga il prezzo.
+    testo = `Ciao! Per l'articolo ti chiedo \u20AC${p} (pi\u00f9 le spese di spedizione, che vedi al checkout). Fammi sapere se ti va bene! \ud83d\ude0a`;
+  } else {
+    // Es. Vinted: la commissione (Protezione Acquisti) la paga l'acquirente e si aggiunge al totale.
+    const totAcq = (prezzo + comm).toFixed(2).replace('.', ',');
+    testo = `Ciao! Per massima trasparenza: il prezzo dell'articolo \u00e8 \u20AC${p}. ${CFG.nome || ''} aggiunge automaticamente la Protezione Acquisti, quindi il totale sar\u00e0 \u20AC${totAcq} (escluse le spese di spedizione, che scegli tu nell'app). Fammi sapere se ti va bene! \ud83d\ude0a`;
+  }
 
   const btn = document.getElementById('btn-copy');
+
+  const btnHtml = '<span class="btn-copy-main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copia messaggio per l\'acquirente</span><span class="btn-copy-sub">Mostra in modo chiaro cosa vedr\u00e0 e quanto lo coster\u00e0.</span>';
 
   const doFallback = () => {
     const ta = document.createElement('textarea');
@@ -335,24 +344,24 @@ function copiaTesto() {
     try {
       document.execCommand('copy');
       btn.classList.add('copied');
-      btn.textContent = '\u2713 Copiato!';
+      btn.innerHTML = '<span class="btn-copy-main">\u2713 Messaggio copiato!</span>';
     } catch(e) {
       prompt('Copia il testo qui sotto:', testo);
     }
     document.body.removeChild(ta);
     setTimeout(() => {
       btn.classList.remove('copied');
-      btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copia Dati per la Chat';
+      btn.innerHTML = btnHtml;
     }, 2200);
   };
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(testo).then(() => {
       btn.classList.add('copied');
-      btn.textContent = '\u2713 Copiato!';
+      btn.innerHTML = '<span class="btn-copy-main">\u2713 Messaggio copiato!</span>';
       setTimeout(() => {
         btn.classList.remove('copied');
-        btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copia Dati per la Chat';
+        btn.innerHTML = btnHtml;
       }, 2200);
     }).catch(doFallback);
   } else {
