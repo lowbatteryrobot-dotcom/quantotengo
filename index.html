@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuantoTengo — Calcolatori di guadagno per chi vende online</title>
+<meta name="description" content="Calcola quanto guadagni davvero vendendo online: Vinted, Cardmarket e altri marketplace. Strumenti gratuiti, veloci e senza registrazione.">
+<link rel="canonical" href="https://www.quantotengo.it/">
+<meta name="theme-color" content="#01696f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z' fill='%23f4c860'/%3E%3Cpath d='M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z' fill='%234fc4a8'/%3E%3Cpath d='M18 31 L50 46 L50 69 L18 54 Z' fill='%230c5651'/%3E%3Cpath d='M82 31 L50 46 L50 69 L82 54 Z' fill='%230f6a64'/%3E%3Cpath d='M50 16 L18 31 L50 46 L50 16 Z' fill='%2312736d'/%3E%3Cpath d='M50 16 L82 31 L50 46 L50 16 Z' fill='%230d5d57'/%3E%3Cpath d='M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z' fill='%230a4c47'/%3E%3Cpath d='M40 31 L50 28.5 L60 31 L50 34 Z' fill='%23073a36'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="QuantoTengo — Calcolatori di guadagno per chi vende online">
+<meta property="og:description" content="Calcola quanto guadagni davvero vendendo online: Vinted, Cardmarket e altri. Gratis e senza registrazione.">
+<meta property="og:url" content="https://www.quantotengo.it/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "QuantoTengo",
+  "url": "https://www.quantotengo.it/",
+  "description": "Calcolatori di guadagno netto per chi vende su marketplace online come Vinted e Cardmarket.",
+  "inLanguage": "it-IT"
+}
+</script>
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#fff; --surface-2:#faf9f6; --border:#e8e6df;
+  --text:#1a1814; --text-muted:#6b6a65; --text-faint:#a8a7a2;
+  --primary:#01696f; --coin-gold:#f6d78b;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 16px rgba(0,0,0,.08);
+  --r-lg:.875rem; --r-xl:1.25rem; --transition:160ms cubic-bezier(.16,1,.3,1);
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#16151220;--bg:#141310;--surface:#1f1d19;--surface-2:#1a1916;--border:#2e2b25;--text:#ece9e1;--text-muted:#a3a097;--text-faint:#6f6c64;--primary:#4f98a3;}
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100dvh}
+.wrap{max-width:880px;margin:0 auto;padding:0 1.5rem}
+header{padding:1rem 0;border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:.5rem;font-size:1.0625rem;font-weight:800;letter-spacing:-.02em;color:var(--text);text-decoration:none}
+.hero{text-align:center;padding:3.5rem 0 2.5rem}
+.hero h1{font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:.875rem}
+.hero p{font-size:1.0625rem;color:var(--text-muted);max-width:560px;margin:0 auto;line-height:1.6}
+.hero .accent{color:var(--primary)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;padding-bottom:3rem}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.5rem;text-decoration:none;color:var(--text);box-shadow:var(--shadow-sm);transition:transform var(--transition),box-shadow var(--transition);position:relative}
+.card.live:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.card.soon{opacity:.62;cursor:default}
+.card-dot{width:11px;height:11px;border-radius:50%;margin-bottom:.875rem}
+.card h2{font-size:1.125rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.35rem}
+.card p{font-size:.875rem;color:var(--text-muted);line-height:1.55;flex:1}
+.card-cta{margin-top:1rem;font-size:.8125rem;font-weight:700;display:inline-flex;align-items:center;gap:.35rem}
+.card-soon-tag{position:absolute;top:1.25rem;right:1.25rem;font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);background:var(--surface-2);border:1px solid var(--border);padding:2px .5rem;border-radius:999px}
+footer{border-top:1px solid var(--border);background:var(--surface-2);padding:2rem 0;text-align:center}
+footer p{font-size:.8125rem;color:var(--text-faint);line-height:1.6}
+footer a{color:var(--primary);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a href="/" class="logo">
+      <svg width="32" height="32" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg>
+      <span>Quanto<span style="color:var(--primary)">Tengo</span></span>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Quanto guadagni <span class="accent">davvero</span><br>vendendo online?</h1>
+    <p>Calcolatori semplici e gratuiti per chi vende sull'usato e da collezione. Inserisci i numeri, scopri il netto in pochi secondi. Nessuna registrazione.</p>
+  </section>
+
+  <section class="grid">
+    <a class="card live" href="/vinted/">
+      <span class="card-dot" style="background:#01696f"></span>
+      <h2>Vinted</h2>
+      <p>Calcola il guadagno netto delle tue vendite di abbigliamento, al netto di commissioni, Bump e spedizione.</p>
+      <span class="card-cta" style="color:#01696f">Apri il calcolatore →</span>
+    </a>
+
+    <a class="card live" href="/cardmarket/">
+      <span class="card-dot" style="background:#002651"></span>
+      <h2>Cardmarket</h2>
+      <p>Per chi vende carte TCG. Commissione per livello venditore, tetto di 100€ e spedizione: scopri quanto ti resta.</p>
+      <span class="card-cta" style="color:#0a4da3">Apri il calcolatore →</span>
+    </a>
+
+    <div class="card soon">
+      <span class="card-soon-tag">Presto</span>
+      <span class="card-dot" style="background:#e30613"></span>
+      <h2>Subito</h2>
+      <p>Calcolatore per le vendite su Subito.it. In arrivo.</p>
+    </div>
+
+    <div class="card soon">
+      <span class="card-soon-tag">Presto</span>
+      <span class="card-dot" style="background:#0064d2"></span>
+      <h2>eBay</h2>
+      <p>Calcolatore per le commissioni eBay. In arrivo.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>QuantoTengo.it · Strumenti gratuiti e indipendenti · Non affiliati ai marketplace citati.<br>
+    Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a></p>
+  </div>
+</footer>
+</body>
+</html>
