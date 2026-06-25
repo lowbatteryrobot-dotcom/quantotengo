@@ -1,51 +1,75 @@
-# QuantoTengo — struttura del progetto
+# Come testare il sito in locale (senza pubblicarlo)
 
-Questo non è più un singolo file HTML, ma un piccolo ecosistema con un
-"motore" condiviso e una pagina per ogni marketplace. Gira su GitHub Pages
-senza backend e senza build.
+Il sito ora è una cartella con più file collegati tra loro. Per questo
+non basta più fare doppio clic sull'HTML: il browser blocca il
+caricamento dei file vicini (CSS, JavaScript) per sicurezza. Serve un
+piccolo "server locale". Ecco tre modi, dal più facile al più tecnico.
 
-## Struttura delle cartelle
+────────────────────────────────────────────────────────
+OPZIONE 1 — VS Code + Live Server (CONSIGLIATA, la più facile)
+────────────────────────────────────────────────────────
 
-```
-site/
-├─ assets/
-│  ├─ style.css      ← il design, il dark mode, tutto il CSS (condiviso)
-│  └─ engine.js      ← la logica: calcolo, storico, dropdown (condivisa)
-│
-├─ vinted/
-│  ├─ index.html     ← la pagina (carica style.css + config.js + engine.js)
-│  └─ config.js      ← SOLO ciò che è specifico di Vinted (tariffe, lingua, colore)
-│
-├─ cardmarket/       ← (in costruzione) stessa struttura di vinted/
-│
-└─ index.html        ← (in costruzione) homepage hub con i link a ogni calcolatrice
-```
+1. Installa Visual Studio Code (gratis): https://code.visualstudio.com
+2. Aprilo, vai su Estensioni (icona dei quadratini a sinistra),
+   cerca "Live Server" e installalo.
+3. File → Apri cartella → seleziona la cartella "site".
+4. Tasto destro su "index.html" → "Open with Live Server".
+5. Si apre il browser con il sito funzionante. Modifica un file,
+   salva, e la pagina si aggiorna da sola.
 
-## L'idea
+────────────────────────────────────────────────────────
+OPZIONE 2 — Un comando nel terminale (se hai Python)
+────────────────────────────────────────────────────────
 
-Tutto ciò che è uguale tra le calcolatrici vive in `assets/` (motore).
-Tutto ciò che è diverso vive nel `config.js` di ogni marketplace.
+Mac e Linux di solito hanno già Python. Su Windows si installa da
+python.org (spunta "Add to PATH" durante l'installazione).
 
-- Per **aggiornare una tariffa** di Vinted → modifica `vinted/config.js`.
-- Per **cambiare il design** di tutte le calcolatrici → modifica `assets/style.css`.
-- Per **aggiungere un marketplace** → copia la cartella `vinted/`, rinominala,
-  e modifica il suo `config.js`. Il motore fa il resto.
+1. Apri il Terminale.
+2. Spostati nella cartella "site". Esempio:
+      cd ~/Downloads/site
+   (trascina la cartella nel terminale dopo "cd " per avere il percorso)
+3. Avvia il server:
+      python3 -m http.server 8000
+   (su Windows a volte è solo "python" invece di "python3")
+4. Apri il browser e vai su:
+      http://localhost:8000
+5. Per fermarlo: torna al terminale e premi Ctrl + C.
 
-## Stato attuale
+Le URL durante il test saranno:
+   http://localhost:8000/            → homepage
+   http://localhost:8000/vinted/     → calcolatore Vinted
+   http://localhost:8000/cardmarket/ → calcolatore Cardmarket
 
-- [x] Struttura cartelle
-- [x] `assets/style.css` estratto
-- [x] `assets/engine.js` estratto (da generalizzare)
-- [x] `vinted/config.js` creato
-- [ ] motore generalizzato per leggere config.js
-- [ ] `vinted/index.html` che carica i tre file
-- [ ] cartella `cardmarket/`
-- [ ] homepage hub
+────────────────────────────────────────────────────────
+OPZIONE 3 — Pubblicare su GitHub Pages (è gratis e veloce)
+────────────────────────────────────────────────────────
 
-## Come pubblicare su GitHub Pages
+Visto che la destinazione finale è GitHub Pages, puoi anche testare
+direttamente lì. Ti dà un link reale in pochi minuti.
 
-Carica la cartella `site/` nel repository. Imposta GitHub Pages sulla
-cartella. Le URL saranno:
-- `quantotengo.it/` → homepage
-- `quantotengo.it/vinted/` → calcolatrice Vinted
-- `quantotengo.it/cardmarket/` → calcolatrice Cardmarket
+1. Crea un account su github.com (gratis).
+2. Crea un nuovo repository (es. "quantotengo").
+3. Carica il contenuto della cartella "site" nel repository
+   (i file vanno nella radice del repository, non dentro una
+   sottocartella "site").
+4. Vai su Settings → Pages → imposta la Source su "main" e la
+   cartella su "/ (root)".
+5. Dopo qualche minuto il sito sarà online su un indirizzo tipo
+   https://tuonome.github.io/quantotengo/
+6. Quando colleghi il dominio quantotengo.it (sempre da Settings →
+   Pages → Custom domain), il sito risponderà lì.
+
+NOTA: se carichi i file dentro una sottocartella invece che nella
+radice, gli indirizzi cambiano e i collegamenti "/vinted/" non
+funzionano. Tieni i file nella radice del repository.
+
+────────────────────────────────────────────────────────
+Perché prima funzionava col doppio clic e ora no?
+────────────────────────────────────────────────────────
+
+Prima era UN solo file HTML con tutto dentro: si apriva da solo.
+Ora è una cartella di file collegati (per poterli condividere tra le
+calcolatrici), e i browser bloccano questi collegamenti quando apri
+col protocollo "file://". Il server locale risolve, perché serve i
+file via "http://" come farebbe un sito vero. È normale e standard
+per qualsiasi sito multi-file.

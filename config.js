@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calcolatore Guadagno Vinted: Commissioni e Profitto Netto 2026</title>
-<meta name="description" content="Calcola il guadagno netto delle tue vendite su Vinted: commissioni (5% + €0,70), Bump, spedizione e simulatore offerte. Include il calcolo inverso del prezzo. Gratis e senza registrazione.">
-<link rel="canonical" href="https://www.quantotengo.it/">
+<title>Calcolatore Guadagno Cardmarket: Commissioni e Profitto Netto 2026</title>
+<meta name="description" content="Calcola il guadagno netto delle tue vendite su Cardmarket: commissione per livello venditore (5%/3%/1,5%), tetto di 100€, spedizione e simulatore offerte. Gratis e senza registrazione.">
+<link rel="canonical" href="https://www.quantotengo.it/cardmarket/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#01696f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z' fill='%23f4c860'/%3E%3Cpath d='M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z' fill='%234fc4a8'/%3E%3Cpath d='M18 31 L50 46 L50 69 L18 54 Z' fill='%230c5651'/%3E%3Cpath d='M82 31 L50 46 L50 69 L82 54 Z' fill='%230f6a64'/%3E%3Cpath d='M50 16 L18 31 L50 46 L50 16 Z' fill='%2312736d'/%3E%3Cpath d='M50 16 L82 31 L50 46 L50 16 Z' fill='%230d5d57'/%3E%3Cpath d='M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z' fill='%230a4c47'/%3E%3Cpath d='M40 31 L50 28.5 L60 31 L50 34 Z' fill='%23073a36'/%3E%3C/svg%3E">
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Calcolatore Guadagno Vinted: Commissioni e Profitto Netto 2026">
 <meta property="og:description" content="Calcola in pochi secondi quanto guadagni davvero su Vinted, al netto di commissioni, Bump e spedizione. Gratis, senza registrazione.">
-<meta property="og:url" content="https://www.quantotengo.it/">
+<meta property="og:url" content="https://www.quantotengo.it/cardmarket/">
 <meta property="og:site_name" content="QuantoTengo">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
     {
       "@type": "WebApplication",
       "name": "Calcolatore Guadagno Vinted",
-      "url": "https://www.quantotengo.it/",
+      "url": "https://www.quantotengo.it/cardmarket/",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript",
@@ -232,7 +232,7 @@
       <!-- COLONNA DESTRA: RISULTATI -->
       <div>
         <div class="card">
-          <div class="card-head">
+<div class="card-head">
             <span class="card-head-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
             <span class="card-head-label">Risultato Stimato</span>
           </div>
@@ -263,7 +263,7 @@
 
           <div class="result-warning">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Questo è un risultato stimato e non garantito. Le commissioni, le condizioni e le promozioni di Vinted possono variare nel tempo e influire sul guadagno finale.</span>
+            <span>Questo è un risultato stimato e non garantito. Le commissioni, le condizioni e le promozioni di Cardmarket possono variare nel tempo e influire sul guadagno finale.</span>
           </div>
 
           <!-- SIMULATORE OFFERTE -->
@@ -597,23 +597,10 @@
         </div>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Quale formato di pacco scegliere su Vinted?
-          <span class="faq-arrow">▼</span>
-        </div>
-        <div class="faq-a">
-          Vinted offre tre formati standard, con limiti di peso indicativi:
-          <ul style="margin:.5rem 0 .5rem 1.2rem;line-height:1.7">
-            <li><strong>Piccolo</strong> (fino a circa 0,5 kg) — accessori, magliette, capi leggeri.</li>
-            <li><strong>Medio</strong> (fino a circa 1 kg) — maglioni, giacche leggere, scarpe.</li>
-            <li><strong>Grande</strong> (fino a circa 5 kg) — cappotti pesanti, stivali o set di più articoli.</li>
-          </ul>
-          Scegliere il formato giusto evita costi extra o problemi alla spedizione. Il costo lo paga l'acquirente, ma un formato più grande può rendere l'annuncio meno competitivo. Verifica sempre pesi e dimensioni esatte nell'app, perché possono variare in base al corriere.
-        </div>
-      </div>
-
     </div>
+
+    <div class="faq-disclaimer">
+      <strong>⚠️ Nota legale:</strong> Questo strumento è solo un <em>ausilio al calcolo</em> e non costituisce consulenza fiscale, legale o commerciale. Per qualsiasi dubbio sulla tua situazione specifica, consulta un professionista qualificato.
     </div>
 
   </div><!-- /panel-faq -->
@@ -645,7 +632,7 @@
   <p>Offrire la spedizione gratuita rende l'annuncio più attraente e può aumentare le vendite, ma in quel caso il costo passa a te e va sottratto dal guadagno. Usa il toggle <strong>"Spedizione a tuo carico"</strong> nel calcolatore per confrontare i due scenari e capire se lo sconto vale la pena rispetto al volume di vendite atteso.</p>
 
   <h2>Come funziona il Bump e quando usarlo</h2>
-  <p>Il Bump mette il tuo annuncio in evidenza nei risultati di ricerca per un periodo limitato (di solito 3 o 7 giorni). Il costo viene mostrato da Vinted al momento dell'acquisto e va valutato rispetto al margine: su un articolo da pochi euro può erodere gran parte del guadagno, mentre su capi di valore più alto incide meno in percentuale. La stima nel calcolatore è orientativa: puoi anche inserire manualmente il costo reale che vedi nel checkout, per un calcolo preciso.</p>
+  <p>Il Bump mette il tuo annuncio in evidenza nei risultati di ricerca per un periodo limitato. Il costo dipende dal prezzo dell'articolo e va valutato rispetto al margine: su un articolo da pochi euro può erodere gran parte del guadagno, mentre su capi di valore più alto incide meno in percentuale. Attiva il Bump nel calcolatore per vedere immediatamente l'impatto sul tuo netto prima di pagarlo.</p>
 
   <p style="font-size:.8125rem;color:var(--text-faint);margin-top:1.5rem">I valori delle commissioni sono aggiornati a giugno 2026 e si basano sulle tariffe Vinted note pubblicamente. Verifica sempre l'importo reale nel checkout della piattaforma.</p>
 </section>

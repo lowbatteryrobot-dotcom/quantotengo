@@ -1,75 +1,51 @@
-# Come testare il sito in locale (senza pubblicarlo)
+// ============================================================
+// CONFIG VINTED — tutto ciò che è specifico di questo marketplace.
+// Il motore (engine.js) legge questo oggetto e costruisce la
+// calcolatrice. Per aggiornare le tariffe, modifica solo qui.
+// Ultima verifica tariffe: giugno 2026
+// ============================================================
+window.QT_CONFIG = {
+  id: 'vinted',
+  nome: 'Vinted',
+  dominio: 'QuantoTengo.it',
 
-Il sito ora è una cartella con più file collegati tra loro. Per questo
-non basta più fare doppio clic sull'HTML: il browser blocca il
-caricamento dei file vicini (CSS, JavaScript) per sicurezza. Serve un
-piccolo "server locale". Ecco tre modi, dal più facile al più tecnico.
+  // Colore di accento del marketplace (governa "Tengo", pill, dettagli)
+  accent: '#01696f',
+  accentName: '#01696f',
+  accentLight: '#e0f0f0',
+  accentDark: '#4f98a3',       // versione per dark mode
+  accentLightDark: '#1e3535',
 
-────────────────────────────────────────────────────────
-OPZIONE 1 — VS Code + Live Server (CONSIGLIATA, la più facile)
-────────────────────────────────────────────────────────
+  // ----- MODELLO DI TARIFFE -----
+  // chiPagaCommissione: 'acquirente' = la commissione si aggiunge al
+  // prezzo che paga il compratore e NON riduce il guadagno del venditore.
+  tariffe: {
+    chiPagaCommissione: 'acquirente',
+    commissionePercent: 0.05,
+    commissioneFixed: 0.70,
+    commissioneCap: null,        // nessun tetto su Vinted
+  },
 
-1. Installa Visual Studio Code (gratis): https://code.visualstudio.com
-2. Aprilo, vai su Estensioni (icona dei quadratini a sinistra),
-   cerca "Live Server" e installalo.
-3. File → Apri cartella → seleziona la cartella "site".
-4. Tasto destro su "index.html" → "Open with Live Server".
-5. Si apre il browser con il sito funzionante. Modifica un file,
-   salva, e la pagina si aggiorna da sola.
+  // ----- CAMPI EXTRA SPECIFICI -----
+  // Vinted ha il "Bump" come costo variabile stimato.
+  bump: {
+    attivo: true,
+    label: 'Hai pagato il Bump?',
+    prezzoMin: 20,
+    costoBase: 1.15,
+    incrementoPerEuro: 0.02,
+    costoMax: 4.00,
+    nota: 'Costo stimato in base al prezzo dell\u2019articolo. Il valore reale \u00e8 visibile nel checkout Vinted.',
+  },
 
-────────────────────────────────────────────────────────
-OPZIONE 2 — Un comando nel terminale (se hai Python)
-────────────────────────────────────────────────────────
+  // ----- LINGUAGGIO / IDENTIT\u00c0 -----
+  lingua: {
+    h1: 'Calcolatore Guadagno Vinted',
+    intro: 'Scopri in pochi secondi <strong>quanto guadagni davvero</strong> su Vinted, al netto di commissioni, Bump e spedizione. Inserisci il prezzo di vendita e il costo dell\u2019articolo: il calcolo \u00e8 immediato, gratuito e senza registrazione.',
+    labelPrezzo: 'Prezzo di vendita',
+    labelCosto: 'Costo d\u2019acquisto',
+    nomePlaceholder: 'es. Giacca Zara',
+  },
 
-Mac e Linux di solito hanno già Python. Su Windows si installa da
-python.org (spunta "Add to PATH" durante l'installazione).
-
-1. Apri il Terminale.
-2. Spostati nella cartella "site". Esempio:
-      cd ~/Downloads/site
-   (trascina la cartella nel terminale dopo "cd " per avere il percorso)
-3. Avvia il server:
-      python3 -m http.server 8000
-   (su Windows a volte è solo "python" invece di "python3")
-4. Apri il browser e vai su:
-      http://localhost:8000
-5. Per fermarlo: torna al terminale e premi Ctrl + C.
-
-Le URL durante il test saranno:
-   http://localhost:8000/            → homepage
-   http://localhost:8000/vinted/     → calcolatore Vinted
-   http://localhost:8000/cardmarket/ → calcolatore Cardmarket
-
-────────────────────────────────────────────────────────
-OPZIONE 3 — Pubblicare su GitHub Pages (è gratis e veloce)
-────────────────────────────────────────────────────────
-
-Visto che la destinazione finale è GitHub Pages, puoi anche testare
-direttamente lì. Ti dà un link reale in pochi minuti.
-
-1. Crea un account su github.com (gratis).
-2. Crea un nuovo repository (es. "quantotengo").
-3. Carica il contenuto della cartella "site" nel repository
-   (i file vanno nella radice del repository, non dentro una
-   sottocartella "site").
-4. Vai su Settings → Pages → imposta la Source su "main" e la
-   cartella su "/ (root)".
-5. Dopo qualche minuto il sito sarà online su un indirizzo tipo
-   https://tuonome.github.io/quantotengo/
-6. Quando colleghi il dominio quantotengo.it (sempre da Settings →
-   Pages → Custom domain), il sito risponderà lì.
-
-NOTA: se carichi i file dentro una sottocartella invece che nella
-radice, gli indirizzi cambiano e i collegamenti "/vinted/" non
-funzionano. Tieni i file nella radice del repository.
-
-────────────────────────────────────────────────────────
-Perché prima funzionava col doppio clic e ora no?
-────────────────────────────────────────────────────────
-
-Prima era UN solo file HTML con tutto dentro: si apriva da solo.
-Ora è una cartella di file collegati (per poterli condividere tra le
-calcolatrici), e i browser bloccano questi collegamenti quando apri
-col protocollo "file://". Il server locale risolve, perché serve i
-file via "http://" come farebbe un sito vero. È normale e standard
-per qualsiasi sito multi-file.
+  storicoKey: 'quantotengo_vinted_storico',
+};

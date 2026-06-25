@@ -1,42 +1,51 @@
-# SEO — sitemap e Search Console
+# QuantoTengo — struttura del progetto
 
-Hai già registrato il sito su Google Search Console. Adesso bisogna
-dirgli quali pagine hai, con il sitemap.
+Questo non è più un singolo file HTML, ma un piccolo ecosistema con un
+"motore" condiviso e una pagina per ogni marketplace. Gira su GitHub Pages
+senza backend e senza build.
 
-## Cosa sono questi due file
+## Struttura delle cartelle
 
-- **sitemap.xml** — la mappa del sito: elenca le tue pagine (home,
-  vinted, cardmarket) così Google le trova e le indicizza tutte.
-- **robots.txt** — dice ai motori di ricerca cosa possono visitare
-  (tutto, in questo caso) e dove trovare il sitemap.
+```
+site/
+├─ assets/
+│  ├─ style.css      ← il design, il dark mode, tutto il CSS (condiviso)
+│  └─ engine.js      ← la logica: calcolo, storico, dropdown (condivisa)
+│
+├─ vinted/
+│  ├─ index.html     ← la pagina (carica style.css + config.js + engine.js)
+│  └─ config.js      ← SOLO ciò che è specifico di Vinted (tariffe, lingua, colore)
+│
+├─ cardmarket/       ← (in costruzione) stessa struttura di vinted/
+│
+└─ index.html        ← (in costruzione) homepage hub con i link a ogni calcolatrice
+```
 
-Entrambi vanno nella RADICE del sito, come index.html. Dopo il caricamento
-saranno visibili a questi indirizzi:
-- https://www.quantotengo.it/sitemap.xml
-- https://www.quantotengo.it/robots.txt
+## L'idea
 
-## Come inviare il sitemap a Google (2 minuti)
+Tutto ciò che è uguale tra le calcolatrici vive in `assets/` (motore).
+Tutto ciò che è diverso vive nel `config.js` di ogni marketplace.
 
-1. Vai su Google Search Console (search.google.com/search-console).
-2. Seleziona la proprietà quantotengo.it.
-3. Nel menu a sinistra, clicca su "Sitemap".
-4. Nel campo "Aggiungi un nuovo sitemap", scrivi: sitemap.xml
-5. Clicca "Invia".
-6. Lo stato diventerà "Riuscito" entro qualche ora o giorno.
+- Per **aggiornare una tariffa** di Vinted → modifica `vinted/config.js`.
+- Per **cambiare il design** di tutte le calcolatrici → modifica `assets/style.css`.
+- Per **aggiungere un marketplace** → copia la cartella `vinted/`, rinominala,
+  e modifica il suo `config.js`. Il motore fa il resto.
 
-Da quel momento Google inizia a indicizzare le pagine. Comparire nei
-risultati di ricerca può richiedere da pochi giorni ad alcune settimane:
-è normale per un sito nuovo, abbi pazienza.
+## Stato attuale
 
-## Cosa controllare dopo
+- [x] Struttura cartelle
+- [x] `assets/style.css` estratto
+- [x] `assets/engine.js` estratto (da generalizzare)
+- [x] `vinted/config.js` creato
+- [ ] motore generalizzato per leggere config.js
+- [ ] `vinted/index.html` che carica i tre file
+- [ ] cartella `cardmarket/`
+- [ ] homepage hub
 
-In Search Console, nei giorni successivi:
-- "Pagine" → mostra quali pagine sono indicizzate.
-- "Rendimento" → mostra per quali ricerche compari e quanti clic ricevi.
-  (All'inizio sarà vuoto: i dati arrivano col tempo.)
+## Come pubblicare su GitHub Pages
 
-## Suggerimento
-
-Puoi usare lo strumento "Controllo URL" in alto in Search Console:
-incolla https://www.quantotengo.it/vinted/ e clicca "Richiedi
-indicizzazione" per accelerare un po' le cose per ogni pagina.
+Carica la cartella `site/` nel repository. Imposta GitHub Pages sulla
+cartella. Le URL saranno:
+- `quantotengo.it/` → homepage
+- `quantotengo.it/vinted/` → calcolatrice Vinted
+- `quantotengo.it/cardmarket/` → calcolatrice Cardmarket
