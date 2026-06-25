@@ -1,64 +1,51 @@
-# Come pubblicare QuantoTengo su GitHub Pages
+# QuantoTengo — struttura del progetto
 
-## ⚠️ La regola d'oro
+Questo non è più un singolo file HTML, ma un piccolo ecosistema con un
+"motore" condiviso e una pagina per ogni marketplace. Gira su GitHub Pages
+senza backend e senza build.
 
-I file devono stare nella **RADICE** del repository, NON dentro una
-sottocartella. Questa è la struttura corretta:
+## Struttura delle cartelle
 
 ```
-tuo-repository/
-├── index.html          ← la home
-├── assets/
-│   ├── style.css
-│   └── engine.js
-├── vinted/
-│   ├── index.html
-│   └── config.js        ← IMPORTANTE: senza questo la calcolatrice non funziona!
-├── cardmarket/
-│   ├── index.html
-│   └── config.js        ← IMPORTANTE: senza questo la calcolatrice non funziona!
-├── LEGGIMI.md
-└── COME-TESTARE.md
+site/
+├─ assets/
+│  ├─ style.css      ← il design, il dark mode, tutto il CSS (condiviso)
+│  └─ engine.js      ← la logica: calcolo, storico, dropdown (condivisa)
+│
+├─ vinted/
+│  ├─ index.html     ← la pagina (carica style.css + config.js + engine.js)
+│  └─ config.js      ← SOLO ciò che è specifico di Vinted (tariffe, lingua, colore)
+│
+├─ cardmarket/       ← (in costruzione) stessa struttura di vinted/
+│
+└─ index.html        ← (in costruzione) homepage hub con i link a ogni calcolatrice
 ```
 
-❌ SBAGLIATO: tuo-repository/site/index.html  (dentro una sottocartella)
-✅ GIUSTO:    tuo-repository/index.html        (nella radice)
+## L'idea
 
-Se metti tutto dentro "site/", gli indirizzi diventano
-quantotengo.it/site/vinted/ e i collegamenti si rompono.
+Tutto ciò che è uguale tra le calcolatrici vive in `assets/` (motore).
+Tutto ciò che è diverso vive nel `config.js` di ogni marketplace.
 
-## Il file config.js è essenziale
+- Per **aggiornare una tariffa** di Vinted → modifica `vinted/config.js`.
+- Per **cambiare il design** di tutte le calcolatrici → modifica `assets/style.css`.
+- Per **aggiungere un marketplace** → copia la cartella `vinted/`, rinominala,
+  e modifica il suo `config.js`. Il motore fa il resto.
 
-Ogni calcolatrice ha DUE file: index.html E config.js.
-- index.html = la pagina
-- config.js = le tariffe, i colori, i testi di quel marketplace
+## Stato attuale
 
-Se carichi solo index.html e dimentichi config.js, la calcolatrice
-si apre ma NON calcola (è quello che era successo prima).
-Controlla sempre che in vinted/ e cardmarket/ ci siano ENTRAMBI i file.
+- [x] Struttura cartelle
+- [x] `assets/style.css` estratto
+- [x] `assets/engine.js` estratto (da generalizzare)
+- [x] `vinted/config.js` creato
+- [ ] motore generalizzato per leggere config.js
+- [ ] `vinted/index.html` che carica i tre file
+- [ ] cartella `cardmarket/`
+- [ ] homepage hub
 
-## Come caricare (dalla pagina web di GitHub, senza terminale)
+## Come pubblicare su GitHub Pages
 
-1. Scompatta il file quantotengo-sito.zip che ti ho dato.
-   Dentro troverai già la struttura corretta (index.html, assets/,
-   vinted/, cardmarket/).
-2. Vai sul tuo repository su github.com.
-3. Clicca "Add file" → "Upload files".
-4. Trascina TUTTO il contenuto della cartella scompattata
-   (i file e le cartelle, non la cartella che li contiene).
-5. GitHub mantiene la struttura delle cartelle. Clicca "Commit changes".
-6. Vai su Settings → Pages → Source: "main", cartella "/ (root)".
-7. Dopo qualche minuto il sito è online.
-
-## Come controllare che funzioni
-
-Apri quantotengo.it/vinted/ e premi F12 (apre la console del browser).
-- Se NON vedi righe rosse di errore → tutto ok, il Bump funziona.
-- Se vedi "engine.js 404" o "config is not defined" → i file sono
-  nella cartella sbagliata. Ricontrolla che siano nella radice.
-
-## Aggiornare il sito in futuro
-
-Quando ti do file nuovi, ricarichi allo stesso modo (Upload files).
-GitHub sostituisce i file con lo stesso nome. Carica sempre TUTTO
-per sicurezza, così non rischi di lasciare versioni vecchie.
+Carica la cartella `site/` nel repository. Imposta GitHub Pages sulla
+cartella. Le URL saranno:
+- `quantotengo.it/` → homepage
+- `quantotengo.it/vinted/` → calcolatrice Vinted
+- `quantotengo.it/cardmarket/` → calcolatrice Cardmarket
