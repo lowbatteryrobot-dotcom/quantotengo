@@ -74,7 +74,7 @@ a{text-decoration:none;color:inherit}
 .nav a.active{color:var(--primary)}
 
 /* HERO */
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:3.5rem 0 3.5rem}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:3.5rem 1.75rem}
 .hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:1.1rem}
 .hero h1 .accent{color:var(--primary)}
 .hero .lead{font-size:1.0625rem;color:var(--text-muted);line-height:1.55;margin-bottom:1.875rem}
@@ -165,7 +165,7 @@ section{padding:2.45rem 0 2.98rem}
 .footer-legal .sep{margin:0 .5rem;opacity:.5}
 
 @media(max-width:860px){
-  .hero{grid-template-columns:1fr;gap:2rem;padding:2.25rem 0}
+  .hero{grid-template-columns:1fr;gap:2rem;padding:2.25rem 1.75rem}
   .hero h1{font-size:2.1rem}
   .platforms{grid-template-columns:1fr}
   .soon-row{grid-template-columns:1fr}
@@ -177,6 +177,26 @@ section{padding:2.45rem 0 2.98rem}
   .sec-title::before,.sec-title::after{width:32px}
   .nav{gap:1rem}
   .trust-row{flex-wrap:wrap;gap:.5rem 0}
+}
+@media(max-width:600px){
+  /* Più respiro laterale e leggero "zoom out" su telefono */
+  .wrap{padding:0 1.6rem}
+  .hero{padding:1.75rem 1.6rem;gap:1.5rem}
+  .hero h1{font-size:1.85rem;line-height:1.12}
+  .hero .lead{font-size:1rem}
+  section{padding:2rem 0 2.4rem}
+  .sec-title{font-size:1.25rem;gap:.7rem}
+  .sec-title::before,.sec-title::after{width:26px}
+  .sec-head{margin-bottom:1.75rem}
+  .btn{padding:.8rem 1.1rem;font-size:.9rem}
+  .preview-head{padding:.85rem 1.1rem}
+  .preview-body{padding:.25rem 1.1rem 1.1rem}
+  .pcard{padding:1.4rem 1.4rem}
+  .pcard h3{font-size:1.15rem}
+  .preview .pv-highlight .pv-v{font-size:1.35rem}
+  /* Nav su telefono: solo FAQ */
+  .nav a.active,.nav a[href="/cardmarket/"]{display:none}
+  .nav{gap:0}
 }
 </style>
 </head>
