@@ -1,394 +1,75 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuantoTengo — Calcola quanto ti resta da ogni vendita online</title>
-<meta name="description" content="Prima di accettare un'offerta, scopri quanto ti resta davvero. Calcola netto, margine e costi reali delle tue vendite su Vinted, Cardmarket e altri marketplace. Gratis, veloce, senza registrazione.">
-<link rel="canonical" href="https://www.quantotengo.it/">
-<meta name="theme-color" content="#01696f">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z' fill='%23f4c860'/%3E%3Cpath d='M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z' fill='%234fc4a8'/%3E%3Cpath d='M18 31 L50 46 L50 69 L18 54 Z' fill='%230c5651'/%3E%3Cpath d='M82 31 L50 46 L50 69 L82 54 Z' fill='%230f6a64'/%3E%3Cpath d='M50 16 L18 31 L50 46 L50 16 Z' fill='%2312736d'/%3E%3Cpath d='M50 16 L82 31 L50 46 L50 16 Z' fill='%230d5d57'/%3E%3Cpath d='M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z' fill='%230a4c47'/%3E%3Cpath d='M40 31 L50 28.5 L60 31 L50 34 Z' fill='%23073a36'/%3E%3C/svg%3E">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="it_IT">
-<meta property="og:title" content="QuantoTengo — Calcola quanto ti resta da ogni vendita online">
-<meta property="og:description" content="Scopri quanto ti resta davvero dalle tue vendite online. Vinted, Cardmarket e altri. Gratis e senza registrazione.">
-<meta property="og:url" content="https://www.quantotengo.it/">
-<meta property="og:site_name" content="QuantoTengo">
-<meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "name": "QuantoTengo",
-      "url": "https://www.quantotengo.it/",
-      "description": "Calcolatori di guadagno netto per chi vende su marketplace online come Vinted e Cardmarket.",
-      "inLanguage": "it-IT"
-    },
-    {
-      "@type": "ItemList",
-      "name": "Calcolatori disponibili",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Calcolatore Vinted", "url": "https://www.quantotengo.it/vinted/" },
-        { "@type": "ListItem", "position": 2, "name": "Calcolatore Cardmarket", "url": "https://www.quantotengo.it/cardmarket/" }
-      ]
-    }
-  ]
-}
-</script>
-<style>
-:root{
-  --bg:#f7f6f2; --surface:#fff; --surface-2:#f9f8f5; --surface-offset:#f0eeea;
-  --border:rgba(40,37,29,.10); --divider:rgba(40,37,29,.07);
-  --text:#1a1814; --text-muted:#6b6a65; --text-faint:#a8a7a2;
-  --primary:#01696f; --primary-hover:#0c4e54; --primary-light:#e0f0f0; --primary-soft:#eef6f5;
-  --coin-gold:#f6d78b; --coin-gold-deep:#d9a93c; --gold-bg:#fdf6e3;
-  --success:#1f9d63; --navy:#002651;
-  --shadow-sm:0 1px 3px rgba(0,0,0,.05),0 1px 2px rgba(0,0,0,.03);
-  --shadow-md:0 4px 16px rgba(0,0,0,.07);
-  --r-md:.625rem; --r-lg:.875rem; --r-xl:1.25rem; --transition:160ms cubic-bezier(.16,1,.3,1);
-}
-@media(prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#141310;--surface:#1f1d19;--surface-2:#1a1916;--surface-offset:#26241f;
-  --border:rgba(255,253,245,.10);--divider:rgba(255,253,245,.07);
-  --text:#ece9e1;--text-muted:#a3a097;--text-faint:#6f6c64;
-  --primary:#4f98a3;--primary-light:#1e3535;--primary-soft:#1a2a2a;--success:#5cc98c;--gold-bg:#2a2417;}
-}
-:root[data-theme="dark"]{--bg:#141310;--surface:#1f1d19;--surface-2:#1a1916;--surface-offset:#26241f;
-  --border:rgba(255,253,245,.10);--divider:rgba(255,253,245,.07);
-  --text:#ece9e1;--text-muted:#a3a097;--text-faint:#6f6c64;
-  --primary:#4f98a3;--primary-light:#1e3535;--primary-soft:#1a2a2a;--success:#5cc98c;--gold-bg:#2a2417;}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Plus Jakarta Sans','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100dvh;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1080px;margin:0 auto;padding:0 1.75rem}
-a{text-decoration:none;color:inherit}
+# Come testare il sito in locale (senza pubblicarlo)
 
-/* HEADER */
-.site-header{background:var(--surface);border-bottom:1px solid var(--border)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
-.logo{display:flex;align-items:center;gap:.5rem;font-size:1.0625rem;font-weight:800;letter-spacing:-.02em}
-.logo-accent{color:var(--primary)}
-.nav{display:flex;align-items:center;gap:1.75rem}
-.nav a{font-size:.9375rem;font-weight:600;color:var(--text-muted);transition:color var(--transition)}
-.nav a:hover{color:var(--text)}
-.nav a.active{color:var(--primary)}
-.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:transparent;border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:all var(--transition)}
-.theme-toggle:hover{background:var(--surface-offset);color:var(--text)}
+Il sito ora è una cartella con più file collegati tra loro. Per questo
+non basta più fare doppio clic sull'HTML: il browser blocca il
+caricamento dei file vicini (CSS, JavaScript) per sicurezza. Serve un
+piccolo "server locale". Ecco tre modi, dal più facile al più tecnico.
 
-/* HERO */
-.hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:3.5rem 1.75rem}
-.hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;line-height:1.08;margin-bottom:1.1rem}
-.hero h1 .accent{color:var(--primary)}
-.hero .lead{font-size:1.0625rem;color:var(--text-muted);line-height:1.55;margin-bottom:1.875rem}
-.cta-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.35rem;border-radius:var(--r-lg);font-size:.9375rem;font-weight:700;transition:all var(--transition);cursor:pointer}
-.btn svg{flex-shrink:0}
-.btn-label{display:inline-flex;align-items:center;gap:.25rem;line-height:1}
-.btn-sub{display:none}
-.btn-arrow{display:none;margin-left:auto;opacity:.75}
-.btn-primary{background:var(--primary);color:#fff;box-shadow:var(--shadow-sm)}
-.btn-primary:hover{background:var(--primary-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}
-.btn-ghost{background:var(--surface);color:var(--primary);border:1.5px solid var(--primary)}
-.btn-ghost:hover{background:var(--primary-soft);transform:translateY(-1px)}
-.trust-row{display:flex;align-items:center;gap:0}
-.trust{display:inline-flex;align-items:center;gap:.45rem;font-size:.8125rem;font-weight:600;color:var(--text-muted);padding:0 1.1rem}
-.trust:first-child{padding-left:0}
-.trust:not(:last-child){border-right:1px solid var(--border)}
-.trust svg{color:var(--coin-gold-deep);flex-shrink:0}
+────────────────────────────────────────────────────────
+OPZIONE 1 — VS Code + Live Server (CONSIGLIATA, la più facile)
+────────────────────────────────────────────────────────
 
-/* ESEMPIO RAPIDO CARD */
-.preview{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-md);overflow:hidden}
-.preview-head{display:flex;align-items:center;gap:.5rem;padding:1rem 1.35rem;font-size:.875rem;font-weight:700;color:var(--text);border-bottom:1px solid var(--divider)}
-.preview-head svg{color:var(--coin-gold-deep)}
-.preview-body{padding:.35rem 1.35rem 1.35rem}
-.pv-row{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;font-size:.9375rem;border-bottom:1px solid var(--divider)}
-.pv-row .pv-k{display:flex;align-items:center;gap:.6rem;color:var(--text-muted)}
-.pv-row .pv-k svg{color:var(--text-faint)}
-.pv-row .pv-v{font-weight:700;font-variant-numeric:tabular-nums;color:var(--text)}
-.pv-row.pv-sub{padding:.55rem 0;font-size:.8125rem}
-.pv-row.pv-sub .pv-k{padding-left:1.65rem;color:var(--text-faint)}
-.pv-neg{color:var(--text-muted)!important;font-weight:600!important}
-.pv-highlight{background:var(--gold-bg);border-radius:var(--r-lg);padding:.85rem 1rem;margin:.85rem 0 0;display:flex;align-items:center;justify-content:space-between}
-.pv-highlight .pv-k{color:var(--text);font-weight:700;display:flex;align-items:center;gap:.65rem;font-size:1rem}
-.pv-coin{width:26px;height:26px;border-radius:50%;background:var(--coin-gold);color:#7a5a12;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pv-highlight .pv-v{font-size:1.5rem;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums}
-.pv-margin{display:flex;align-items:center;justify-content:space-between;padding:.95rem 0 .35rem;font-size:.9375rem;border-bottom:1px solid var(--divider)}
-.pv-margin .pv-k{color:var(--text-muted);display:flex;align-items:center;gap:.6rem}
-.pv-margin .pv-k svg{color:var(--text-faint)}
-.pv-margin .pv-v{font-weight:800;color:var(--success);font-variant-numeric:tabular-nums}
-.pv-note{margin-top:.9rem;padding:.7rem;background:var(--surface-2);border-radius:var(--r-md);font-size:.7188rem;color:var(--text-faint);text-align:center;display:flex;align-items:center;justify-content:center;gap:.4rem;line-height:1.4}
-.pv-note svg{color:var(--coin-gold-deep);flex-shrink:0}
+1. Installa Visual Studio Code (gratis): https://code.visualstudio.com
+2. Aprilo, vai su Estensioni (icona dei quadratini a sinistra),
+   cerca "Live Server" e installalo.
+3. File → Apri cartella → seleziona la cartella "site".
+4. Tasto destro su "index.html" → "Open with Live Server".
+5. Si apre il browser con il sito funzionante. Modifica un file,
+   salva, e la pagina si aggiorna da sola.
 
-/* SECTIONS */
-/* SECTIONS — bande di sfondo a tutta larghezza, alternate.
-   Spaziatura verticale uniforme su tutte le sezioni. */
-section{padding:2.45rem 0 2.98rem}
-.band-white{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.sec-head{text-align:center;margin-bottom:2.5rem}
-.sec-title{display:inline-flex;align-items:center;justify-content:center;gap:1rem;font-size:1.375rem;font-weight:800;letter-spacing:-.02em}
-.sec-title::before,.sec-title::after{content:'';width:64px;height:2px;border-radius:2px;background:var(--primary);opacity:.85}
-.sec-title .dot{display:none}
-.sec-sub{font-size:.9375rem;color:var(--text-muted);max-width:36rem;margin:.6rem auto 0}
+────────────────────────────────────────────────────────
+OPZIONE 2 — Un comando nel terminale (se hai Python)
+────────────────────────────────────────────────────────
 
-/* PLATFORM CARDS */
-.platforms{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-.pcard{display:block;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:1.6rem 1.75rem;box-shadow:var(--shadow-sm);transition:transform var(--transition),box-shadow var(--transition)}
-.pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
-.pcard-dot{width:11px;height:11px;border-radius:50%;margin-bottom:.7rem}
-.pcard h3{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;margin-bottom:.5rem}
-.pcard p{font-size:.875rem;color:var(--text-muted);line-height:1.55;margin-bottom:1.1rem}
-.pcard-cta{font-size:.875rem;font-weight:700;display:inline-flex;align-items:center;gap:.4rem}
+Mac e Linux di solito hanno già Python. Su Windows si installa da
+python.org (spunta "Add to PATH" durante l'installazione).
 
-/* IN ARRIVO */
-.soon-label{font-size:.9375rem;font-weight:700;color:var(--text);margin:1.75rem 0 .85rem}
-.soon-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem}
-.soon-pill{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.1rem;border-radius:var(--r-lg);background:var(--gold-bg);border:1px solid var(--coin-gold)}
-.soon-pill .sp-left{display:flex;align-items:center;gap:.6rem;font-size:.9375rem;font-weight:600;color:var(--text)}
-.soon-pill .sp-dot{width:9px;height:9px;border-radius:50%}
-.soon-pill .sp-tag{font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#8a6d1e;background:var(--coin-gold);padding:3px .6rem;border-radius:999px}
+1. Apri il Terminale.
+2. Spostati nella cartella "site". Esempio:
+      cd ~/Downloads/site
+   (trascina la cartella nel terminale dopo "cd " per avere il percorso)
+3. Avvia il server:
+      python3 -m http.server 8000
+   (su Windows a volte è solo "python" invece di "python3")
+4. Apri il browser e vai su:
+      http://localhost:8000
+5. Per fermarlo: torna al terminale e premi Ctrl + C.
 
-/* COME FUNZIONA */
-.steps{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.4rem;align-items:stretch}
-.step{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.35rem;display:flex;align-items:center;gap:.85rem}
-.step-num{width:38px;height:38px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.125rem;flex-shrink:0}
-.step-icon{color:var(--primary);flex-shrink:0;display:flex;align-items:center}
-.step-text h4{font-size:.875rem;font-weight:700;margin-bottom:.2rem;line-height:1.25}
-.step-text p{font-size:.75rem;color:var(--text-muted);line-height:1.45}
-.step-arrow{display:flex;align-items:center;justify-content:center;color:var(--text-faint)}
+Le URL durante il test saranno:
+   http://localhost:8000/            → homepage
+   http://localhost:8000/vinted/     → calcolatore Vinted
+   http://localhost:8000/cardmarket/ → calcolatore Cardmarket
 
-/* PERCHÉ USARLO */
-.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-.why{display:flex;align-items:flex-start;gap:.9rem;padding:0 1.5rem}
-.why:not(:last-child){border-right:1px solid var(--divider)}
-.why-icon{width:46px;height:46px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.why h4{font-size:.9375rem;font-weight:700;margin-bottom:.25rem}
-.why p{font-size:.8125rem;color:var(--text-muted);line-height:1.5}
+────────────────────────────────────────────────────────
+OPZIONE 3 — Pubblicare su GitHub Pages (è gratis e veloce)
+────────────────────────────────────────────────────────
 
-/* FOOTER */
-.site-footer{border-top:1px solid var(--border);background:var(--surface-2);padding:2rem 0;text-align:center;margin-top:1.5rem}
-.footer-legal{font-size:.8125rem;color:var(--text-faint);line-height:1.7;max-width:50rem;margin:0 auto}
-.footer-legal a{color:var(--primary)}
-.footer-legal .sep{margin:0 .5rem;opacity:.5}
+Visto che la destinazione finale è GitHub Pages, puoi anche testare
+direttamente lì. Ti dà un link reale in pochi minuti.
 
-@media(max-width:860px){
-  .hero{grid-template-columns:1fr;gap:2rem;padding:2.25rem 1.75rem}
-  .hero h1{font-size:2.1rem}
-  .platforms{grid-template-columns:1fr}
-  .soon-row{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .step-arrow{display:none}
-  .why-grid{grid-template-columns:1fr;gap:1.5rem}
-  .why{padding:0}
-  .why:not(:last-child){border-right:none;border-bottom:1px solid var(--divider);padding-bottom:1.5rem}
-  .sec-title::before,.sec-title::after{width:32px}
-  .nav{gap:1rem}
-  .trust-row{flex-wrap:wrap;gap:.5rem 0}
-}
-@media(max-width:600px){
-  /* Più respiro laterale e leggero "zoom out" su telefono */
-  .wrap{padding:0 1.6rem}
-  .hero{padding:1.75rem 1.6rem;gap:1.5rem}
-  .hero h1{font-size:1.85rem;line-height:1.12}
-  .hero .lead{font-size:1rem}
-  section{padding:2rem 0 2.4rem}
-  .sec-title{font-size:1.25rem;gap:.7rem}
-  .sec-title::before,.sec-title::after{width:26px}
-  .sec-head{margin-bottom:1.75rem}
-  .btn{padding:.8rem 1.1rem;font-size:.9rem}
-  .preview-head{padding:.85rem 1.1rem}
-  .preview-body{padding:.25rem 1.1rem 1.1rem}
-  .pcard{padding:1.4rem 1.4rem}
-  .pcard h3{font-size:1.15rem}
-  .preview .pv-highlight .pv-v{font-size:1.35rem}
-  /* Su mobile la scelta della piattaforma diventa il CTA principale, prima dell'esempio rapido */
-  .cta-row{display:grid;grid-template-columns:1fr;gap:.75rem;margin:1.35rem 0 1rem}
-  .cta-row::before{content:'Scegli la piattaforma';display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.1rem}
-  .cta-row .btn{width:100%;min-height:70px;justify-content:flex-start;padding:.95rem 1rem;border-radius:1rem;box-shadow:var(--shadow-sm)}
-  .cta-row .btn:hover{transform:none}
-  .btn-label{display:flex;flex-direction:column;align-items:flex-start;gap:.22rem;line-height:1.25}
-  .btn-sub{display:block;font-size:.76rem;font-weight:600;opacity:.78;line-height:1.35}
-  .btn-arrow{display:inline-flex;font-size:1.15rem}
-  .btn-ghost{background:var(--surface);border-color:rgba(1,105,111,.42)}
-  .trust-row{margin-bottom:1.25rem}
-  .trust{font-size:.76rem;padding:0 .75rem}
-  .trust:first-child{padding-left:0}
-  .preview{margin-top:.25rem}
-  .nav{gap:.5rem}
-}
-</style>
-<script defer src="https://cloud.umami.is/script.js" data-website-id="32bd0902-d674-47aa-b30a-34f65ac11e08"></script>
-</head>
-<body>
+1. Crea un account su github.com (gratis).
+2. Crea un nuovo repository (es. "quantotengo").
+3. Carica il contenuto della cartella "site" nel repository
+   (i file vanno nella radice del repository, non dentro una
+   sottocartella "site").
+4. Vai su Settings → Pages → imposta la Source su "main" e la
+   cartella su "/ (root)".
+5. Dopo qualche minuto il sito sarà online su un indirizzo tipo
+   https://tuonome.github.io/quantotengo/
+6. Quando colleghi il dominio quantotengo.it (sempre da Settings →
+   Pages → Custom domain), il sito risponderà lì.
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="/" class="logo">
-      <svg width="30" height="30" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg>
-      <span>Quanto<span class="logo-accent">Tengo</span></span>
-    </a>
-    <nav class="nav">
-      <a href="/vinted/#faq">FAQ</a>
-      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro">
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
-    </nav>
-  </div>
-</header>
+NOTA: se carichi i file dentro una sottocartella invece che nella
+radice, gli indirizzi cambiano e i collegamenti "/vinted/" non
+funzionano. Tieni i file nella radice del repository.
 
-<script>
-function applyTheme(t){
-  document.documentElement.setAttribute('data-theme', t);
-  var moon=document.querySelector('.icon-moon'), sun=document.querySelector('.icon-sun');
-  if(moon&&sun){ moon.style.display = t==='dark'?'none':''; sun.style.display = t==='dark'?'':'none'; }
-}
-function toggleTheme(){
-  var cur=document.documentElement.getAttribute('data-theme');
-  if(!cur){ cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'; }
-  applyTheme(cur==='dark'?'light':'dark');
-}
-(function(){
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(prefersDark?'dark':'light');
-})();
-</script>
+────────────────────────────────────────────────────────
+Perché prima funzionava col doppio clic e ora no?
+────────────────────────────────────────────────────────
 
-<main>
-  <!-- HERO -->
-  <section class="wrap hero">
-    <div class="hero-text">
-      <h1>Calcola quanto ti resta <span class="accent">davvero</span> da una vendita online</h1>
-      <p class="lead">Prezzo, costi, spedizione, commissioni e offerte:<br>scopri il guadagno netto in pochi secondi.<br>Gratis, senza registrazione.</p>
-      <div class="cta-row">
-        <a href="/vinted/" class="btn btn-primary">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/></svg>
-          <span class="btn-label"><span>Calcola con Vinted</span><span class="btn-sub">Bump, spedizione e offerte</span></span>
-          <span class="btn-arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="/cardmarket/" class="btn btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="18" rx="2"/><path d="M7 5V3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2"/></svg>
-          <span class="btn-label"><span>Calcola con Cardmarket</span><span class="btn-sub">Commissioni, spedizione e margine reale</span></span>
-          <span class="btn-arrow" aria-hidden="true">→</span>
-        </a>
-      </div>
-      <div class="trust-row">
-        <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Gratis</span>
-        <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Senza registrazione</span>
-        <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>I tuoi dati restano privati</span>
-      </div>
-    </div>
-
-    <div class="preview" aria-hidden="true">
-      <div class="preview-head">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        Esempio rapido
-      </div>
-      <div class="preview-body">
-        <div class="pv-row"><span class="pv-k"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Prezzo di vendita</span><span class="pv-v">€ 25,00</span></div>
-        <div class="pv-row pv-sub"><span class="pv-k">− Costo d'acquisto</span><span class="pv-v pv-neg">− € 5,00</span></div>
-        <div class="pv-row pv-sub"><span class="pv-k">− Imballaggio</span><span class="pv-v pv-neg">− € 1,00</span></div>
-        <div class="pv-row pv-sub"><span class="pv-k">− Bump (in evidenza)</span><span class="pv-v pv-neg">− € 1,15</span></div>
-        <div class="pv-highlight"><span class="pv-k"><span class="pv-coin"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg></span>Ti resta</span><span class="pv-v">€ 17,85</span></div>
-        <div class="pv-margin"><span class="pv-k"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Margine</span><span class="pv-v">71%</span></div>
-        <div class="pv-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>La commissione Vinted la paga l'acquirente: il prezzo è quello che incassi.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCEGLI LA PIATTAFORMA -->
-  <section class="band-white">
-   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="sec-title">Scegli la piattaforma</h2>
-    </div>
-    <div class="platforms">
-      <a href="/vinted/" class="pcard">
-        <div class="pcard-dot" style="background:#01696f"></div>
-        <h3>Vinted</h3>
-        <p>Per chi vende abbigliamento, accessori, ma anche collezionabili, elettronica, libri e oggetti per la casa. Calcola netto, Bump, spedizione e offerte.</p>
-        <span class="pcard-cta" style="color:#01696f">Apri calcolatore →</span>
-      </a>
-      <a href="/cardmarket/" class="pcard">
-        <div class="pcard-dot" style="background:#002651"></div>
-        <h3>Cardmarket</h3>
-        <p>Per chi vende carte Pokémon, Magic, Yu-Gi-Oh! e altri TCG. Calcola commissioni per livello, spedizione e guadagno reale.</p>
-        <span class="pcard-cta" style="color:#0a4da3">Apri calcolatore →</span>
-      </a>
-    </div>
-
-    <div class="soon-label">In arrivo</div>
-    <div class="soon-row">
-      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#e30613"></span>Subito</span><span class="sp-tag">Presto</span></div>
-      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#0064d2"></span>eBay</span><span class="sp-tag">Presto</span></div>
-      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#13c1ac"></span>Wallapop</span><span class="sp-tag">Presto</span></div>
-    </div>
-   </div>
-  </section>
-
-  <!-- COME FUNZIONA -->
-  <section id="come-funziona">
-   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="sec-title">Come funziona</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="14" y2="18"/></svg></div>
-        <div class="step-text"><h4>Inserisci prezzo e costi</h4><p>Aggiungi il prezzo di vendita e i costi dell'articolo.</p></div>
-      </div>
-      <div class="step-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div class="step-text"><h4>Aggiungi spedizione o extra</h4><p>Imposta spedizione, bump, imballaggio o altri extra.</p></div>
-      </div>
-      <div class="step-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <div class="step-text"><h4>Scopri quanto ti resta davvero</h4><p>Ottieni subito il guadagno netto e il margine della tua vendita.</p></div>
-      </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- PERCHÉ USARLO -->
-  <section class="band-white">
-   <div class="wrap">
-    <div class="sec-head">
-      <h2 class="sec-title">Perché usarlo</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why">
-        <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10"/></svg></div>
-        <div><h4>Niente fogli Excel</h4><p>Tutto in un unico posto. Veloce e senza errori.</p></div>
-      </div>
-      <div class="why">
-        <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
-        <div><h4>Offerte più consapevoli</h4><p>Valuta in un attimo se conviene accettare o rilanciare.</p></div>
-      </div>
-      <div class="why">
-        <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div><h4>Pensato per venditori reali</h4><p>Semplice, chiaro e fatto sulla base dell'esperienza reale.</p></div>
-      </div>
-    </div>
-   </div>
-  </section>
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <p class="footer-legal">
-      QuantoTengo.it<span class="sep">·</span>Strumenti gratuiti e indipendenti<span class="sep">·</span>Non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime a solo scopo informativo.<br>
-      Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a>
-    </p>
-  </div>
-</footer>
-
-</body>
-</html>
+Prima era UN solo file HTML con tutto dentro: si apriva da solo.
+Ora è una cartella di file collegati (per poterli condividere tra le
+calcolatrici), e i browser bloccano questi collegamenti quando apri
+col protocollo "file://". Il server locale risolve, perché serve i
+file via "http://" come farebbe un sito vero. È normale e standard
+per qualsiasi sito multi-file.

@@ -1,75 +1,64 @@
-# Come testare il sito in locale (senza pubblicarlo)
+# Come pubblicare QuantoTengo su GitHub Pages
 
-Il sito ora è una cartella con più file collegati tra loro. Per questo
-non basta più fare doppio clic sull'HTML: il browser blocca il
-caricamento dei file vicini (CSS, JavaScript) per sicurezza. Serve un
-piccolo "server locale". Ecco tre modi, dal più facile al più tecnico.
+## ⚠️ La regola d'oro
 
-────────────────────────────────────────────────────────
-OPZIONE 1 — VS Code + Live Server (CONSIGLIATA, la più facile)
-────────────────────────────────────────────────────────
+I file devono stare nella **RADICE** del repository, NON dentro una
+sottocartella. Questa è la struttura corretta:
 
-1. Installa Visual Studio Code (gratis): https://code.visualstudio.com
-2. Aprilo, vai su Estensioni (icona dei quadratini a sinistra),
-   cerca "Live Server" e installalo.
-3. File → Apri cartella → seleziona la cartella "site".
-4. Tasto destro su "index.html" → "Open with Live Server".
-5. Si apre il browser con il sito funzionante. Modifica un file,
-   salva, e la pagina si aggiorna da sola.
+```
+tuo-repository/
+├── index.html          ← la home
+├── assets/
+│   ├── style.css
+│   └── engine.js
+├── vinted/
+│   ├── index.html
+│   └── config.js        ← IMPORTANTE: senza questo la calcolatrice non funziona!
+├── cardmarket/
+│   ├── index.html
+│   └── config.js        ← IMPORTANTE: senza questo la calcolatrice non funziona!
+├── LEGGIMI.md
+└── COME-TESTARE.md
+```
 
-────────────────────────────────────────────────────────
-OPZIONE 2 — Un comando nel terminale (se hai Python)
-────────────────────────────────────────────────────────
+❌ SBAGLIATO: tuo-repository/site/index.html  (dentro una sottocartella)
+✅ GIUSTO:    tuo-repository/index.html        (nella radice)
 
-Mac e Linux di solito hanno già Python. Su Windows si installa da
-python.org (spunta "Add to PATH" durante l'installazione).
+Se metti tutto dentro "site/", gli indirizzi diventano
+quantotengo.it/site/vinted/ e i collegamenti si rompono.
 
-1. Apri il Terminale.
-2. Spostati nella cartella "site". Esempio:
-      cd ~/Downloads/site
-   (trascina la cartella nel terminale dopo "cd " per avere il percorso)
-3. Avvia il server:
-      python3 -m http.server 8000
-   (su Windows a volte è solo "python" invece di "python3")
-4. Apri il browser e vai su:
-      http://localhost:8000
-5. Per fermarlo: torna al terminale e premi Ctrl + C.
+## Il file config.js è essenziale
 
-Le URL durante il test saranno:
-   http://localhost:8000/            → homepage
-   http://localhost:8000/vinted/     → calcolatore Vinted
-   http://localhost:8000/cardmarket/ → calcolatore Cardmarket
+Ogni calcolatrice ha DUE file: index.html E config.js.
+- index.html = la pagina
+- config.js = le tariffe, i colori, i testi di quel marketplace
 
-────────────────────────────────────────────────────────
-OPZIONE 3 — Pubblicare su GitHub Pages (è gratis e veloce)
-────────────────────────────────────────────────────────
+Se carichi solo index.html e dimentichi config.js, la calcolatrice
+si apre ma NON calcola (è quello che era successo prima).
+Controlla sempre che in vinted/ e cardmarket/ ci siano ENTRAMBI i file.
 
-Visto che la destinazione finale è GitHub Pages, puoi anche testare
-direttamente lì. Ti dà un link reale in pochi minuti.
+## Come caricare (dalla pagina web di GitHub, senza terminale)
 
-1. Crea un account su github.com (gratis).
-2. Crea un nuovo repository (es. "quantotengo").
-3. Carica il contenuto della cartella "site" nel repository
-   (i file vanno nella radice del repository, non dentro una
-   sottocartella "site").
-4. Vai su Settings → Pages → imposta la Source su "main" e la
-   cartella su "/ (root)".
-5. Dopo qualche minuto il sito sarà online su un indirizzo tipo
-   https://tuonome.github.io/quantotengo/
-6. Quando colleghi il dominio quantotengo.it (sempre da Settings →
-   Pages → Custom domain), il sito risponderà lì.
+1. Scompatta il file quantotengo-sito.zip che ti ho dato.
+   Dentro troverai già la struttura corretta (index.html, assets/,
+   vinted/, cardmarket/).
+2. Vai sul tuo repository su github.com.
+3. Clicca "Add file" → "Upload files".
+4. Trascina TUTTO il contenuto della cartella scompattata
+   (i file e le cartelle, non la cartella che li contiene).
+5. GitHub mantiene la struttura delle cartelle. Clicca "Commit changes".
+6. Vai su Settings → Pages → Source: "main", cartella "/ (root)".
+7. Dopo qualche minuto il sito è online.
 
-NOTA: se carichi i file dentro una sottocartella invece che nella
-radice, gli indirizzi cambiano e i collegamenti "/vinted/" non
-funzionano. Tieni i file nella radice del repository.
+## Come controllare che funzioni
 
-────────────────────────────────────────────────────────
-Perché prima funzionava col doppio clic e ora no?
-────────────────────────────────────────────────────────
+Apri quantotengo.it/vinted/ e premi F12 (apre la console del browser).
+- Se NON vedi righe rosse di errore → tutto ok, il Bump funziona.
+- Se vedi "engine.js 404" o "config is not defined" → i file sono
+  nella cartella sbagliata. Ricontrolla che siano nella radice.
 
-Prima era UN solo file HTML con tutto dentro: si apriva da solo.
-Ora è una cartella di file collegati (per poterli condividere tra le
-calcolatrici), e i browser bloccano questi collegamenti quando apri
-col protocollo "file://". Il server locale risolve, perché serve i
-file via "http://" come farebbe un sito vero. È normale e standard
-per qualsiasi sito multi-file.
+## Aggiornare il sito in futuro
+
+Quando ti do file nuovi, ricarichi allo stesso modo (Upload files).
+GitHub sostituisce i file con lo stesso nome. Carica sempre TUTTO
+per sicurezza, così non rischi di lasciare versioni vecchie.
