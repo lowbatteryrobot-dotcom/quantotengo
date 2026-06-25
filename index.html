@@ -177,7 +177,7 @@ section{padding:2.45rem 0 2.98rem}
 .why p{font-size:.8125rem;color:var(--text-muted);line-height:1.5}
 
 /* FOOTER */
-.site-footer{border-top:1px solid var(--border);background:var(--surface-2);padding:2rem 0;text-align:center;margin-top:1.5rem}
+.site-footer{border-top:1px solid var(--border);background:var(--surface-2);padding:2rem 0;text-align:center;margin-top:0}
 .footer-legal{font-size:.8125rem;color:var(--text-faint);line-height:1.7;max-width:50rem;margin:0 auto}
 .footer-legal a{color:var(--primary)}
 .footer-legal .sep{margin:0 .5rem;opacity:.5}
@@ -212,15 +212,22 @@ section{padding:2.45rem 0 2.98rem}
   .pcard{padding:1.4rem 1.4rem}
   .pcard h3{font-size:1.15rem}
   .preview .pv-highlight .pv-v{font-size:1.35rem}
-  /* Su mobile la scelta della piattaforma diventa il CTA principale, prima dell'esempio rapido */
-  .cta-row{display:grid;grid-template-columns:1fr;gap:.75rem;margin:1.35rem 0 1rem}
-  .cta-row::before{content:'Scegli la piattaforma';display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.1rem}
-  .cta-row .btn{width:100%;min-height:70px;justify-content:flex-start;padding:.95rem 1rem;border-radius:1rem;box-shadow:var(--shadow-sm)}
+  /* Su mobile la scelta dello strumento resta prima dell'esempio rapido.
+     Vinted ha più enfasi; Cardmarket resta affiancato ma secondario. */
+  .cta-row{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:.65rem;margin:1.35rem 0 1rem;align-items:stretch}
+  .cta-row::before{content:'Scegli lo strumento';grid-column:1/-1;display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.1rem}
+  .cta-row .btn{width:100%;min-height:70px;justify-content:flex-start;padding:.9rem .9rem;border-radius:1rem;box-shadow:var(--shadow-sm)}
   .cta-row .btn:hover{transform:none}
-  .btn-label{display:flex;flex-direction:column;align-items:flex-start;gap:.22rem;line-height:1.25}
-  .btn-sub{display:block;font-size:.76rem;font-weight:600;opacity:.78;line-height:1.35}
+  .btn-label{display:flex;flex-direction:column;align-items:flex-start;gap:.22rem;line-height:1.25;min-width:0}
+  .btn-label>span:first-child{white-space:normal}
+  .btn-sub{display:block;font-size:.73rem;font-weight:600;opacity:.78;line-height:1.35}
   .btn-arrow{display:inline-flex;font-size:1.15rem}
-  .btn-ghost{background:var(--surface);border-color:rgba(1,105,111,.42)}
+  .btn-ghost{background:var(--surface);border-color:rgba(1,105,111,.28);color:var(--text-muted);box-shadow:none}
+  .cta-row .btn-soon{padding:.8rem .75rem;opacity:.86;min-height:70px;background:var(--surface-2);border-color:var(--border)}
+  .cta-row .btn-soon svg{display:none}
+  .cta-row .btn-soon .btn-label{gap:.1rem}
+  .cta-row .btn-soon .btn-sub{font-size:.7rem;color:var(--text-faint);opacity:1}
+  .cta-row .btn-soon .soon-inline{display:none}
   .trust-row{margin:0 auto 1.25rem;justify-content:center;text-align:center;gap:.45rem .5rem;max-width:21rem}
   .trust{font-size:.76rem;padding:.2rem .35rem;border-right:0!important;justify-content:center}
   .trust:first-child{padding-left:.35rem}
@@ -230,8 +237,12 @@ section{padding:2.45rem 0 2.98rem}
 @media(max-width:380px){
   .hero h1{font-size:1.56rem}
   .hero .lead{font-size:.9rem}
-  .cta-row .btn{min-height:66px}
+  .cta-row{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:.55rem}
+  .cta-row .btn{min-height:66px;padding:.78rem .72rem}
+  .cta-row .btn svg{width:16px;height:16px}
+  .btn-sub{font-size:.68rem}
 }
+
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="32bd0902-d674-47aa-b30a-34f65ac11e08"></script>
 </head>
@@ -284,7 +295,7 @@ function toggleTheme(){
         </a>
         <button type="button" class="btn btn-ghost btn-soon" aria-disabled="true" title="Calcolatore Cardmarket in arrivo">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="18" rx="2"/><path d="M7 5V3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2"/></svg>
-          <span class="btn-label"><span>Cardmarket in arrivo</span><span class="btn-sub">Lo stiamo preparando: sarà disponibile presto</span></span>
+          <span class="btn-label"><span>Cardmarket</span><span class="btn-sub">In arrivo</span></span>
           <span class="soon-inline" aria-hidden="true">Presto</span>
         </button>
       </div>
@@ -313,7 +324,7 @@ function toggleTheme(){
   </section>
 
   <!-- COME FUNZIONA -->
-  <section id="come-funziona">
+  <section id="come-funziona" class="band-white">
    <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title">Come funziona</h2>
@@ -341,7 +352,7 @@ function toggleTheme(){
   </section>
 
   <!-- PERCHÉ USARLO -->
-  <section class="band-white">
+  <section>
    <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title">Perché usarlo</h2>
@@ -362,11 +373,12 @@ function toggleTheme(){
     </div>
    </div>
   </section>
-  <!-- SCEGLI LA PIATTAFORMA -->
+  <!-- MARKETPLACE SUPPORTATI E IN ARRIVO -->
   <section class="band-white">
    <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title">Scegli la piattaforma</h2>
+      <h2 class="sec-title">Marketplace supportati e in arrivo</h2>
+      <p class="sec-sub">Oggi puoi calcolare il guadagno su Vinted. Stiamo lavorando anche a Cardmarket, Subito, eBay e Wallapop.</p>
     </div>
     <div class="platforms">
       <a href="/vinted/" class="pcard">
