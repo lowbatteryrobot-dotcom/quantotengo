@@ -1,47 +1,51 @@
 # QuantoTengo — struttura del progetto
 
-Ecosistema con un "motore" condiviso e una pagina per ogni marketplace.
-Gira su GitHub Pages senza backend e senza build.
+Questo non è più un singolo file HTML, ma un piccolo ecosistema con un
+"motore" condiviso e una pagina per ogni marketplace. Gira su GitHub Pages
+senza backend e senza build.
 
-## Struttura
+## Struttura delle cartelle
 
 ```
 site/
-├─ index.html        ← homepage hub (i link a ogni calcolatrice)
 ├─ assets/
-│  ├─ style.css      ← design, dark mode, tutto il CSS (condiviso)
-│  └─ engine.js      ← logica: calcolo, storico, dropdown (condivisa, generica)
+│  ├─ style.css      ← il design, il dark mode, tutto il CSS (condiviso)
+│  └─ engine.js      ← la logica: calcolo, storico, dropdown (condivisa)
+│
 ├─ vinted/
 │  ├─ index.html     ← la pagina (carica style.css + config.js + engine.js)
-│  └─ config.js      ← SOLO ciò che è specifico di Vinted
-└─ cardmarket/
-   ├─ index.html
-   └─ config.js      ← commissione del venditore, tetto 100€, lingua TCG
+│  └─ config.js      ← SOLO ciò che è specifico di Vinted (tariffe, lingua, colore)
+│
+├─ cardmarket/       ← (in costruzione) stessa struttura di vinted/
+│
+└─ index.html        ← (in costruzione) homepage hub con i link a ogni calcolatrice
 ```
 
 ## L'idea
 
-Tutto ciò che è uguale tra le calcolatrici vive in `assets/` (il motore).
-Tutto ciò che è diverso vive nel `config.js` di ogni marketplace:
-tariffe, lingua, colore, campi.
+Tutto ciò che è uguale tra le calcolatrici vive in `assets/` (motore).
+Tutto ciò che è diverso vive nel `config.js` di ogni marketplace.
 
-- Aggiornare una tariffa → modifica il `config.js` di quel marketplace.
-- Cambiare il design di TUTTE → modifica `assets/style.css`.
-- Aggiungere un marketplace → copia una cartella, cambia il `config.js`.
+- Per **aggiornare una tariffa** di Vinted → modifica `vinted/config.js`.
+- Per **cambiare il design** di tutte le calcolatrici → modifica `assets/style.css`.
+- Per **aggiungere un marketplace** → copia la cartella `vinted/`, rinominala,
+  e modifica il suo `config.js`. Il motore fa il resto.
 
-Il motore gestisce automaticamente: commissione a carico dell'acquirente
-(Vinted) O del venditore (Cardmarket), tetto per articolo, Bump, livelli.
+## Stato attuale
 
-## Stato
+- [x] Struttura cartelle
+- [x] `assets/style.css` estratto
+- [x] `assets/engine.js` estratto (da generalizzare)
+- [x] `vinted/config.js` creato
+- [ ] motore generalizzato per leggere config.js
+- [ ] `vinted/index.html` che carica i tre file
+- [ ] cartella `cardmarket/`
+- [ ] homepage hub
 
-- [x] Motore generico (engine.js legge config.js)
-- [x] Vinted refattorizzato sul motore — identico all'originale (testato)
-- [x] Cardmarket — commissione venditore + tetto 100€ (testato)
-- [x] Homepage hub
-- [ ] Cardmarket: selettore livello (Private/Pro/Power) e FAQ proprie
-- [ ] Subito, eBay
+## Come pubblicare su GitHub Pages
 
-## Pubblicare su GitHub Pages
-
-Carica la cartella `site/` nel repository, imposta Pages sulla cartella.
-URL: `quantotengo.it/`, `quantotengo.it/vinted/`, `quantotengo.it/cardmarket/`
+Carica la cartella `site/` nel repository. Imposta GitHub Pages sulla
+cartella. Le URL saranno:
+- `quantotengo.it/` → homepage
+- `quantotengo.it/vinted/` → calcolatrice Vinted
+- `quantotengo.it/cardmarket/` → calcolatrice Cardmarket
