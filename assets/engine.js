@@ -32,6 +32,8 @@ let spedOn = false, bumpOn = false, offerteOpen = false;
 let obSpedOn = false, obBumpOn = false;
 let bumpMode = 'auto'; // 'auto' = stima automatica | 'manual' = importo inserito dall'utente
 let storicoList = [];
+let calculationTracked = false;
+let obiettivoTracked = false;
 
 // Costo Bump effettivo: stima automatica oppure valore manuale inserito dall'utente.
 // Il parametro prezzo serve solo alla stima automatica.
@@ -66,6 +68,23 @@ function persistStorico() {
 const v  = id => parseFloat(document.getElementById(id).value) || 0;
 const fmt = n => '\u20AC\u00a0' + n.toFixed(2).replace('.', ',');
 const pct = n => n.toFixed(1).replace('.', ',') + '%';
+
+
+function trackEvent(name, data) {
+  try {
+    if (window.umami && typeof window.umami.track === 'function') {
+      window.umami.track(name, data || {});
+    }
+  } catch (e) {}
+}
+
+document.addEventListener('click', function(e) {
+  const el = e.target.closest('[data-qt-event]');
+  if (!el) return;
+  trackEvent(el.getAttribute('data-qt-event'), { page: CFG.id || 'calcolatore' });
+});
+
+const fmtPlain = n => '€' + n.toFixed(2).replace('.', ',');
 
 function getMarginFeedback(margine, netto, hasPrice) {
   // Messaggi volutamente brevi: sono feedback orientativi, non consigli finanziari.
@@ -105,6 +124,11 @@ function calcola() {
   const commVend = commissioneACaricoVenditore() ? comm : 0;
   const netto  = prezzo - costo - imb - sped - bump - commVend;
   const margine = prezzo > 0 ? (netto / prezzo) * 100 : 0;
+
+  if (prezzo > 0 && !calculationTracked) {
+    calculationTracked = true;
+    trackEvent('calculation_started', { marketplace: CFG.id || CFG.nome || 'unknown' });
+  }
 
   const feedback = getMarginFeedback(margine, netto, prezzo > 0);
   const box = document.getElementById('kpi-box');
@@ -173,8 +197,15 @@ function calcola() {
 
 function calcolaOfferta(prezzo, sconto, costo, imb, sped) {
   if (prezzo === 0) return { n: null, a: null, m: null };
+
+  // Nel Simulatore Offerte lo sconto si applica al prezzo di vendita,
+  // non al guadagno netto. Esempio: prezzo 50 € con sconto 10% => offerta 45 €.
   const pScontato = prezzo * (1 - sconto / 100);
-  const bumpOff = bumpOn ? getBumpEffettivo(pScontato) : 0;
+
+  // Il Bump resta fisso: se è già stato pagato/stimato sul prezzo di listino,
+  // non diminuisce quando l'acquirente propone un'offerta più bassa.
+  const bumpOff = bumpOn ? getBumpEffettivo(prezzo) : 0;
+
   const comm = getCommissione(pScontato);
   const commVend = commissioneACaricoVenditore() ? comm : 0;
   const n = pScontato - costo - imb - sped - bumpOff - commVend;
@@ -220,6 +251,11 @@ function calcolaInverso() {
   const costo    = v('ob-costo');
   const imb      = v('ob-imb');
   const sped     = obSpedOn ? v('ob-sped') : 0;
+
+  if ((guadagno > 0 || costo > 0) && !obiettivoTracked) {
+    obiettivoTracked = true;
+    trackEvent('prezzo_obiettivo_used', { marketplace: CFG.id || CFG.nome || 'unknown' });
+  }
 
   if (guadagno === 0 && costo === 0) {
     document.getElementById('inv-prezzo2').textContent = '\u20AC\u00a0\u2014';
@@ -280,6 +316,7 @@ function salvaStorico() {
   });
 
   persistStorico();
+  trackEvent('storico_saved', { marketplace: CFG.id || CFG.nome || 'unknown' });
   renderStorico();
 
   const btn = document.getElementById('btn-salva');
@@ -419,6 +456,80 @@ function copiaTesto() {
   }
 }
 
+
+// ============================================================
+// COPIA RIEPILOGO — testo breve e condivisibile
+// ============================================================
+function copiaRiepilogo() {
+  const prezzo = v('inp-prezzo');
+  if (prezzo === 0) {
+    alert('Inserisci prima un prezzo di vendita.');
+    return;
+  }
+
+  const costo = v('inp-costo');
+  const imb = v('inp-imballaggio');
+  const sped = spedOn ? v('inp-sped') : 0;
+  const bump = bumpOn ? getBumpEffettivo(prezzo) : 0;
+  const comm = getCommissione(prezzo);
+  const commVend = commissioneACaricoVenditore() ? comm : 0;
+  const netto = prezzo - costo - imb - sped - bump - commVend;
+  const margine = prezzo > 0 ? (netto / prezzo) * 100 : 0;
+  const feedback = getMarginFeedback(margine, netto, true);
+  const costi = costo + imb + sped + bump + commVend;
+  const nome = (document.getElementById('inp-nome').value || '').trim();
+
+  const righe = [];
+  if (nome) righe.push('Articolo: ' + nome);
+  righe.push('Vendita: ' + fmtPlain(prezzo));
+  righe.push('Costi inseriti: -' + fmtPlain(costi));
+  righe.push('Ti resta (stima): ' + fmtPlain(netto));
+  righe.push('Margine stimato: ' + pct(margine) + ' · ' + feedback.label);
+  righe.push('');
+  righe.push('Calcolato con QuantoTengo.it');
+
+  const testo = righe.join('\n');
+  const btn = document.getElementById('btn-copy-summary');
+  const original = '<span class="btn-copy-main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17h8"/><path d="M8 13h8"/><path d="M8 9h4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg> Copia riepilogo</span><span class="btn-copy-sub">Utile per appunti, gruppi o per confrontare offerte.</span>';
+
+  const showCopied = () => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<span class="btn-copy-main">✓ Riepilogo copiato!</span>';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = original;
+    }, 2200);
+  };
+
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = testo;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); showCopied(); }
+    catch(e) { prompt('Copia il testo qui sotto:', testo); }
+    document.body.removeChild(ta);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(testo).then(showCopied).catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+function voteNextPlatform(nome) {
+  try { localStorage.setItem('quantotengo_next_platform_vote', nome); } catch(e) {}
+  trackEvent('vote_next_platform', { platform: nome });
+  const msg = document.getElementById('roadmap-vote-thanks');
+  if (msg) msg.textContent = 'Grazie! Terrò conto del voto per ' + nome + '.';
+  const row = document.getElementById('roadmap-vote-row');
+  if (row) {
+    row.querySelectorAll('button').forEach(btn => btn.classList.toggle('selected', btn.textContent.trim() === nome));
+  }
+}
+
 // ============================================================
 // MARKETPLACE — dropdown + "coming soon"
 // ============================================================
@@ -482,6 +593,7 @@ function toggleOfferte() {
   document.getElementById('offerte-body').style.display = offerteOpen ? '' : 'none';
   const tgl = document.getElementById('offerte-toggle');
   if (tgl) tgl.setAttribute('aria-expanded', offerteOpen ? 'true' : 'false');
+  if (offerteOpen) trackEvent('simulatore_offerte_opened', { marketplace: CFG.id || CFG.nome || 'unknown' });
 }
 
 function setupToggle(btnId, fieldId, stateKey, callback) {

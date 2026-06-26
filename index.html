@@ -3,18 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuantoTengo — Calcola quanto ti resta da ogni vendita online</title>
-<meta name="description" content="Prima di accettare un'offerta, scopri quanto ti resta davvero. Calcola netto, margine e costi reali delle tue vendite su Vinted. Altri marketplace in arrivo. Gratis, veloce, senza registrazione.">
+<title>QuantoTengo — Calcolatori guadagno netto per vendite online</title>
+<meta name="description" content="Calcola quanto ti resta davvero da una vendita online. Disponibile per Vinted: prezzo, costi, spedizione, Bump e offerte. Gratis, veloce e senza registrazione.">
 <link rel="canonical" href="https://www.quantotengo.it/">
 <meta name="theme-color" content="#01696f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z' fill='%23f4c860'/%3E%3Cpath d='M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z' fill='%234fc4a8'/%3E%3Cpath d='M18 31 L50 46 L50 69 L18 54 Z' fill='%230c5651'/%3E%3Cpath d='M82 31 L50 46 L50 69 L82 54 Z' fill='%230f6a64'/%3E%3Cpath d='M50 16 L18 31 L50 46 L50 16 Z' fill='%2312736d'/%3E%3Cpath d='M50 16 L82 31 L50 46 L50 16 Z' fill='%230d5d57'/%3E%3Cpath d='M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z' fill='%230a4c47'/%3E%3Cpath d='M40 31 L50 28.5 L60 31 L50 34 Z' fill='%23073a36'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<meta property="og:title" content="QuantoTengo — Calcola quanto ti resta da ogni vendita online">
-<meta property="og:description" content="Scopri quanto ti resta davvero dalle tue vendite online. Vinted oggi, altri marketplace in arrivo. Gratis e senza registrazione.">
+<meta property="og:title" content="QuantoTengo — Calcolatori guadagno netto per vendite online">
+<meta property="og:description" content="Scopri quanto ti resta davvero da una vendita su Vinted: prezzo, costi, spedizione, Bump e offerte.">
 <meta property="og:url" content="https://www.quantotengo.it/">
 <meta property="og:site_name" content="QuantoTengo">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.quantotengo.it/assets/og-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.quantotengo.it/assets/og-home.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
@@ -291,12 +295,12 @@ function toggleTheme(){
       <h1>Calcola quanto ti resta <span class="accent">davvero</span> da una vendita online</h1>
       <p class="lead">Inserisci prezzo, costi e spedizione: scopri in pochi secondi una stima chiara del guadagno netto, prima di accettare un'offerta.</p>
       <div class="cta-row">
-        <a href="/vinted/" class="btn btn-primary">
+        <a href="/vinted/" class="btn btn-primary" data-qt-event="home_cta_vinted">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/></svg>
           <span class="btn-label"><span>Calcola con Vinted</span><span class="btn-sub">Bump, spedizione e offerte</span></span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
-        <button type="button" class="btn btn-ghost btn-soon" aria-disabled="true" title="Calcolatore Cardmarket in arrivo">
+        <button type="button" class="btn btn-ghost btn-soon" aria-disabled="true" title="Calcolatore Cardmarket in arrivo" data-qt-event="home_cta_cardmarket_soon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="18" rx="2"/><path d="M7 5V3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2"/></svg>
           <span class="btn-label"><span>Cardmarket</span><span class="btn-sub">In arrivo</span></span>
           <span class="soon-inline" aria-hidden="true">Presto</span>
@@ -384,7 +388,7 @@ function toggleTheme(){
       <p class="sec-sub">Oggi puoi calcolare il guadagno su Vinted. Stiamo lavorando anche a Cardmarket, Subito, eBay e Wallapop.</p>
     </div>
     <div class="platforms">
-      <a href="/vinted/" class="pcard">
+      <a href="/vinted/" class="pcard" data-qt-event="home_platform_vinted">
         <div class="pcard-dot" style="background:#01696f"></div>
         <h3>Vinted</h3>
         <p>Per chi vende abbigliamento, accessori, ma anche collezionabili, elettronica, libri e oggetti per la casa. Calcola netto, Bump, spedizione e offerte.</p>
@@ -418,5 +422,20 @@ function toggleTheme(){
   </div>
 </footer>
 
+
+<script>
+(function(){
+  function qtTrack(name, data){
+    try {
+      if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data || {});
+    } catch(e) {}
+  }
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-qt-event]');
+    if (!el) return;
+    qtTrack(el.getAttribute('data-qt-event'), { page: 'home' });
+  });
+})();
+</script>
 </body>
 </html>

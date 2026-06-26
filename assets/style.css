@@ -449,3 +449,92 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 [data-theme="dark"] .stima-pill{background:var(--coin-gold)!important;color:#7a5a12!important;border-color:rgba(150,120,40,.35)!important}
 .br-row.br-main .br-key,.br-row.br-main .br-val{font-weight:800;color:var(--text)}
 .br-row.total .br-val{font-weight:800}
+
+
+/* --- Launch polish: copy summary + roadmap vote --- */
+.btn-copy-secondary{
+  background:var(--surface);
+  color:var(--accent);
+  border:1px solid color-mix(in oklch,var(--accent) 32%,transparent);
+  margin-top:.55rem;
+  box-shadow:none;
+}
+.btn-copy-secondary:hover{
+  background:var(--primary-light);
+  color:var(--accent);
+  border-color:var(--accent);
+  box-shadow:var(--shadow-sm);
+}
+.btn-copy-secondary.copied{
+  background:var(--success-bg);
+  color:var(--success);
+  border-color:var(--success-border);
+}
+.roadmap-vote{
+  max-width:760px;
+  margin:0 auto 2.5rem;
+  padding:0 1.25rem;
+}
+.roadmap-vote-inner{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r-xl);
+  box-shadow:var(--shadow-sm);
+  padding:1.4rem;
+  text-align:center;
+}
+.roadmap-kicker{
+  color:var(--accent);
+  font-size:.68rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  margin-bottom:.25rem;
+}
+.roadmap-vote h2{
+  font-size:1.2rem;
+  letter-spacing:-.02em;
+  margin-bottom:.35rem;
+}
+.roadmap-vote-text{
+  color:var(--text-muted);
+  font-size:.86rem;
+  margin-bottom:1rem;
+}
+.roadmap-vote-row{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:.55rem;
+}
+.roadmap-vote-row button{
+  font:inherit;
+  font-size:.8rem;
+  font-weight:800;
+  color:var(--text-muted);
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:.5rem .85rem;
+  cursor:pointer;
+  transition:all var(--transition);
+}
+.roadmap-vote-row button:hover,
+.roadmap-vote-row button.selected{
+  color:var(--accent);
+  background:var(--primary-light);
+  border-color:color-mix(in oklch,var(--accent) 35%,transparent);
+}
+.roadmap-vote-thanks{
+  min-height:1.2rem;
+  margin-top:.75rem;
+  color:var(--success);
+  font-size:.78rem;
+  font-weight:700;
+}
+@media(max-width:520px){
+  .roadmap-vote{margin-bottom:2rem;padding:0 1rem}
+  .roadmap-vote-inner{padding:1.15rem}
+  .roadmap-vote-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+  .roadmap-vote-row button{width:100%;padding:.55rem .55rem}
+}
