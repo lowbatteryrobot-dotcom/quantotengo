@@ -68,25 +68,26 @@ const fmt = n => '\u20AC\u00a0' + n.toFixed(2).replace('.', ',');
 const pct = n => n.toFixed(1).replace('.', ',') + '%';
 
 function getMarginFeedback(margine, netto, hasPrice) {
+  // Messaggi volutamente brevi: sono feedback orientativi, non consigli finanziari.
   if (!hasPrice) {
-    return { level: 'neutral', label: 'Inserisci un prezzo', note: 'Aggiungi prezzo e costi per leggere il margine stimato.' };
+    return { level: 'neutral', label: 'Inserisci un prezzo', note: 'Inserisci prezzo e costi.' };
   }
   if (netto < 0) {
-    return { level: 'bad', label: 'In perdita', note: 'Con questi costi, il guadagno stimato è negativo.' };
+    return { level: 'bad', label: 'In perdita', note: 'Il guadagno stimato è negativo.' };
   }
   if (margine >= 60) {
-    return { level: 'excellent', label: 'Margine ottimo', note: 'Hai un margine alto dopo i costi inseriti.' };
+    return { level: 'excellent', label: 'Margine ottimo', note: 'Ottimo: hai molto margine.' };
   }
   if (margine >= 40) {
-    return { level: 'good', label: 'Buon margine', note: 'La vendita sembra sostenibile con i costi indicati.' };
+    return { level: 'good', label: 'Buon margine', note: 'Buono: vendita sostenibile.' };
   }
   if (margine >= 20) {
-    return { level: 'medium', label: 'Margine medio', note: 'Valuta bene eventuali sconti e offerte.' };
+    return { level: 'medium', label: 'Margine medio', note: 'Medio: valuta gli sconti.' };
   }
   if (margine > 0) {
-    return { level: 'low', label: 'Margine basso', note: 'Un piccolo sconto o costo extra può pesare molto.' };
+    return { level: 'low', label: 'Margine basso', note: 'Basso: attenzione ai costi.' };
   }
-  return { level: 'bad', label: 'Margine molto basso', note: 'Con questi dati il margine è quasi nullo.' };
+  return { level: 'bad', label: 'Margine nullo', note: 'Guadagno stimato quasi nullo.' };
 }
 
 // ============================================================
@@ -186,20 +187,28 @@ function setOfferta(key, n, a, margine, prezzo) {
   const netEl = document.getElementById('off-net-' + key);
   const acqEl = document.getElementById('off-acq-' + key);
   const marginEl = document.getElementById('off-margin-' + key);
-  if (prezzo === 0 || n === null) {
+  if (!netEl || !acqEl) return;
+
+  if (prezzo === 0 || n === null || margine === null || Number.isNaN(margine)) {
     netEl.textContent = '\u20AC\u00a0\u2014';
     acqEl.textContent = '\u20AC\u00a0\u2014';
     netEl.className = 'offer-net';
-    if (marginEl) { marginEl.textContent = 'Margine —'; marginEl.className = 'offer-margin margin-neutral'; }
+    if (marginEl) {
+      marginEl.textContent = 'Margine —';
+      marginEl.className = 'offer-margin margin-neutral';
+      marginEl.setAttribute('title', 'Inserisci prezzo e costi.');
+    }
     return;
   }
+
   const feedback = getMarginFeedback(margine, n, true);
   netEl.textContent = fmt(n);
   acqEl.textContent = fmt(a);
   netEl.className = 'offer-net margin-' + feedback.level;
   if (marginEl) {
-    marginEl.textContent = feedback.label + ' · ' + pct(margine);
+    marginEl.textContent = 'Margine ' + pct(margine) + ' · ' + feedback.label;
     marginEl.className = 'offer-margin margin-' + feedback.level;
+    marginEl.setAttribute('title', feedback.note);
   }
 }
 
