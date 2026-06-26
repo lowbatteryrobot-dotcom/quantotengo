@@ -250,6 +250,23 @@ section{padding:2.45rem 0 2.98rem}
 
 /* Ajuste: aumenta em 10% o símbolo dentro da moeda do exemplo */
 .pv-coin svg{width:14.3px;height:14.3px}
+
+/* SHARE CTA — solo link semplici, niente widget social */
+.share-box{margin-top:1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.share-box-home{margin:2rem auto 0;max-width:860px;background:linear-gradient(135deg,var(--surface),var(--primary-soft))}
+.share-box-copy{min-width:0}
+.share-kicker{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:.18rem}
+.share-box h3{font-size:1.02rem;line-height:1.25;letter-spacing:-.02em;margin:0 0 .25rem}
+.share-box p{font-size:.8125rem;color:var(--text-muted);line-height:1.45;margin:0}
+.share-actions{display:flex;align-items:center;justify-content:flex-end;gap:.45rem;flex-wrap:wrap;flex-shrink:0}
+.share-btn,.share-chip{font:inherit;font-size:.78rem;font-weight:800;border-radius:999px;padding:.55rem .82rem;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);cursor:pointer;display:inline-flex;align-items:center;gap:.42rem;line-height:1;transition:all var(--transition)}
+.share-btn-primary{background:var(--primary);border-color:var(--primary);color:#fff;box-shadow:var(--shadow-sm)}
+.share-btn-primary:hover{background:var(--primary-hover);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.share-btn-light:hover,.share-chip:hover{background:var(--primary-soft);border-color:var(--primary);color:var(--primary)}
+.share-btn.copied,.share-btn-light.copied{background:var(--success);border-color:var(--success);color:#fff}
+.share-privacy{flex-basis:100%;text-align:right;font-size:.68rem!important;color:var(--text-faint)!important;margin-top:-.25rem!important}
+@media(max-width:720px){.share-box{align-items:stretch;flex-direction:column;text-align:center;padding:1rem}.share-actions{justify-content:center}.share-btn-primary{width:100%;justify-content:center}.share-privacy{text-align:center!important;margin-top:.1rem!important}}
+
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="32bd0902-d674-47aa-b30a-34f65ac11e08"></script>
 </head>
@@ -378,6 +395,25 @@ function toggleTheme(){
         <div><h4>Pensato per venditori reali</h4><p>Semplice, chiaro e fatto sulla base dell'esperienza reale.</p></div>
       </div>
     </div>
+    <div class="share-box share-box-home" aria-labelledby="share-home-title">
+      <div class="share-box-copy">
+        <p class="share-kicker">Ti è utile?</p>
+        <h3 id="share-home-title">Condividi QuantoTengo con altri venditori.</h3>
+        <p>Aiuta qualcuno a capire quanto resta davvero dopo costi, spedizione, Bump e offerte.</p>
+      </div>
+      <div class="share-actions" aria-label="Condividi QuantoTengo">
+        <button type="button" class="share-btn share-btn-primary" onclick="condividiQuantoTengo('home', this)" data-qt-event="share_native_home">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51 15.42 17.49"/><path d="M15.41 6.51 8.59 10.49"/></svg>
+          Condividi
+        </button>
+        <button type="button" class="share-btn share-btn-light" onclick="copiaLinkQuantoTengo('home', this)" data-qt-event="share_copy_link_home">Copia link</button>
+        <a class="share-chip" href="https://api.whatsapp.com/send?text=Scopri%20quanto%20ti%20resta%20davvero%20da%20una%20vendita%20online%20con%20QuantoTengo.%20https%3A//www.quantotengo.it/" target="_blank" rel="noopener noreferrer" data-qt-event="share_whatsapp_home">WhatsApp</a>
+        <a class="share-chip" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quantotengo.it%2F" target="_blank" rel="noopener noreferrer" data-qt-event="share_facebook_home">Facebook</a>
+        <a class="share-chip" href="https://twitter.com/intent/tweet?text=Scopri%20quanto%20ti%20resta%20davvero%20da%20una%20vendita%20online%20con%20QuantoTengo.&url=https%3A%2F%2Fwww.quantotengo.it%2F" target="_blank" rel="noopener noreferrer" data-qt-event="share_x_home">X</a>
+        <a class="share-chip" href="mailto:?subject=QuantoTengo%20%E2%80%94%20calcolatori%20guadagno%20netto%20per%20vendite%20online&body=Scopri%20quanto%20ti%20resta%20davvero%20da%20una%20vendita%20online%20con%20QuantoTengo.%0A%0Ahttps%3A//www.quantotengo.it/" data-qt-event="share_email_home">Email</a>
+      </div>
+      <p class="share-privacy">Niente widget social: non carichiamo script di Facebook, X o WhatsApp; sono solo link semplici.</p>
+    </div>
    </div>
   </section>
   <!-- MARKETPLACE SUPPORTATI E IN ARRIVO -->
@@ -424,6 +460,58 @@ function toggleTheme(){
 
 
 <script>
+
+function qtShareTrack(name, data){
+  try { if (window.umami && typeof window.umami.track === 'function') window.umami.track(name, data || {}); } catch(e) {}
+}
+function getQuantoTengoShareData(context){
+  if (context === 'vinted') {
+    return {
+      title: 'Calcolatore Guadagno Vinted | QuantoTengo',
+      text: 'Scopri quanto ti resta davvero da una vendita su Vinted: prezzo, costi, spedizione, Bump e offerte.',
+      url: 'https://www.quantotengo.it/vinted/'
+    };
+  }
+  return {
+    title: 'QuantoTengo — calcolatori guadagno netto per vendite online',
+    text: 'Scopri quanto ti resta davvero da una vendita online con QuantoTengo.',
+    url: 'https://www.quantotengo.it/'
+  };
+}
+function setShareButtonFeedback(btn, text){
+  if (!btn) return;
+  if (!btn.dataset.originalHtml) btn.dataset.originalHtml = btn.innerHTML;
+  btn.classList.add('copied');
+  btn.innerHTML = text;
+  setTimeout(function(){ btn.classList.remove('copied'); btn.innerHTML = btn.dataset.originalHtml; }, 2200);
+}
+function copiaLinkQuantoTengo(context, btn){
+  var data = getQuantoTengoShareData(context);
+  function ok(){ setShareButtonFeedback(btn, '✓ Link copiato'); qtShareTrack('share_copy_link_done', { context: context || 'home' }); }
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = data.url;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); ok(); }
+    catch(e) { prompt('Copia questo link:', data.url); }
+    document.body.removeChild(ta);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(data.url).then(ok).catch(fallback);
+  else fallback();
+}
+function condividiQuantoTengo(context, btn){
+  var data = getQuantoTengoShareData(context);
+  qtShareTrack('share_native_opened', { context: context || 'home' });
+  if (navigator.share) {
+    navigator.share(data).then(function(){ qtShareTrack('share_native_completed', { context: context || 'home' }); })
+      .catch(function(err){ if (!err || err.name !== 'AbortError') copiaLinkQuantoTengo(context, btn); });
+  } else {
+    copiaLinkQuantoTengo(context, btn);
+  }
+}
+
 (function(){
   function qtTrack(name, data){
     try {
