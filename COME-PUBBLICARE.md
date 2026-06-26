@@ -76,3 +76,8 @@ Canonical, sitemap e robots.txt sono già impostati sulla versione `www`.
 Quando ti do file nuovi, ricarichi allo stesso modo (Upload files).
 GitHub sostituisce i file con lo stesso nome. Carica sempre TUTTO
 per sicurezza, così non rischi di lasciare versioni vecchie.
+
+
+## Pagina informativa Tasse Vinted
+
+È stata aggiunta `/tasse-vinted/` con scopo informativo generale. La pagina distingue tra commissioni della piattaforma, Protezione Acquisti, DAC7 e possibili obblighi fiscali. Non presenta la calcolatrice come strumento fiscale e contiene disclaimer visibili. Dopo il deploy, invia anche questa URL a Google Search Console/Bing e verifica che il link nel sitemap sia raggiungibile.

@@ -6,7 +6,7 @@ dirgli quali pagine hai, con il sitemap.
 ## Cosa sono questi due file
 
 - **sitemap.xml** — la mappa del sito: elenca le tue pagine (home,
-  vinted, cardmarket) così Google le trova e le indicizza tutte.
+  home, vinted, guida tasse Vinted e privacy) così Google le trova e le indicizza tutte. Cardmarket resta noindex finché non è pronto.
 - **robots.txt** — dice ai motori di ricerca cosa possono visitare
   (tutto, in questo caso) e dove trovare il sitemap.
 
@@ -38,5 +38,5 @@ In Search Console, nei giorni successivi:
 ## Suggerimento
 
 Puoi usare lo strumento "Controllo URL" in alto in Search Console:
-incolla https://www.quantotengo.it/vinted/ e clicca "Richiedi
+incolla https://www.quantotengo.it/vinted/ e https://www.quantotengo.it/tasse-vinted/ e clicca "Richiedi
 indicizzazione" per accelerare un po' le cose per ogni pagina.
