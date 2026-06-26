@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuantoTengo — Calcolatori guadagno netto per vendite online</title>
-<meta name="description" content="Calcola quanto ti resta davvero da una vendita online. Disponibile per Vinted: prezzo, costi, spedizione, Bump e offerte. Gratis, veloce e senza registrazione.">
+<title>QuantoTengo.it — Calcolatori guadagno netto per venditori online</title>
+<meta name="description" content="QuantoTengo.it è il calcolatore gratuito per venditori online: scopri quanto ti resta davvero da una vendita su Vinted, con costi, spedizione, Bump e offerte.">
 <link rel="canonical" href="https://www.quantotengo.it/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="QuantoTengo.it">
 <meta name="theme-color" content="#01696f">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z' fill='%23f4c860'/%3E%3Cpath d='M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z' fill='%234fc4a8'/%3E%3Cpath d='M18 31 L50 46 L50 69 L18 54 Z' fill='%230c5651'/%3E%3Cpath d='M82 31 L50 46 L50 69 L82 54 Z' fill='%230f6a64'/%3E%3Cpath d='M50 16 L18 31 L50 46 L50 16 Z' fill='%2312736d'/%3E%3Cpath d='M50 16 L82 31 L50 46 L50 16 Z' fill='%230d5d57'/%3E%3Cpath d='M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z' fill='%230a4c47'/%3E%3Cpath d='M40 31 L50 28.5 L60 31 L50 34 Z' fill='%23073a36'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<meta property="og:title" content="QuantoTengo — Calcolatori guadagno netto per vendite online">
-<meta property="og:description" content="Scopri quanto ti resta davvero da una vendita su Vinted: prezzo, costi, spedizione, Bump e offerte.">
+<meta property="og:title" content="QuantoTengo.it — Calcolatori guadagno per venditori online">
+<meta property="og:description" content="Calcola quanto ti resta davvero da una vendita su Vinted: prezzo, costi, spedizione, Bump e offerte. Gratis e senza registrazione.">
 <meta property="og:url" content="https://www.quantotengo.it/">
-<meta property="og:site_name" content="QuantoTengo">
+<meta property="og:site_name" content="QuantoTengo.it">
 <meta property="og:image" content="https://www.quantotengo.it/assets/og-home.png?v=20260626-screenshot">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,9 +30,10 @@
   "@graph": [
     {
       "@type": "WebSite",
-      "name": "QuantoTengo",
+      "name": "QuantoTengo.it",
+      "alternateName": "QuantoTengo per venditori online",
       "url": "https://www.quantotengo.it/",
-      "description": "Calcolatori di guadagno netto per chi vende online. Disponibile per Vinted, con altri marketplace in arrivo.",
+      "description": "Calcolatori di guadagno netto per venditori online e marketplace. Disponibile per Vinted, con altri marketplace in arrivo.",
       "inLanguage": "it-IT"
     },
     {
@@ -252,7 +255,17 @@ section{padding:2.45rem 0 2.98rem}
 /* Ajuste: aumenta em 10% o símbolo dentro da moeda do exemplo */
 .pv-coin svg{width:14.3px;height:14.3px}
 </style>
-<script defer src="https://cloud.umami.is/script.js" data-website-id="32bd0902-d674-47aa-b30a-34f65ac11e08"></script>
+<script>
+(function(){
+  var allowedHosts = ['quantotengo.it','www.quantotengo.it'];
+  if (!allowedHosts.includes(window.location.hostname)) return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = 'https://cloud.umami.is/script.js';
+  s.setAttribute('data-website-id', '32bd0902-d674-47aa-b30a-34f65ac11e08');
+  document.head.appendChild(s);
+})();
+</script>
 </head>
 <body>
 
@@ -417,8 +430,8 @@ function toggleTheme(){
 <footer class="site-footer">
   <div class="wrap">
     <p class="footer-legal">
-      QuantoTengo.it<span class="sep">·</span>Strumenti gratuiti e indipendenti<span class="sep">·</span>Non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime a solo scopo informativo.<br>
-      Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a>
+      QuantoTengo.it<span class="sep">·</span>Calcolatori per venditori online e marketplace<span class="sep">·</span>Progetto gratuito e indipendente, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime a solo scopo informativo e non sono consulenza finanziaria, fiscale o d'investimento.<br>
+      <a href="/privacy/">Privacy</a><span class="sep">·</span>Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a>
     </p>
   </div>
 </footer>

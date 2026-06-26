@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calcolatore Guadagno Vinted | QuantoTengo</title>
-<meta name="description" content="Calcola quanto ti resta davvero da una vendita su Vinted. Inserisci prezzo, costi, spedizione, Bump e offerte: ottieni una stima del guadagno netto.">
+<title>Calcolatore Guadagno Vinted | QuantoTengo.it</title>
+<meta name="description" content="Calcolatore Vinted gratuito di QuantoTengo.it: scopri quanto ti resta davvero dopo costo d'acquisto, imballaggio, spedizione, Bump e offerte. Stima immediata del guadagno netto.">
 <link rel="canonical" href="https://www.quantotengo.it/vinted/">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#01696f">
@@ -12,10 +12,10 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<meta property="og:title" content="Calcolatore Guadagno Vinted | QuantoTengo">
-<meta property="og:description" content="Scopri quanto ti resta davvero dopo costi, spedizione, Bump e offerte. Gratis e senza registrazione.">
+<meta property="og:title" content="Calcolatore Guadagno Vinted | QuantoTengo.it">
+<meta property="og:description" content="Calcola il guadagno netto stimato su Vinted con costi, spedizione, Bump, offerte, margine e ROI. Gratis e senza registrazione.">
 <meta property="og:url" content="https://www.quantotengo.it/vinted/">
-<meta property="og:site_name" content="QuantoTengo">
+<meta property="og:site_name" content="QuantoTengo.it">
 <meta property="og:image" content="https://www.quantotengo.it/assets/og-vinted.png?v=20260626-screenshot">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,14 +32,14 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "name": "Calcolatore Guadagno Vinted",
+      "name": "Calcolatore Guadagno Vinted | QuantoTengo.it",
       "url": "https://www.quantotengo.it/vinted/",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
       "inLanguage": "it-IT",
-      "description": "Calcola quanto ti resta davvero da una vendita su Vinted, includendo costi d'acquisto, imballaggio, spedizione a tuo carico, Bump e simulatore offerte. La Protezione Acquisti è mostrata come costo a carico dell'acquirente."
+      "description": "Calcola quanto ti resta davvero da una vendita su Vinted con QuantoTengo.it, includendo costi d'acquisto, imballaggio, spedizione a tuo carico, Bump, margine, ROI e simulatore offerte. La Protezione Acquisti è mostrata come costo a carico dell'acquirente."
     },
     {
       "@type": "FAQPage",
@@ -86,6 +86,11 @@
         },
         {
           "@type": "Question",
+          "name": "QuantoTengo.it è affiliato a Vinted o ad altri servizi?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. QuantoTengo.it è un progetto indipendente per venditori online e marketplace. Non è affiliato, sponsorizzato o approvato da Vinted o da altri marketplace. Non offre servizi di investimento, gestione di portafogli o consulenza finanziaria/fiscale." }
+        },
+        {
+          "@type": "Question",
           "name": "Devo pagare le tasse sulle vendite Vinted? Cos'è la DAC7?",
           "acceptedAnswer": { "@type": "Answer", "text": "La DAC7 è una normativa europea che obbliga le piattaforme come Vinted a comunicare all'Agenzia delle Entrate i dati di chi supera 30 vendite oppure 2.000 euro di incassi in un anno civile. Queste soglie indicano solo quando Vinted segnala i tuoi dati, non sono una franchigia fiscale. Superare le soglie non significa automaticamente dover pagare le tasse: chi svuota saltuariamente l'armadio in genere non ha obblighi, mentre chi compra per rivendere con continuità può essere considerato attività commerciale. Per la tua situazione specifica consulta un commercialista." }
         }
@@ -94,7 +99,17 @@
   ]
 }
 </script>
-<script defer src="https://cloud.umami.is/script.js" data-website-id="32bd0902-d674-47aa-b30a-34f65ac11e08"></script>
+<script>
+(function(){
+  var allowedHosts = ['quantotengo.it','www.quantotengo.it'];
+  if (!allowedHosts.includes(window.location.hostname)) return;
+  var s = document.createElement('script');
+  s.defer = true;
+  s.src = 'https://cloud.umami.is/script.js';
+  s.setAttribute('data-website-id', '32bd0902-d674-47aa-b30a-34f65ac11e08');
+  document.head.appendChild(s);
+})();
+</script>
 </head>
 <body>
 
@@ -621,6 +636,16 @@
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
+          QuantoTengo.it è affiliato a Vinted o ad altri servizi?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          <strong>No.</strong> QuantoTengo.it è un progetto indipendente pensato per venditori online e marketplace. Non è affiliato, sponsorizzato o approvato da Vinted o da altri marketplace. Non offre servizi di investimento, gestione di portafogli o consulenza finanziaria/fiscale: i calcoli sono solo stime orientative basate sui dati che inserisci.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
           I dati vengono salvati online o condivisi?
           <span class="faq-arrow">▼</span>
         </div>
@@ -737,7 +762,7 @@
         </div>
         <span>Quanto<span class="logo-accent">Tengo</span></span>
       </div>
-      <p class="footer-about">Ho creato QuantoTengo perché non trovavo uno strumento semplice e veloce per capire quanto guadagno davvero rivendendo su Vinted. Mi è stato utile, così ho deciso di renderlo gratuito anche per te. Non è un'azienda: è un piccolo progetto fatto con cura, che cerco di tenere leggero, onesto e senza fronzoli.</p>
+      <p class="footer-about">Ho creato QuantoTengo.it come piccolo progetto indipendente per venditori online: volevo uno strumento semplice e veloce per capire quanto guadagno davvero rivendendo su Vinted. Mi è stato utile, così ho deciso di renderlo gratuito anche per te. Non è un'azienda: è un progetto fatto con cura, che cerco di tenere leggero, onesto e senza fronzoli.</p>
       <a href="mailto:ciao@quantotengo.it" class="footer-mail">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
         ciao@quantotengo.it
@@ -748,7 +773,7 @@
 
   <div class="footer-legal">
     <p><strong>⚠️ Valori stimati</strong> — I calcoli si basano sulle commissioni Vinted note (5% + €0,70 Protezione Acquisti, costo Bump stimato). Il guadagno netto è un'<strong>indicazione orientativa</strong>, non un importo garantito. Le tariffe potrebbero variare. Ultima verifica commissioni: giugno 2026.</p>
-    <p class="footer-copy">QuantoTengo.it è uno strumento gratuito e indipendente, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime fornite a solo scopo informativo.</p>
+    <p class="footer-copy">QuantoTengo.it è uno strumento gratuito e indipendente per venditori online e marketplace, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime fornite a solo scopo informativo e non costituiscono consulenza finanziaria, fiscale o d'investimento. <a href="/privacy/">Privacy</a></p>
   </div>
 </footer>
 <script src="config.js?v=20260626-roi"></script>
