@@ -265,9 +265,16 @@ section{padding:2.45rem 0 2.98rem}
 .guide-callout p{font-size:.9rem;margin:0;color:var(--text-muted)}
 .guide-callout a{flex-shrink:0;color:var(--primary);font-weight:800;text-decoration:none}
 .guide-callout a:hover{text-decoration:underline}
-:root[data-theme="dark"] .guide-callout{background:linear-gradient(135deg,rgba(79,152,163,.16),rgba(246,215,139,.09));border-color:rgba(79,152,163,.28);box-shadow:0 10px 28px rgba(0,0,0,.18)}
-:root[data-theme="dark"] .guide-callout p{color:var(--text-muted)}
-:root[data-theme="dark"] .guide-callout a{color:#7dc9c1}
+:root[data-theme="dark"] .guide-callout{background:linear-gradient(135deg,rgba(246,215,139,.22),rgba(79,152,163,.16));border-color:rgba(246,215,139,.34);box-shadow:0 10px 28px rgba(0,0,0,.20)}
+:root[data-theme="dark"] .guide-callout h3{color:#f2cf75}
+:root[data-theme="dark"] .guide-callout p{color:#d4cbb4}
+:root[data-theme="dark"] .guide-callout a{color:#f2cf75}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .guide-callout{background:linear-gradient(135deg,rgba(246,215,139,.22),rgba(79,152,163,.16));border-color:rgba(246,215,139,.34);box-shadow:0 10px 28px rgba(0,0,0,.20)}
+  :root:not([data-theme="light"]) .guide-callout h3{color:#f2cf75}
+  :root:not([data-theme="light"]) .guide-callout p{color:#d4cbb4}
+  :root:not([data-theme="light"]) .guide-callout a{color:#f2cf75}
+}
 @media(max-width:700px){.guide-callout{align-items:flex-start;flex-direction:column;margin-top:1.5rem}.guide-callout a{width:100%;padding-top:.15rem}}
 
 /* Ajuste: aumenta em 10% o símbolo dentro da moeda do exemplo */
