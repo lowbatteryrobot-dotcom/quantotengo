@@ -252,6 +252,14 @@ section{padding:2.45rem 0 2.98rem}
 }
 
 
+/* Link discreto alla guida Tasse Vinted/DAC7 */
+.guide-callout{margin:2rem auto 0;max-width:760px;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.05rem 1.15rem;border:1px solid var(--border);border-radius:18px;background:rgba(255,255,255,.58);box-shadow:0 10px 28px rgba(20,30,24,.06)}
+.guide-callout h3{font-size:1rem;margin:0 0 .15rem;color:var(--ink)}
+.guide-callout p{font-size:.9rem;margin:0;color:var(--muted)}
+.guide-callout a{flex-shrink:0;color:var(--teal);font-weight:800;text-decoration:none}
+.guide-callout a:hover{text-decoration:underline}
+@media(max-width:700px){.guide-callout{align-items:flex-start;flex-direction:column;margin-top:1.5rem}.guide-callout a{width:100%;padding-top:.15rem}}
+
 /* Ajuste: aumenta em 10% o símbolo dentro da moeda do exemplo */
 .pv-coin svg{width:14.3px;height:14.3px}
 </style>
@@ -393,6 +401,13 @@ function toggleTheme(){
         <div class="why-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div><h4>Pensato per venditori reali</h4><p>Semplice, chiaro e fatto sulla base dell'esperienza reale.</p></div>
       </div>
+    </div>
+    <div class="guide-callout">
+      <div>
+        <h3>Dubbi su tasse, DAC7 o Protezione Acquisti?</h3>
+        <p>Ho preparato una guida informativa per distinguere costi della piattaforma, DAC7 e possibili obblighi fiscali.</p>
+      </div>
+      <a href="/tasse-vinted/" data-qt-event="home_tasse_vinted">Leggi la guida →</a>
     </div>
    </div>
   </section>
