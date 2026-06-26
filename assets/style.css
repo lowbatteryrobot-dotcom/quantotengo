@@ -422,6 +422,17 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .page-intro p{font-size:.9375rem;color:var(--text-muted);line-height:1.6}
 @media(max-width:700px){.page-intro h1{font-size:1.25rem}.page-intro p{font-size:.875rem}}
 
+/* CTA mobile per guida Tasse/DAC7, mostrato solo sotto la calcolatrice */
+.mobile-tax-cta{display:none}
+@media(max-width:700px){
+  .mobile-tax-cta{display:block;margin:1rem 0 0}
+  .mobile-tax-cta a{display:flex;align-items:center;justify-content:space-between;gap:.85rem;text-decoration:none;background:linear-gradient(135deg,var(--primary-light),var(--surface));border:1px solid color-mix(in oklch,var(--accent) 28%,transparent);border-radius:var(--r-lg);padding:.95rem 1rem;box-shadow:var(--shadow-sm);color:var(--text)}
+  .mobile-tax-cta-copy{display:flex;flex-direction:column;gap:.12rem;min-width:0}
+  .mobile-tax-cta-copy strong{font-size:.9rem;line-height:1.25;color:var(--text)}
+  .mobile-tax-cta-copy span{font-size:.76rem;line-height:1.35;color:var(--text-muted)}
+  .mobile-tax-cta-arrow{flex-shrink:0;width:30px;height:30px;border-radius:999px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+}
+
 /* SEO CONTENT BLOCK */
 .seo-content{max-width:760px;margin:2.5rem auto 0;padding:0 1.5rem}
 .seo-content h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:var(--text);margin:2rem 0 .75rem;line-height:1.25}
