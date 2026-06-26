@@ -23,7 +23,10 @@ window.QT_CONFIG = {
     chiPagaCommissione: 'acquirente',
     commissionePercent: 0.05,
     commissioneFixed: 0.70,
-    commissioneCap: null,        // nessun tetto su Vinted
+    // Nessuna fascia ridotta applicata qui: nei test reali anche articoli
+    // sopra i 500 € risultano coerenti con 5% + 0,70 €.
+    // Il valore resta una stima: verificare sempre il checkout Vinted.
+    commissioneCap: null,
   },
 
   // ----- CAMPI EXTRA SPECIFICI -----

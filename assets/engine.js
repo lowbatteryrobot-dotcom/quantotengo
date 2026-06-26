@@ -723,7 +723,9 @@ async function esportaXLSX() {
   try {
     const XLSX = await loadXLSXLib();
 
-    const headers = ['Data','Articolo','Prezzo (€)','Costo acquisto (€)','Spedizione (€)','Bump (€)','Commissione (€)','Guadagno netto (€)'];
+    const nomeMkt = (CFG.nome || 'Marketplace');
+    const idMkt = (CFG.id || 'quantotengo');
+    const headers = ['Data','Articolo','Prezzo (€)','Costo acquisto (€)','Spedizione (€)','Bump (€)','Commissione ' + nomeMkt + ' (€)','Guadagno netto (€)'];
     const data = storicoList.map(it => [
       it.data,
       it.nome || 'Articolo senza nome',
@@ -791,9 +793,10 @@ async function esportaXLSX() {
     ws['!freeze'] = { xSplit:0, ySplit:1 };
 
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Storico Vinted');
+    const sheetName = ('Storico ' + nomeMkt).slice(0, 31);
+    XLSX.utils.book_append_sheet(wb, ws, sheetName);
     const dateStr = new Date().toISOString().slice(0,10);
-    XLSX.writeFile(wb, 'storico-vinted-' + dateStr + '.xlsx');
+    XLSX.writeFile(wb, 'storico-' + idMkt + '-' + dateStr + '.xlsx');
 
     btn.innerHTML = '\u2713 Esportato!';
     setTimeout(() => { btn.innerHTML = original; btn.disabled = false; }, 1800);

@@ -57,6 +57,20 @@ Apri quantotengo.it/vinted/ e premi F12 (apre la console del browser).
 - Se vedi "engine.js 404" o "config is not defined" → i file sono
   nella cartella sbagliata. Ricontrolla che siano nella radice.
 
+
+## Dominio www / non-www
+
+Per evitare contenuti duplicati in Google, usa una sola versione pubblica del dominio.
+La versione consigliata per QuantoTengo.it è:
+
+```
+https://www.quantotengo.it/
+```
+
+Controlla nel pannello del dominio/hosting che `https://quantotengo.it/` rediriga
+in modo permanente verso `https://www.quantotengo.it/` (redirect 301 o 308).
+Canonical, sitemap e robots.txt sono già impostati sulla versione `www`.
+
 ## Aggiornare il sito in futuro
 
 Quando ti do file nuovi, ricarichi allo stesso modo (Upload files).
