@@ -135,7 +135,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .result-hero-row .rh-k{display:flex;align-items:center;gap:.5rem;color:var(--text-muted);font-weight:600}
 .result-hero-row .rh-k svg{color:var(--text-faint)}
 .result-hero-row .rh-v{font-weight:700;font-variant-numeric:tabular-nums;color:var(--text)}
-.margin-value{transition:color var(--transition)}
+.margin-value,.roi-value{transition:color var(--transition)}
 .margin-excellent{color:#2f7d32!important}
 .margin-good{color:var(--success)!important}
 .margin-medium{color:#b36b00!important}
@@ -159,6 +159,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .result-hero.state-good,.result-hero.state-excellent{border-color:rgba(67,122,34,.25)}
 .stima-pill{display:inline-flex;align-items:center;gap:.25rem;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px .45rem;border-radius:999px;background:var(--coin-gold);color:#7a5a12;border:1px solid rgba(150,120,40,.25)}
 .stima-i{cursor:help;opacity:.8}
+.inline-help{font-size:.72em;color:var(--text-faint);margin-left:.15rem}
 
 /* BREAKDOWN come card separata */
 .breakdown-card{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:.85rem 1.1rem;margin-bottom:1rem}

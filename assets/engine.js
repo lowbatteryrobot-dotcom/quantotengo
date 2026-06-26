@@ -68,6 +68,13 @@ function persistStorico() {
 const v  = id => parseFloat(document.getElementById(id).value) || 0;
 const fmt = n => '\u20AC\u00a0' + n.toFixed(2).replace('.', ',');
 const pct = n => n.toFixed(1).replace('.', ',') + '%';
+const pctSmart = n => {
+  if (!Number.isFinite(n)) return '\u2014';
+  const abs = Math.abs(n);
+  if (abs >= 1000) return n.toLocaleString('it-IT', { maximumFractionDigits: 0 }) + '%';
+  if (abs >= 100) return n.toLocaleString('it-IT', { maximumFractionDigits: 1 }) + '%';
+  return pct(n);
+};
 
 
 function trackEvent(name, data) {
@@ -124,6 +131,7 @@ function calcola() {
   const commVend = commissioneACaricoVenditore() ? comm : 0;
   const netto  = prezzo - costo - imb - sped - bump - commVend;
   const margine = prezzo > 0 ? (netto / prezzo) * 100 : 0;
+  const roi = costo > 0 ? (netto / costo) * 100 : null;
 
   if (prezzo > 0 && !calculationTracked) {
     calculationTracked = true;
@@ -148,6 +156,21 @@ function calcola() {
   const marginEl = document.getElementById('res-margine');
   marginEl.textContent = prezzo > 0 ? pct(margine) : '\u2014';
   marginEl.className = 'rh-v margin-value margin-' + feedback.level;
+
+  const roiRow = document.getElementById('roi-row');
+  const roiEl = document.getElementById('res-roi');
+  if (roiRow && roiEl) {
+    const showRoi = prezzo > 0 && costo > 0 && Number.isFinite(roi);
+    roiRow.style.display = showRoi ? '' : 'none';
+    if (showRoi) {
+      roiEl.textContent = pctSmart(roi);
+      roiEl.className = 'rh-v roi-value margin-' + feedback.level;
+    } else {
+      roiEl.textContent = '\u2014';
+      roiEl.className = 'rh-v roi-value margin-neutral';
+    }
+  }
+
   document.getElementById('res-acq').textContent  = fmt(totAcq);
 
   document.getElementById('br-prezzo').textContent = fmt(prezzo);
@@ -475,6 +498,7 @@ function copiaRiepilogo() {
   const commVend = commissioneACaricoVenditore() ? comm : 0;
   const netto = prezzo - costo - imb - sped - bump - commVend;
   const margine = prezzo > 0 ? (netto / prezzo) * 100 : 0;
+  const roi = costo > 0 ? (netto / costo) * 100 : null;
   const feedback = getMarginFeedback(margine, netto, true);
   const costi = costo + imb + sped + bump + commVend;
   const nome = (document.getElementById('inp-nome').value || '').trim();
@@ -485,6 +509,7 @@ function copiaRiepilogo() {
   righe.push('Costi inseriti: -' + fmtPlain(costi));
   righe.push('Ti resta (stima): ' + fmtPlain(netto));
   righe.push('Margine stimato: ' + pct(margine) + ' · ' + feedback.label);
+  if (roi !== null && Number.isFinite(roi)) righe.push('Rendimento sul costo (ROI): ' + pctSmart(roi));
   righe.push('');
   righe.push('Calcolato con QuantoTengo.it');
 

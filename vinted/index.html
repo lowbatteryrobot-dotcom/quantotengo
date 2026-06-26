@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20260626-launch-final">
+<link rel="stylesheet" href="../assets/style.css?v=20260626-roi">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,6 +58,11 @@
           "@type": "Question",
           "name": "Come si calcola il Margine su Vinted?",
           "acceptedAnswer": { "@type": "Answer", "text": "Il Margine è il guadagno netto in percentuale rispetto al prezzo di vendita: (Guadagno Netto ÷ Prezzo di Vendita) × 100. Un margine del 40% su un articolo venduto a 25 euro significa che, dopo commissioni e costi, restano circa 10 euro." }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa significa Rendimento sul costo (ROI)?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Il Rendimento sul costo, o ROI, indica quanto il guadagno netto stimato pesa rispetto al costo d'acquisto inserito: (Guadagno Netto ÷ Costo d'acquisto) × 100. È diverso dal Margine, che invece confronta il guadagno con il prezzo di vendita. Il ROI viene mostrato solo se inserisci un costo d'acquisto maggiore di zero." }
         },
         {
           "@type": "Question",
@@ -263,6 +268,10 @@
               <div class="result-hero-row margin-row">
                 <span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Margine</span>
                 <span class="rh-v margin-value margin-neutral" id="res-margine">—</span>
+              </div>
+              <div class="result-hero-row roi-row" id="roi-row" style="display:none">
+                <span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/><path d="M5 21h14"/></svg>Rendimento sul costo (ROI) <span class="stima-i inline-help" title="Indica quanto il guadagno stimato pesa rispetto al costo d’acquisto inserito. È diverso dal margine.">ⓘ</span></span>
+                <span class="rh-v roi-value margin-neutral" id="res-roi">—</span>
               </div>
               <div class="result-hero-row"><span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Totale acquirente</span><span class="rh-v" id="res-acq">€ 0,00</span></div>
             </div>
@@ -552,6 +561,16 @@
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
+          Cosa significa Rendimento sul costo (ROI)?
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">
+          Il <strong>Rendimento sul costo (ROI)</strong> confronta il guadagno netto stimato con il costo d'acquisto che hai inserito: <code>(Guadagno Netto ÷ Costo d'acquisto) × 100</code>. È diverso dal Margine: il Margine dice quanta parte del prezzo di vendita ti resta, mentre il ROI dice quanto ha reso l'articolo rispetto a quanto lo hai pagato. Viene mostrato solo quando inserisci un costo d'acquisto maggiore di zero.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
           Come funzionano le offerte degli acquirenti?
           <span class="faq-arrow">▼</span>
         </div>
@@ -732,7 +751,7 @@
     <p class="footer-copy">QuantoTengo.it è uno strumento gratuito e indipendente, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime fornite a solo scopo informativo.</p>
   </div>
 </footer>
-<script src="config.js?v=20260626-launch-final"></script>
-<script src="../assets/engine.js?v=20260626-launch-final"></script>
+<script src="config.js?v=20260626-roi"></script>
+<script src="../assets/engine.js?v=20260626-roi"></script>
 </body>
 </html>
