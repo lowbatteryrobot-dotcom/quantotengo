@@ -441,3 +441,11 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
   .margin-feedback{flex-direction:row;align-items:flex-start;gap:.45rem}
   .margin-feedback-pill{width:max-content}
 }
+
+
+/* Ajustes richiesti: maggiore enfasi su righe chiave e badge STIMA dorato */
+.result-hero-coin svg{width:16.5px;height:16.5px}
+.stima-pill{background:var(--coin-gold)!important;color:#7a5a12!important;border-color:rgba(150,120,40,.25)!important}
+[data-theme="dark"] .stima-pill{background:var(--coin-gold)!important;color:#7a5a12!important;border-color:rgba(150,120,40,.35)!important}
+.br-row.br-main .br-key,.br-row.br-main .br-val{font-weight:800;color:var(--text)}
+.br-row.total .br-val{font-weight:800}
