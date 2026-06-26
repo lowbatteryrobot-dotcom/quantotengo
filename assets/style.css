@@ -135,7 +135,28 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .result-hero-row .rh-k{display:flex;align-items:center;gap:.5rem;color:var(--text-muted);font-weight:600}
 .result-hero-row .rh-k svg{color:var(--text-faint)}
 .result-hero-row .rh-v{font-weight:700;font-variant-numeric:tabular-nums;color:var(--text)}
-#res-margine{color:var(--success)}
+.margin-value{transition:color var(--transition)}
+.margin-excellent{color:#2f7d32!important}
+.margin-good{color:var(--success)!important}
+.margin-medium{color:#b36b00!important}
+.margin-low{color:var(--warning)!important}
+.margin-bad{color:#c62828!important}
+.margin-neutral{color:var(--text-muted)!important}
+[data-theme="dark"] .margin-excellent{color:#79c267!important}
+[data-theme="dark"] .margin-medium{color:#f0b75e!important}
+[data-theme="dark"] .margin-bad{color:#ff8a80!important}
+.margin-feedback{margin-top:.8rem;padding:.65rem .75rem;border-radius:var(--r-md);display:flex;align-items:flex-start;gap:.55rem;font-size:.75rem;line-height:1.35;border:1px solid var(--border);background:rgba(255,255,255,.38);transition:background var(--transition),border-color var(--transition)}
+.margin-feedback-pill{flex-shrink:0;display:inline-flex;align-items:center;white-space:nowrap;font-size:.64rem;font-weight:800;text-transform:uppercase;letter-spacing:.055em;border-radius:999px;padding:.18rem .52rem;background:var(--surface);border:1px solid currentColor}
+.margin-feedback-note{color:var(--text-muted)}
+.margin-feedback.margin-excellent{background:rgba(47,125,50,.09);border-color:rgba(47,125,50,.18)}
+.margin-feedback.margin-good{background:rgba(67,122,34,.09);border-color:rgba(67,122,34,.18)}
+.margin-feedback.margin-medium{background:rgba(179,107,0,.10);border-color:rgba(179,107,0,.20)}
+.margin-feedback.margin-low{background:rgba(150,66,25,.10);border-color:rgba(150,66,25,.20)}
+.margin-feedback.margin-bad{background:rgba(198,40,40,.09);border-color:rgba(198,40,40,.20)}
+.margin-feedback.margin-neutral{background:rgba(255,255,255,.32);border-color:rgba(40,37,29,0.08)}
+.result-hero.state-bad{border-color:rgba(198,40,40,.30)}
+.result-hero.state-low,.result-hero.state-medium{border-color:rgba(179,107,0,.28)}
+.result-hero.state-good,.result-hero.state-excellent{border-color:rgba(67,122,34,.25)}
 .stima-pill{display:inline-flex;align-items:center;gap:.25rem;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:2px .45rem;border-radius:999px;background:var(--coin-gold);color:#7a5a12;border:1px solid rgba(150,120,40,.25)}
 .stima-i{cursor:help;opacity:.8}
 
@@ -233,6 +254,22 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .offer-disc{font-size:.625rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--primary);margin-bottom:.45rem}
 .offer-net-label{font-size:.5625rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--text-faint);margin-bottom:.05rem}
 .offer-net{font-size:1.125rem;font-weight:800;color:var(--success);font-variant-numeric:tabular-nums;line-height:1.1}
+.offer-net.margin-excellent{color:#2f7d32}
+.offer-net.margin-good{color:var(--success)}
+.offer-net.margin-medium{color:#b36b00}
+.offer-net.margin-low{color:var(--warning)}
+.offer-net.margin-bad{color:#c62828}
+.offer-net.margin-neutral{color:var(--text-muted)}
+[data-theme="dark"] .offer-net.margin-excellent{color:#79c267}
+[data-theme="dark"] .offer-net.margin-medium{color:#f0b75e}
+[data-theme="dark"] .offer-net.margin-bad{color:#ff8a80}
+.offer-margin{display:inline-flex;align-items:center;justify-content:center;margin-top:.42rem;padding:.16rem .42rem;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;line-height:1.25}
+.offer-margin.margin-excellent{background:rgba(47,125,50,.10);border-color:rgba(47,125,50,.18)}
+.offer-margin.margin-good{background:rgba(67,122,34,.10);border-color:rgba(67,122,34,.18)}
+.offer-margin.margin-medium{background:rgba(179,107,0,.10);border-color:rgba(179,107,0,.20)}
+.offer-margin.margin-low{background:rgba(150,66,25,.10);border-color:rgba(150,66,25,.20)}
+.offer-margin.margin-bad{background:rgba(198,40,40,.09);border-color:rgba(198,40,40,.20)}
+.offer-margin.margin-neutral{background:var(--surface);border-color:var(--border)}
 .offer-acq{font-size:.625rem;color:var(--text-muted);margin-top:.35rem;line-height:1.3}
 .custom-row{display:flex;gap:.75rem;align-items:flex-end;margin-top:.75rem}
 .custom-row .field{flex:1;margin:0}
@@ -394,4 +431,6 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 /* MOBILE: prima gli input, poi il risultato (ordine naturale) */
 @media(max-width:700px){
   #panel-calcolo .grid-2{display:flex;flex-direction:column}
+  .margin-feedback{flex-direction:column;gap:.35rem}
+  .margin-feedback-pill{width:max-content}
 }

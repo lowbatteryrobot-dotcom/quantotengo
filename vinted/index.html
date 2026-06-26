@@ -245,10 +245,16 @@
               <span class="result-hero-value" id="res-netto">€ 0,00</span>
             </div>
             <div class="result-hero-rows">
-              <div class="result-hero-row"><span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Margine</span><span class="rh-v" id="res-margine">—</span></div>
+              <div class="result-hero-row margin-row">
+                <span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>Margine</span>
+                <span class="rh-v margin-value margin-neutral" id="res-margine">—</span>
+              </div>
               <div class="result-hero-row"><span class="rh-k"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Totale acquirente</span><span class="rh-v" id="res-acq">€ 0,00</span></div>
             </div>
-            <div class="badge ok" id="res-badge" style="display:none">Inserisci un prezzo</div>
+            <div class="margin-feedback margin-neutral" id="margin-feedback">
+              <span class="margin-feedback-pill" id="res-badge">Inserisci un prezzo</span>
+              <span class="margin-feedback-note" id="res-margin-note">Aggiungi prezzo e costi per leggere il margine stimato.</span>
+            </div>
           </div>
 
           <div class="breakdown breakdown-card">
@@ -281,24 +287,28 @@
                 <div class="offer-disc">Sconto −10%</div>
                 <div class="offer-net-label">Tu guadagni</div>
                 <div class="offer-net" id="off-net-10">€ —</div>
+                <div class="offer-margin margin-neutral" id="off-margin-10">Margine —</div>
                 <div class="offer-acq">Acquirente paga <span id="off-acq-10">€ —</span></div>
               </div>
               <div class="offer-card">
                 <div class="offer-disc">Sconto −20%</div>
                 <div class="offer-net-label">Tu guadagni</div>
                 <div class="offer-net" id="off-net-20">€ —</div>
+                <div class="offer-margin margin-neutral" id="off-margin-20">Margine —</div>
                 <div class="offer-acq">Acquirente paga <span id="off-acq-20">€ —</span></div>
               </div>
               <div class="offer-card">
                 <div class="offer-disc">Sconto −30%</div>
                 <div class="offer-net-label">Tu guadagni</div>
                 <div class="offer-net" id="off-net-30">€ —</div>
+                <div class="offer-margin margin-neutral" id="off-margin-30">Margine —</div>
                 <div class="offer-acq">Acquirente paga <span id="off-acq-30">€ —</span></div>
               </div>
               <div class="offer-card offer-card-custom" style="grid-column:1/-1">
                 <div class="offer-disc" id="off-custom-disc">Sconto —%</div>
                 <div class="offer-net-label">Tu guadagni</div>
                 <div class="offer-net" id="off-net-custom">€ —</div>
+                <div class="offer-margin margin-neutral" id="off-margin-custom">Margine —</div>
                 <div class="offer-acq">Acquirente paga <span id="off-acq-custom">€ —</span></div>
               </div>
             </div>
@@ -553,7 +563,7 @@
           <span class="faq-arrow">▼</span>
         </div>
         <div class="faq-a">
-          I benchmark usati in questo strumento sono: <strong>Margine > 40%</strong> = ottimo; <strong>20–40%</strong> = buono; <strong>10–20%</strong> = basso; <strong>&lt; 10%</strong> = molto basso. Sono puramente indicativi — un margine "basso" può comunque avere senso se vuoi svuotare il guardaroba rapidamente.
+          I benchmark usati in questo strumento sono puramente indicativi: <strong>60% o più</strong> = margine ottimo; <strong>40–59%</strong> = buon margine; <strong>20–39%</strong> = margine medio; <strong>1–19%</strong> = margine basso; <strong>sotto 0%</strong> = vendita in perdita. Un margine basso può comunque avere senso se vuoi svuotare il guardaroba rapidamente.
         </div>
       </div>
 
