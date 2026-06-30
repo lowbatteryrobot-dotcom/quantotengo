@@ -168,6 +168,7 @@
   <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('obiettivo')" id="tab-obiettivo" data-qt-event="tab_prezzo_obiettivo">Prezzo Obiettivo</button>
   <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('storico')"   id="tab-storico" data-qt-event="tab_storico">Storico</button>
   <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('faq')"       id="tab-faq" data-qt-event="tab_faq">FAQ</button>
+  <a class="tab-btn" href="#guide-vinted" data-qt-event="tab_guide_vinted" aria-label="Guide e consigli per vendere su Vinted">Guide</a>
   <a class="tab-btn" href="/tasse-vinted/" data-qt-event="tab_tasse_vinted" aria-label="Guida informativa su tasse Vinted e DAC7">Tasse/DAC7</a>
 </nav>
 
@@ -265,6 +266,11 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
             Salva nello Storico
           </button>
+
+          <a class="desktop-guide-cta" href="#guide-vinted" data-qt-event="desktop_cta_guide_vinted">
+            <span>Guide Vinted</span>
+            <small>Leggi articoli pratici su commissioni, tasse e offerte</small>
+          </a>
 
         </div>
       </div>
@@ -396,6 +402,16 @@
           <span>Leggi la guida informativa prima di vendere.</span>
         </span>
         <span class="mobile-tax-cta-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="mobile-guide-cta">
+      <a href="#guide-vinted" data-qt-event="mobile_cta_guide_vinted">
+        <span class="mobile-guide-cta-copy">
+          <strong>Guide Vinted</strong>
+          <span>Commissioni, prezzo finale, tasse e consigli pratici.</span>
+        </span>
+        <span class="mobile-guide-cta-arrow">→</span>
       </a>
     </div>
   </div><!-- /panel-calcolo -->
@@ -755,7 +771,7 @@
 
 
 
-<section class="guide-strip" aria-labelledby="guide-strip-title">
+<section class="guide-strip" id="guide-vinted" aria-labelledby="guide-strip-title">
   <div class="guide-strip-inner">
     <div class="guide-strip-head">
       <div>
