@@ -447,8 +447,8 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 }
 
 /* SEO CONTENT BLOCK */
-.seo-content{max-width:760px;margin:2.5rem auto 0;padding:0 1.5rem}
-.seo-content h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:var(--text);margin:2rem 0 .75rem;line-height:1.25}
+.seo-content{max-width:820px;margin:3.9rem auto 0;padding:2.05rem 2.15rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-sm)}
+.seo-content h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:var(--text);margin:2.15rem 0 .75rem;line-height:1.25}
 .seo-content h2:first-child{margin-top:0}
 .seo-content h3{font-size:1rem;font-weight:700;color:var(--text);margin:1.5rem 0 .5rem}
 .seo-content p{font-size:.9375rem;color:var(--text-muted);line-height:1.7;margin-bottom:.875rem}
@@ -458,7 +458,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .seo-content .example-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem 1.5rem;margin:1rem 0;box-shadow:var(--shadow-sm)}
 .seo-content .example-box .ex-row{display:flex;justify-content:space-between;font-size:.9375rem;padding:.3rem 0;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .seo-content .example-box .ex-row.tot{border-top:1px solid var(--divider);margin-top:.4rem;padding-top:.6rem;font-weight:700;color:var(--text)}
-@media(max-width:700px){.seo-content{padding:0 1rem}}
+@media(max-width:700px){.seo-content{margin:2.9rem 1rem 0;padding:1.35rem 1.15rem;border-radius:1rem}.seo-content h2{font-size:1.15rem}}
 
 /* MOBILE: prima gli input, poi il risultato (ordine naturale) */
 @media(max-width:700px){
@@ -497,15 +497,15 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 }
 .roadmap-vote{
   max-width:760px;
-  margin:1.1rem auto 2.5rem;
+  margin:2.7rem auto 3rem;
   padding:0 1.25rem;
 }
 .roadmap-vote-inner{
-  background:var(--surface);
-  border:1px solid var(--border);
+  background:linear-gradient(135deg,var(--surface-2),var(--gold-bg));
+  border:1px solid color-mix(in oklch,var(--coin-gold) 42%,var(--border));
   border-radius:var(--r-xl);
   box-shadow:var(--shadow-sm);
-  padding:1.4rem;
+  padding:1.45rem;
   text-align:center;
 }
 .roadmap-kicker{
@@ -567,7 +567,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 
 /* GUIDE STRIP */
 #guide-vinted{scroll-margin-top:112px}
-.guide-strip{max-width:960px;margin:0 auto;padding:2.6rem 1.5rem 2.35rem}
+.guide-strip{max-width:960px;margin:0 auto;padding:3rem 1.5rem 2.95rem}
 .guide-strip-inner{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:1.45rem}
 .guide-strip-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
 .guide-strip-kicker{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 .25rem}
@@ -581,7 +581,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .guide-mini-card h3{font-size:1rem;line-height:1.25;letter-spacing:-.015em;color:var(--text);margin:0 0 .35rem}
 .guide-mini-card p{font-size:.82rem;line-height:1.5;color:var(--text-muted);margin:0}
 @media(max-width:860px){.guide-strip-grid{grid-template-columns:1fr}}
-@media(max-width:700px){#guide-vinted{scroll-margin-top:104px}.guide-strip{padding:2rem 1rem 2.1rem}.guide-strip-inner{padding:1.15rem}.guide-strip-head{display:block}.guide-strip-all{display:inline-block;margin-top:.75rem}.guide-strip-grid{grid-template-columns:1fr}}
+@media(max-width:700px){#guide-vinted{scroll-margin-top:104px}.guide-strip{padding:2.15rem 1rem 2.55rem}.guide-strip-inner{padding:1.15rem}.guide-strip-head{display:block}.guide-strip-all{display:inline-block;margin-top:.75rem}.guide-strip-grid{grid-template-columns:1fr}.roadmap-vote{margin:2.1rem auto 2.5rem}}
 
 /* Guide card badges */
 .guide-card-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}.guide-badge{display:inline-flex;align-items:center;border-radius:999px;padding:.16rem .45rem;font-size:.58rem;line-height:1;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-bg);color:#7a5a12;border:1px solid rgba(217,169,60,.28)}[data-theme="dark"] .guide-badge{color:var(--coin-gold)}@media(max-width:640px){.guide-card-top{display:block}.guide-badge{margin-top:.25rem}}

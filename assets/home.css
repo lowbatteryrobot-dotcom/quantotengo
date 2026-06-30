@@ -89,6 +89,8 @@ a{text-decoration:none;color:inherit}
    Spaziatura verticale uniforme su tutte le sezioni. */
 section{padding:2.45rem 0 2.98rem}
 .band-white{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.band-beige{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.marketplace-section{position:relative}
 .sec-head{text-align:center;margin-bottom:2.5rem}
 .sec-title{display:inline-flex;align-items:center;justify-content:center;gap:1rem;font-size:1.375rem;font-weight:800;letter-spacing:-.02em}
 .sec-title::before,.sec-title::after{content:'';width:64px;height:2px;border-radius:2px;background:var(--primary);opacity:.85}
