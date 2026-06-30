@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,11 +92,12 @@ function applyTheme(t){
 }
 function toggleTheme(){
   var cur=document.documentElement.getAttribute('data-theme');
-  if(!cur){ cur = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light'; }
+  if(!cur){ var isMobile = window.matchMedia('(max-width: 767px)').matches; cur = (!isMobile && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark':'light'; }
   applyTheme(cur==='dark'?'light':'dark');
 }
 (function(){
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var isMobile = window.matchMedia('(max-width: 767px)').matches;
+  var prefersDark = !isMobile && window.matchMedia('(prefers-color-scheme: dark)').matches;
   applyTheme(prefersDark?'dark':'light');
 })();
 </script>

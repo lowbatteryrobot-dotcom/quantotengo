@@ -655,7 +655,7 @@ function setBumpMode(mode) {
 (function() {
   const btn  = document.querySelector('[data-theme-toggle]');
   const root = document.documentElement;
-  let dark = matchMedia('(prefers-color-scheme:dark)').matches;
+  let dark = !matchMedia('(max-width:767px)').matches && matchMedia('(prefers-color-scheme:dark)').matches;
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
   updateIcon();
   btn.addEventListener('click', () => { dark = !dark; root.setAttribute('data-theme', dark ? 'dark' : 'light'); updateIcon(); });
