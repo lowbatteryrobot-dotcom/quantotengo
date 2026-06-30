@@ -378,6 +378,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .btn-guide-shortcut{width:100%;margin-top:.6rem;padding:.72rem 1rem;background:var(--primary-light);color:var(--primary);border:1px solid color-mix(in oklch,var(--primary) 28%,transparent);border-radius:var(--r-lg);font-size:.8125rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;transition:all var(--transition);display:flex;align-items:center;justify-content:center;gap:.5rem}
 .btn-guide-shortcut:hover{background:var(--surface);border-color:var(--primary);box-shadow:var(--shadow-md);transform:translateY(-1px)}
 .btn-guide-shortcut-icon{display:inline-flex;align-items:center;justify-content:center}
+.calc-side-guide-shortcut{margin-top:.9rem;box-shadow:var(--shadow-sm)}
 @media(max-width:700px){.desktop-guide-shortcut{display:none}}
 
 /* ======= TAB: FAQ ======= */
@@ -496,7 +497,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 }
 .roadmap-vote{
   max-width:760px;
-  margin:.25rem auto 2.5rem;
+  margin:1.1rem auto 2.5rem;
   padding:0 1.25rem;
 }
 .roadmap-vote-inner{
@@ -566,17 +567,21 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 
 /* GUIDE STRIP */
 #guide-vinted{scroll-margin-top:112px}
-.guide-strip{max-width:960px;margin:0 auto;padding:2.4rem 1.5rem 2.2rem}
+.guide-strip{max-width:960px;margin:0 auto;padding:2.6rem 1.5rem 2.35rem}
 .guide-strip-inner{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:1.45rem}
 .guide-strip-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
 .guide-strip-kicker{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 .25rem}
 .guide-strip h2{font-size:1.25rem;letter-spacing:-.025em;line-height:1.2;margin:0;color:var(--text)}
 .guide-strip-text{font-size:.875rem;line-height:1.55;color:var(--text-muted);margin:.35rem 0 0;max-width:600px}
 .guide-strip-all{font-size:.875rem;font-weight:800;color:var(--accent);text-decoration:none;white-space:nowrap}
-.guide-strip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
+.guide-strip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem}
 .guide-mini-card{display:block;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem;text-decoration:none;transition:background var(--transition),transform var(--transition),border-color var(--transition)}
 .guide-mini-card:hover{background:var(--surface-offset);transform:translateY(-2px);border-color:rgba(1,105,111,.24)}
 .guide-mini-card small{display:block;font-size:.66rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
 .guide-mini-card h3{font-size:1rem;line-height:1.25;letter-spacing:-.015em;color:var(--text);margin:0 0 .35rem}
 .guide-mini-card p{font-size:.82rem;line-height:1.5;color:var(--text-muted);margin:0}
-@media(max-width:700px){#guide-vinted{scroll-margin-top:104px}.guide-strip{padding:1.9rem 1rem 2rem}.guide-strip-inner{padding:1.15rem}.guide-strip-head{display:block}.guide-strip-all{display:inline-block;margin-top:.75rem}.guide-strip-grid{grid-template-columns:1fr}}
+@media(max-width:860px){.guide-strip-grid{grid-template-columns:1fr}}
+@media(max-width:700px){#guide-vinted{scroll-margin-top:104px}.guide-strip{padding:2rem 1rem 2.1rem}.guide-strip-inner{padding:1.15rem}.guide-strip-head{display:block}.guide-strip-all{display:inline-block;margin-top:.75rem}.guide-strip-grid{grid-template-columns:1fr}}
+
+/* Guide card badges */
+.guide-card-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}.guide-badge{display:inline-flex;align-items:center;border-radius:999px;padding:.16rem .45rem;font-size:.58rem;line-height:1;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-bg);color:#7a5a12;border:1px solid rgba(217,169,60,.28)}[data-theme="dark"] .guide-badge{color:var(--coin-gold)}@media(max-width:640px){.guide-card-top{display:block}.guide-badge{margin-top:.25rem}}

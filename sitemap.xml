@@ -27,6 +27,16 @@
     <priority>0.78</priority>
   </url>
   <url>
+    <loc>https://www.quantotengo.it/guide/protezione-acquisti-vinted/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+  </url>
+  <url>
+    <loc>https://www.quantotengo.it/chi-siamo/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.35</priority>
+  </url>
+  <url>
     <loc>https://www.quantotengo.it/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
