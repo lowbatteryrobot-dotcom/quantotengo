@@ -447,7 +447,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 }
 
 /* SEO CONTENT BLOCK */
-.seo-content{max-width:820px;margin:3.9rem auto 0;padding:2.05rem 2.15rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-sm)}
+.seo-content{position:relative;max-width:820px;margin:5.25rem auto 0;padding:2.2rem 2.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-md)}.seo-content::before{content:'';position:absolute;top:-2.65rem;left:50%;transform:translateX(-50%);width:min(720px,calc(100vw - 3rem));height:1px;background:var(--divider)}
 .seo-content h2{font-size:1.25rem;font-weight:800;letter-spacing:-.02em;color:var(--text);margin:2.15rem 0 .75rem;line-height:1.25}
 .seo-content h2:first-child{margin-top:0}
 .seo-content h3{font-size:1rem;font-weight:700;color:var(--text);margin:1.5rem 0 .5rem}
@@ -458,7 +458,7 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .seo-content .example-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem 1.5rem;margin:1rem 0;box-shadow:var(--shadow-sm)}
 .seo-content .example-box .ex-row{display:flex;justify-content:space-between;font-size:.9375rem;padding:.3rem 0;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .seo-content .example-box .ex-row.tot{border-top:1px solid var(--divider);margin-top:.4rem;padding-top:.6rem;font-weight:700;color:var(--text)}
-@media(max-width:700px){.seo-content{margin:2.9rem 1rem 0;padding:1.35rem 1.15rem;border-radius:1rem}.seo-content h2{font-size:1.15rem}}
+@media(max-width:700px){.seo-content{margin:4.35rem 1rem 0;padding:1.45rem 1.2rem;border-radius:1rem}.seo-content::before{top:-2.15rem;width:calc(100vw - 2rem)}.seo-content h2{font-size:1.15rem}}
 
 /* MOBILE: prima gli input, poi il risultato (ordine naturale) */
 @media(max-width:700px){
@@ -496,17 +496,32 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
   border-color:var(--success-border);
 }
 .roadmap-vote{
+  position:relative;
   max-width:760px;
-  margin:2.7rem auto 3rem;
+  margin:4.25rem auto 3.4rem;
   padding:0 1.25rem;
 }
+.roadmap-vote::before{
+  content:'';
+  position:absolute;
+  top:-2.1rem;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(680px,calc(100vw - 3rem));
+  height:1px;
+  background:var(--divider);
+}
 .roadmap-vote-inner{
-  background:linear-gradient(135deg,var(--surface-2),var(--gold-bg));
-  border:1px solid color-mix(in oklch,var(--coin-gold) 42%,var(--border));
+  background:linear-gradient(135deg,#fff8e5,#f8f1df);
+  border:1px solid rgba(217,169,60,.34);
   border-radius:var(--r-xl);
-  box-shadow:var(--shadow-sm);
-  padding:1.45rem;
+  box-shadow:var(--shadow-md);
+  padding:1.55rem;
   text-align:center;
+}
+[data-theme="dark"] .roadmap-vote-inner{
+  background:linear-gradient(135deg,rgba(242,207,117,.13),rgba(217,169,60,.08));
+  border-color:rgba(242,207,117,.22);
 }
 .roadmap-kicker{
   color:var(--accent);
@@ -558,8 +573,9 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
   font-weight:700;
 }
 @media(max-width:520px){
-  .roadmap-vote{margin-bottom:2rem;padding:0 1rem}
-  .roadmap-vote-inner{padding:1.15rem}
+  .roadmap-vote{margin:3.6rem auto 2.4rem;padding:0 1rem}
+  .roadmap-vote::before{top:-1.75rem;width:calc(100vw - 2rem)}
+  .roadmap-vote-inner{padding:1.2rem}
   .roadmap-vote-row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
   .roadmap-vote-row button{width:100%;padding:.55rem .55rem}
 }
@@ -567,21 +583,21 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 
 /* GUIDE STRIP */
 #guide-vinted{scroll-margin-top:112px}
-.guide-strip{max-width:960px;margin:0 auto;padding:3rem 1.5rem 2.95rem}
+.guide-strip{max-width:960px;margin:0 auto;padding:3.4rem 1.5rem 1.65rem}
 .guide-strip-inner{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);box-shadow:var(--shadow-sm);padding:1.45rem}
 .guide-strip-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
 .guide-strip-kicker{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 .25rem}
 .guide-strip h2{font-size:1.25rem;letter-spacing:-.025em;line-height:1.2;margin:0;color:var(--text)}
 .guide-strip-text{font-size:.875rem;line-height:1.55;color:var(--text-muted);margin:.35rem 0 0;max-width:600px}
 .guide-strip-all{font-size:.875rem;font-weight:800;color:var(--accent);text-decoration:none;white-space:nowrap}
-.guide-strip-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem}
+.guide-strip-grid{display:grid;grid-template-columns:1fr;gap:.9rem}
 .guide-mini-card{display:block;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem;text-decoration:none;transition:background var(--transition),transform var(--transition),border-color var(--transition)}
 .guide-mini-card:hover{background:var(--surface-offset);transform:translateY(-2px);border-color:rgba(1,105,111,.24)}
 .guide-mini-card small{display:block;font-size:.66rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
 .guide-mini-card h3{font-size:1rem;line-height:1.25;letter-spacing:-.015em;color:var(--text);margin:0 0 .35rem}
-.guide-mini-card p{font-size:.82rem;line-height:1.5;color:var(--text-muted);margin:0}
+.guide-mini-card p{font-size:.82rem;line-height:1.5;color:var(--text-muted);margin:0}.guide-mini-card{min-height:auto}
 @media(max-width:860px){.guide-strip-grid{grid-template-columns:1fr}}
-@media(max-width:700px){#guide-vinted{scroll-margin-top:104px}.guide-strip{padding:2.15rem 1rem 2.55rem}.guide-strip-inner{padding:1.15rem}.guide-strip-head{display:block}.guide-strip-all{display:inline-block;margin-top:.75rem}.guide-strip-grid{grid-template-columns:1fr}.roadmap-vote{margin:2.1rem auto 2.5rem}}
+@media(max-width:700px){#guide-vinted{scroll-margin-top:104px}.guide-strip{padding:2.65rem 1rem 1.35rem}.guide-strip-inner{padding:1.15rem}.guide-strip-head{display:block}.guide-strip-all{display:inline-block;margin-top:.75rem}.guide-strip-grid{grid-template-columns:1fr}.roadmap-vote{margin:3.8rem auto 2.7rem}}
 
 /* Guide card badges */
 .guide-card-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}.guide-badge{display:inline-flex;align-items:center;border-radius:999px;padding:.16rem .45rem;font-size:.58rem;line-height:1;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-bg);color:#7a5a12;border:1px solid rgba(217,169,60,.28)}[data-theme="dark"] .guide-badge{color:var(--coin-gold)}@media(max-width:640px){.guide-card-top{display:block}.guide-badge{margin-top:.25rem}}

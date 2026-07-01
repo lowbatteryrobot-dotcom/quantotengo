@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+<title id="t">Offerte Vinted e margine reale</title>
+<desc id="d">Schema: un'offerta su Vinted riduce il prezzo di vendita e può ridurre ancora di più il guadagno netto se ci sono costi reali.</desc>
+<rect width="1200" height="630" rx="36" fill="#f7f6f2"/>
+<rect x="70" y="66" width="1060" height="498" rx="34" fill="#ffffff" stroke="#e6e0d4"/>
+<text x="110" y="136" font-family="Arial, sans-serif" font-size="38" font-weight="800" fill="#1a1814">Offerta Vinted: guarda il margine, non solo lo sconto</text>
+<text x="110" y="184" font-family="Arial, sans-serif" font-size="22" fill="#66645f">Uno sconto del 20% sul prezzo può pesare molto di più sul guadagno netto.</text>
+<g font-family="Arial, sans-serif">
+  <rect x="110" y="250" width="210" height="168" rx="24" fill="#e0f0f0" stroke="#9ccfd0"/>
+  <text x="137" y="300" font-size="22" font-weight="800" fill="#01696f">Prezzo iniziale</text>
+  <text x="137" y="364" font-size="54" font-weight="900" fill="#1a1814">30€</text>
+  <text x="137" y="394" font-size="17" fill="#66645f">annuncio</text>
+
+  <text x="360" y="350" text-anchor="middle" font-size="44" font-weight="900" fill="#01696f">→</text>
+
+  <rect x="400" y="250" width="210" height="168" rx="24" fill="#fff8e5" stroke="#f0d28a"/>
+  <text x="427" y="300" font-size="22" font-weight="800" fill="#8a6d1e">Offerta</text>
+  <text x="427" y="364" font-size="54" font-weight="900" fill="#1a1814">24€</text>
+  <text x="427" y="394" font-size="17" fill="#66645f">-20% sul prezzo</text>
+
+  <text x="650" y="350" text-anchor="middle" font-size="48" font-weight="900" fill="#01696f">−</text>
+
+  <rect x="690" y="250" width="210" height="168" rx="24" fill="#f9f8f5" stroke="#e6e0d4"/>
+  <text x="717" y="300" font-size="22" font-weight="800" fill="#66645f">Costi reali</text>
+  <text x="717" y="344" font-size="22" fill="#1a1814">13€</text>
+  <text x="717" y="374" font-size="17" fill="#66645f">acquisto</text>
+  <text x="717" y="397" font-size="17" fill="#66645f">imballaggio + Bump</text>
+
+  <text x="940" y="350" text-anchor="middle" font-size="48" font-weight="900" fill="#01696f">=</text>
+
+  <rect x="980" y="250" width="130" height="168" rx="24" fill="#fff8e5" stroke="#f0d28a"/>
+  <text x="1008" y="300" font-size="21" font-weight="800" fill="#8a6d1e">Ti resta</text>
+  <text x="1008" y="364" font-size="48" font-weight="900" fill="#1a1814">11€</text>
+  <text x="1008" y="394" font-size="16" fill="#66645f">netti</text>
+
+  <rect x="165" y="470" width="870" height="58" rx="29" fill="#01696f"/>
+  <text x="600" y="507" text-anchor="middle" font-size="22" font-weight="900" fill="#ffffff">Prima di accettare: simula quanto ti resta davvero</text>
+</g>
+</svg>
