@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/pages.css?v=20260706">
+<link rel="stylesheet" href="/assets/pages.css?v=20260706-header-dark-alert">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -187,9 +187,49 @@ QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/"
       });
     });
   });
+  function submitAlertForm(form){
+    var action = (form.getAttribute('action') || '').trim();
+    var isPlaceholder = !action || action === 'FORM_ENDPOINT' || action.indexOf('FORM_ENDPOINT') !== -1;
+    var note = form.querySelector('.alert-form-note');
+    var btn = form.querySelector('button[type="submit"]');
+    var originalBtn = btn ? btn.textContent : '';
+    form.classList.remove('is-success', 'is-error');
+
+    if(isPlaceholder){
+      form.classList.add('is-error');
+      if(note) note.textContent = "Modulo pronto: sostituisci FORM_ENDPOINT con l'endpoint del provider statico per attivare l'invio.";
+      return;
+    }
+    if(!window.fetch || !window.FormData){
+      HTMLFormElement.prototype.submit.call(form);
+      return;
+    }
+    if(btn){ btn.disabled = true; btn.textContent = 'Invio…'; }
+    if(note) note.textContent = 'Invio in corso…';
+
+    fetch(action, {
+      method: (form.getAttribute('method') || 'POST').toUpperCase(),
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res){
+      if(!res.ok) throw new Error('Form endpoint error');
+      form.reset();
+      form.classList.add('is-success');
+      if(note) note.textContent = 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
+      qtTrack('alert_form_success', { source_path: window.location.pathname });
+    }).catch(function(){
+      form.classList.add('is-error');
+      if(note) note.textContent = "Invio non riuscito. Controlla l'endpoint del form e riprova.";
+      qtTrack('alert_form_error', { source_path: window.location.pathname });
+    }).finally(function(){
+      if(btn){ btn.disabled = false; btn.textContent = originalBtn || 'Avvisami'; }
+    });
+  }
   document.querySelectorAll('[data-alert-form]').forEach(function(form){
-    form.addEventListener('submit', function(){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
       qtTrack('alert_form_submit', { source_path: window.location.pathname });
+      submitAlertForm(form);
     });
   });
 })();

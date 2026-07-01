@@ -64,3 +64,35 @@
 }
 .alert-form-note{font-size:.78rem;color:var(--faint);margin:.55rem 0 0}
 @media(max-width:520px){.alert-form-row{display:grid;grid-template-columns:1fr}.alert-form button{width:100%}}
+
+/* ============================================================
+   Refinement pass — header parity, dark mode and alert form states
+   ============================================================ */
+.site-header{background:var(--surface);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1080px;margin:0 auto;padding:1rem 1.75rem;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:1.0625rem;font-weight:800;gap:.5rem;letter-spacing:-.02em}.logo-mark{width:30px;height:30px}.logo-mark svg{width:30px;height:30px;display:block}
+.header-right{display:flex;align-items:center;gap:1.75rem;min-width:0}.header-nav{gap:1.75rem;max-width:none}.header-nav a{font-size:.9375rem;font-weight:600;color:var(--muted)}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--muted);flex:0 0 auto}.theme-toggle:hover{background:var(--surface-offset);color:var(--text)}
+@media(max-width:760px){.header-inner{padding:1rem 1rem}.header-right{gap:.65rem}.header-nav{gap:.75rem;max-width:min(66vw,430px)}.header-nav a{font-size:.76rem;white-space:nowrap}.logo span{font-size:1rem}.logo-mark,.logo-mark svg{width:28px;height:28px}}
+@media(max-width:420px){.header-nav{gap:.55rem;max-width:min(62vw,300px)}.header-nav a{font-size:.7rem}.theme-toggle{width:34px;height:34px}}
+
+[data-theme="dark"]{--bg:#141310;--surface:#1f1d19;--surface-2:#25231f;--surface-offset:#2e2b26;--border:rgba(255,253,245,.11);--divider:rgba(255,253,245,.07);--text:#f1eee7;--muted:#b4b0a7;--faint:#807b71;--primary:#65b8b1;--primary-hover:#7acdc6;--primary-soft:#193333;--coin-gold:#e7c56b;--gold:#e7c56b;--gold-bg:#282217;--shadow:0 8px 24px rgba(0,0,0,.28);--shadow-md:0 20px 50px rgba(0,0,0,.42)}
+[data-theme="dark"] .article,[data-theme="dark"] .card,[data-theme="dark"] .guide-card,[data-theme="dark"] .soon-card{box-shadow:0 16px 42px rgba(0,0,0,.28)}
+[data-theme="dark"] .theme-toggle,[data-theme="dark"] .header-calculator-btn,[data-theme="dark"] .btn-ghost{background:rgba(255,253,245,.045);border-color:rgba(255,253,245,.12)}
+[data-theme="dark"] .header-calculator-btn,[data-theme="dark"] .btn-ghost{color:#8dd7d1}[data-theme="dark"] .header-calculator-btn:hover,[data-theme="dark"] .btn-ghost:hover{background:rgba(101,184,177,.13);border-color:rgba(101,184,177,.42)}
+[data-theme="dark"] .cta{background:linear-gradient(135deg,#2e817d,#226b68);box-shadow:0 18px 44px rgba(0,0,0,.30)}
+[data-theme="dark"] .notice,[data-theme="dark"] .note{background:rgba(231,197,107,.11);border-color:rgba(231,197,107,.24);color:#d8c99c}
+[data-theme="dark"] .callout{background:rgba(101,184,177,.11);border-color:rgba(101,184,177,.24)}
+[data-theme="dark"] .toc,[data-theme="dark"] .example-box,[data-theme="dark"] .qt-table{background:#171612;border-color:rgba(255,253,245,.11)}
+[data-theme="dark"] .qt-table th{background:rgba(255,253,245,.055)}
+[data-theme="dark"] .guide-sticky-cta{background:#201f1b;border-color:rgba(255,253,245,.12);box-shadow:0 18px 44px rgba(0,0,0,.42)}
+[data-theme="dark"] .guide-sticky-dismiss{background:#2e2b26;color:var(--muted)}
+[data-theme="dark"] .alert-form{background:#171612;border-color:rgba(255,253,245,.12)}
+[data-theme="dark"] .alert-form input[type="email"]{background:#201f1b;border-color:rgba(255,253,245,.13);color:var(--text)}
+.alert-form button:disabled{opacity:.72;cursor:wait}.alert-form.is-success{border-color:rgba(67,122,34,.25);background:#edf5e6}.alert-form.is-error{border-color:rgba(150,66,25,.24);background:#fdf3eb}.alert-form.is-success .alert-form-note{color:#437a22;font-weight:800}.alert-form.is-error .alert-form-note{color:#964219;font-weight:800}
+[data-theme="dark"] .alert-form.is-success{background:#1f2d18;border-color:rgba(139,194,112,.24)}[data-theme="dark"] .alert-form.is-error{background:#302012;border-color:rgba(210,138,86,.28)}[data-theme="dark"] .alert-form.is-success .alert-form-note{color:#a7d890}[data-theme="dark"] .alert-form.is-error .alert-form-note{color:#e0a46f}
+
+/* Header overflow guard on very small screens */
+.header-right{flex:1;justify-content:flex-end}.header-nav{min-width:0}.logo{flex:0 0 auto}
+@media(max-width:760px){.header-nav{max-width:clamp(150px,48vw,430px)}}
+@media(max-width:420px){.logo span{font-size:.92rem}.logo-mark,.logo-mark svg{width:26px;height:26px}.header-nav{max-width:calc(100vw - 13rem)}}

@@ -702,8 +702,54 @@ if (offerteBodyEl) {
 document.addEventListener('submit', function(e) {
   const form = e.target.closest('[data-alert-form]');
   if (!form) return;
+  e.preventDefault();
   trackEvent('alert_form_submit', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
+  submitAlertForm(form);
 });
+
+async function submitAlertForm(form) {
+  const action = (form.getAttribute('action') || '').trim();
+  const isPlaceholder = !action || action === 'FORM_ENDPOINT' || action.indexOf('FORM_ENDPOINT') !== -1;
+  const note = form.querySelector('.alert-form-note');
+  const btn = form.querySelector('button[type="submit"]');
+  const originalBtn = btn ? btn.textContent : '';
+
+  form.classList.remove('is-success', 'is-error');
+
+  if (isPlaceholder) {
+    form.classList.add('is-error');
+    if (note) note.textContent = "Modulo pronto: sostituisci FORM_ENDPOINT con l'endpoint del provider statico per attivare l'invio.";
+    return;
+  }
+
+  if (!window.fetch || !window.FormData) {
+    // Fallback estremo: con un endpoint reale lascia lavorare il provider statico.
+    HTMLFormElement.prototype.submit.call(form);
+    return;
+  }
+
+  if (btn) { btn.disabled = true; btn.textContent = 'Invio…'; }
+  if (note) note.textContent = 'Invio in corso…';
+
+  try {
+    const res = await fetch(action, {
+      method: (form.getAttribute('method') || 'POST').toUpperCase(),
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!res.ok) throw new Error('Form endpoint error');
+    form.reset();
+    form.classList.add('is-success');
+    if (note) note.textContent = 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
+    trackEvent('alert_form_success', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
+  } catch (err) {
+    form.classList.add('is-error');
+    if (note) note.textContent = "Invio non riuscito. Controlla l'endpoint del form e riprova.";
+    trackEvent('alert_form_error', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = originalBtn || 'Avvisami'; }
+  }
+}
 
 // ============================================================
 // THEME TOGGLE

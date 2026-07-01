@@ -246,3 +246,23 @@ section{padding:2.45rem 0 2.98rem}
 .header-nav{overflow-x:auto;scrollbar-width:none;max-width:min(60vw,560px)}
 .header-nav::-webkit-scrollbar{display:none}
 .header-nav a{white-space:nowrap}
+
+/* Dark mode harmony — keep QuantoTengo teal/gold softer and consistent. */
+[data-theme="dark"]{
+  --bg:#141310;--surface:#1f1d19;--surface-2:#25231f;--surface-offset:#2e2b26;
+  --border:rgba(255,253,245,.11);--divider:rgba(255,253,245,.07);
+  --text:#f1eee7;--text-muted:#b4b0a7;--text-faint:#807b71;
+  --primary:#65b8b1;--primary-hover:#7acdc6;--primary-light:#193333;--primary-soft:#193333;
+  --coin-gold:#e7c56b;--coin-gold-deep:#c99c35;--gold-bg:#282217;--success:#8bc270
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#141310;--surface:#1f1d19;--surface-2:#25231f;--surface-offset:#2e2b26;
+  --border:rgba(255,253,245,.11);--divider:rgba(255,253,245,.07);
+  --text:#f1eee7;--text-muted:#b4b0a7;--text-faint:#807b71;
+  --primary:#65b8b1;--primary-hover:#7acdc6;--primary-light:#193333;--primary-soft:#193333;
+  --coin-gold:#e7c56b;--coin-gold-deep:#c99c35;--gold-bg:#282217;--success:#8bc270
+}}
+[data-theme="dark"] .btn-primary{background:#2e817d;color:#fff}[data-theme="dark"] .btn-primary:hover{background:#36918c}
+[data-theme="dark"] .btn-ghost{background:rgba(255,253,245,.045);border-color:rgba(101,184,177,.42);color:#8dd7d1}[data-theme="dark"] .btn-ghost:hover{background:rgba(101,184,177,.13)}
+[data-theme="dark"] .theme-toggle{border-color:rgba(255,253,245,.12)}
+[data-theme="dark"] .card,[data-theme="dark"] .hero-card,[data-theme="dark"] .market-card{box-shadow:0 16px 42px rgba(0,0,0,.28)}
