@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/pages.css?v=20260704">
+<link rel="stylesheet" href="/assets/pages.css?v=20260706">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"Chi siamo | QuantoTengo.it","description":"Informazioni sul progetto indipendente QuantoTengo.it.","url":"https://www.quantotengo.it/chi-siamo/","publisher":{"@type":"Organization","name":"QuantoTengo.it","url":"https://www.quantotengo.it/"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.quantotengo.it/"},{"@type":"ListItem","position":2,"name":"Chi siamo","item":"https://www.quantotengo.it/chi-siamo/"}]}</script>
 <script>
@@ -64,10 +64,21 @@
 </script>
 <script>
 (function(){
+  function qtTrack(name, data){
+    if(window.umami && typeof window.umami.track === 'function') window.umami.track(name, data || {});
+  }
   function initTracking(){
     document.querySelectorAll('[data-qt-event]').forEach(function(el){
       el.addEventListener('click', function(){
-        if(window.umami && typeof window.umami.track === 'function') window.umami.track(el.getAttribute('data-qt-event'));
+        qtTrack(el.getAttribute('data-qt-event'), {
+          source_path: window.location.pathname,
+          target_href: el.getAttribute('href') || ''
+        });
+      });
+    });
+    document.querySelectorAll('[data-alert-form]').forEach(function(form){
+      form.addEventListener('submit', function(){
+        qtTrack('alert_form_submit', { source_path: window.location.pathname });
       });
     });
   }
@@ -76,7 +87,12 @@
 </script>
 </head>
 <body>
-<header class="site-header"><div class="header-inner"><a href="/" class="logo"><div class="logo-mark"><svg width="33" height="33" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg></div><span>Quanto<span class="logo-accent">Tengo</span></span></a><div class="header-right"><a class="header-calculator-btn" href="/vinted/" data-qt-event="header_cta_vinted">Calcolatore Vinted</a><button class="theme-toggle" data-theme-toggle aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro"></button></div></div></header>
+<header class="site-header"><div class="header-inner"><a href="/" class="logo"><div class="logo-mark"><svg width="33" height="33" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg></div><span>Quanto<span class="logo-accent">Tengo</span></span></a><div class="header-right"><nav class="header-nav" aria-label="Navigazione principale">
+        <a href="/">Home</a>
+        <a href="/vinted/" data-qt-event="header_nav_vinted">Calcolatore Vinted</a>
+        <a href="/guide/" data-qt-event="header_nav_guide">Guide</a>
+        <a href="/tasse-vinted/" data-qt-event="header_nav_tasse">Tasse/DAC7</a>
+      </nav><button class="theme-toggle" data-theme-toggle aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><span>Chi siamo</span></nav>
 <main><div class="wrap"><article class="article">
 <p class="eyebrow">Il progetto</p>

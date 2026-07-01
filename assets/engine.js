@@ -29,11 +29,13 @@ function getBump(prezzo) {
 // STATE
 // ============================================================
 let spedOn = false, bumpOn = false, offerteOpen = false;
+let offerteAutoOpened = false;
 let obSpedOn = false, obBumpOn = false;
 let bumpMode = 'auto'; // 'auto' = stima automatica | 'manual' = importo inserito dall'utente
 let storicoList = [];
 let calculationTracked = false;
 let obiettivoTracked = false;
+let offerteInteractionTracked = false;
 
 // Costo Bump effettivo: stima automatica oppure valore manuale inserito dall'utente.
 // Il parametro prezzo serve solo alla stima automatica.
@@ -88,7 +90,11 @@ function trackEvent(name, data) {
 document.addEventListener('click', function(e) {
   const el = e.target.closest('[data-qt-event]');
   if (!el) return;
-  trackEvent(el.getAttribute('data-qt-event'), { page: CFG.id || 'calcolatore' });
+  trackEvent(el.getAttribute('data-qt-event'), {
+    page: CFG.id || 'calcolatore',
+    source_path: window.location.pathname,
+    target_href: el.getAttribute('href') || ''
+  });
 });
 
 const fmtPlain = n => '€' + n.toFixed(2).replace('.', ',');
@@ -213,6 +219,15 @@ function calcola() {
   } else {
     setOfferta('custom', null, null, null, 0);
     document.getElementById('off-custom-disc').textContent = 'Sconto —%';
+  }
+
+  if (prezzo <= 0 && offerteAutoOpened) {
+    offerteAutoOpened = false;
+    setOfferteOpen(false, false);
+  }
+  if (prezzo > 0 && !offerteAutoOpened) {
+    offerteAutoOpened = true;
+    setOfferteOpen(true, false);
   }
 
   calcolaInverso();
@@ -481,9 +496,10 @@ function copiaTesto() {
 
 
 // ============================================================
-// COPIA RIEPILOGO — testo breve e condivisibile
+// COPIA RISULTATO — testo breve e condivisibile
 // ============================================================
 function copiaRiepilogo() {
+  trackEvent('risultato_copia_click', { marketplace: CFG.id || CFG.nome || 'unknown' });
   const prezzo = v('inp-prezzo');
   if (prezzo === 0) {
     alert('Inserisci prima un prezzo di vendita.');
@@ -501,46 +517,63 @@ function copiaRiepilogo() {
   const roi = costo > 0 ? (netto / costo) * 100 : null;
   const feedback = getMarginFeedback(margine, netto, true);
   const costi = costo + imb + sped + bump + commVend;
-  const nome = (document.getElementById('inp-nome').value || '').trim();
+  const nomeEl = document.getElementById('inp-nome');
+  const nome = nomeEl ? (nomeEl.value || '').trim() : '';
 
   const righe = [];
   if (nome) righe.push('Articolo: ' + nome);
-  righe.push('Vendita: ' + fmtPlain(prezzo));
+  righe.push('Prezzo di vendita: ' + fmtPlain(prezzo));
   righe.push('Costi inseriti: -' + fmtPlain(costi));
-  righe.push('Ti resta (stima): ' + fmtPlain(netto));
+  righe.push('Guadagno netto stimato: ' + fmtPlain(netto));
   righe.push('Margine stimato: ' + pct(margine) + ' · ' + feedback.label);
   if (roi !== null && Number.isFinite(roi)) righe.push('Rendimento sul costo (ROI): ' + pctSmart(roi));
   righe.push('');
-  righe.push('Calcolato con QuantoTengo.it');
+  righe.push('Calcolato con QuantoTengo.it — quantotengo.it/vinted/');
 
   const testo = righe.join('\n');
   const btn = document.getElementById('btn-copy-summary');
-  const original = '<span class="btn-copy-main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17h8"/><path d="M8 13h8"/><path d="M8 9h4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg> Copia riepilogo</span><span class="btn-copy-sub">Utile per appunti, gruppi o per confrontare offerte.</span>';
+  const original = '<span class="btn-copy-main"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17h8"/><path d="M8 13h8"/><path d="M8 9h4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg> Copia risultato</span><span class="btn-copy-sub">Utile per appunti, gruppi o per confrontare offerte.</span>';
 
-  const showCopied = () => {
+  const showFeedback = (message) => {
+    if (!btn) return;
     btn.classList.add('copied');
-    btn.innerHTML = '<span class="btn-copy-main">✓ Riepilogo copiato!</span>';
+    btn.innerHTML = '<span class="btn-copy-main">✓ ' + message + '</span>';
     setTimeout(() => {
       btn.classList.remove('copied');
       btn.innerHTML = original;
     }, 2200);
   };
 
-  const fallback = () => {
+  const copyFallback = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(testo).then(() => {
+        showFeedback('Risultato copiato!');
+        trackEvent('risultato_copiato', { marketplace: CFG.id || CFG.nome || 'unknown', method: 'clipboard' });
+      }).catch(copyTextareaFallback);
+    } else {
+      copyTextareaFallback();
+    }
+  };
+
+  const copyTextareaFallback = () => {
     const ta = document.createElement('textarea');
     ta.value = testo;
     ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
     document.body.appendChild(ta);
     ta.focus(); ta.select();
-    try { document.execCommand('copy'); showCopied(); }
+    try { document.execCommand('copy'); showFeedback('Risultato copiato!'); trackEvent('risultato_copiato', { marketplace: CFG.id || CFG.nome || 'unknown', method: 'textarea' }); }
     catch(e) { prompt('Copia il testo qui sotto:', testo); }
     document.body.removeChild(ta);
   };
 
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(testo).then(showCopied).catch(fallback);
+  const isMobile = window.matchMedia && window.matchMedia('(max-width: 700px)').matches;
+  if (isMobile && navigator.share) {
+    navigator.share({ title: 'Risultato QuantoTengo', text: testo }).then(() => {
+      showFeedback('Condiviso!');
+      trackEvent('risultato_copiato', { marketplace: CFG.id || CFG.nome || 'unknown', method: 'share' });
+    }).catch(copyFallback);
   } else {
-    fallback();
+    copyFallback();
   }
 }
 
@@ -612,13 +645,19 @@ function show(id, visible) {
   document.getElementById(id).style.display = visible ? '' : 'none';
 }
 
-function toggleOfferte() {
-  offerteOpen = !offerteOpen;
-  document.getElementById('icon-offerte').classList.toggle('open', offerteOpen);
-  document.getElementById('offerte-body').style.display = offerteOpen ? '' : 'none';
+function setOfferteOpen(open, shouldTrack) {
+  offerteOpen = open;
+  const icon = document.getElementById('icon-offerte');
+  const body = document.getElementById('offerte-body');
   const tgl = document.getElementById('offerte-toggle');
+  if (icon) icon.classList.toggle('open', offerteOpen);
+  if (body) body.style.display = offerteOpen ? '' : 'none';
   if (tgl) tgl.setAttribute('aria-expanded', offerteOpen ? 'true' : 'false');
-  if (offerteOpen) trackEvent('simulatore_offerte_opened', { marketplace: CFG.id || CFG.nome || 'unknown' });
+  if (offerteOpen && shouldTrack) trackEvent('simulatore_offerte_opened', { marketplace: CFG.id || CFG.nome || 'unknown' });
+}
+
+function toggleOfferte() {
+  setOfferteOpen(!offerteOpen, true);
 }
 
 function setupToggle(btnId, fieldId, stateKey, callback) {
@@ -647,6 +686,23 @@ function setBumpMode(mode) {
 
 ['inp-prezzo','inp-costo','inp-imballaggio','inp-sped','inp-custom','inp-inv2','inp-bump-manual'].forEach(id => {
   document.getElementById(id).addEventListener('input', calcola);
+});
+
+const offerteBodyEl = document.getElementById('offerte-body');
+if (offerteBodyEl) {
+  const trackOfferteInteraction = () => {
+    if (offerteInteractionTracked) return;
+    offerteInteractionTracked = true;
+    trackEvent('simulatore_offerte_used', { marketplace: CFG.id || CFG.nome || 'unknown' });
+  };
+  offerteBodyEl.addEventListener('input', trackOfferteInteraction);
+  offerteBodyEl.addEventListener('click', trackOfferteInteraction);
+}
+
+document.addEventListener('submit', function(e) {
+  const form = e.target.closest('[data-alert-form]');
+  if (!form) return;
+  trackEvent('alert_form_submit', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
 });
 
 // ============================================================

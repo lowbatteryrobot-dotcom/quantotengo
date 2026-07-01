@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20260626-tasse-yellow-header-fix">
+<link rel="stylesheet" href="../assets/style.css?v=20260703">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -121,46 +121,19 @@
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="logo">
-      <div class="logo-mark">
-        <svg width="33" height="33" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg>
-      </div>
+      <div class="logo-mark"><svg width="33" height="33" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg></div>
       <span>Quanto<span class="logo-accent">Tengo</span></span>
     </a>
     <div class="header-right">
-      <div class="market-select" id="market-select">
-        <button class="market-trigger" id="market-trigger" onclick="toggleMarketMenu(event)" aria-haspopup="true" aria-expanded="false">
-          <span class="market-dot" id="market-trigger-dot" style="background:var(--accent)"></span>
-          <span id="market-trigger-name">Vinted</span>
-          <svg class="market-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="market-menu" id="market-menu" role="menu">
-          <button class="market-item active" role="menuitem" aria-current="true">
-            <span class="market-dot" style="background:#01696f"></span>Vinted
-            <span class="market-active-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          </button>
-          <button class="market-item" role="menuitem" onclick="comingSoon('Cardmarket')">
-            <span class="market-dot" style="background:#002651"></span>Cardmarket<span class="market-soon-tag">Presto</span>
-          </button>
-          <button class="market-item" role="menuitem" onclick="comingSoon('Subito')">
-            <span class="market-dot" style="background:#e30613"></span>Subito<span class="market-soon-tag">Presto</span>
-          </button>
-          <button class="market-item" role="menuitem" onclick="comingSoon('eBay')">
-            <span class="market-dot" style="background:#0064d2"></span>eBay<span class="market-soon-tag">Presto</span>
-          </button>
-          <button class="market-item" role="menuitem" onclick="comingSoon('Wallapop')">
-            <span class="market-dot" style="background:#13c1ac"></span>Wallapop<span class="market-soon-tag">Presto</span>
-          </button>
-          <button class="market-item" role="menuitem" onclick="comingSoon('Depop')">
-            <span class="market-dot" style="background:#ff2300"></span>Depop<span class="market-soon-tag">Presto</span>
-          </button>
-        </div>
-      </div>
-      <button class="theme-toggle" data-theme-toggle aria-label="Cambia tema">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+      <nav class="header-nav" aria-label="Navigazione principale">
+        <a href="/">Home</a>
+        <a href="/vinted/" data-qt-event="header_nav_vinted">Calcolatore Vinted</a>
+        <a href="/guide/" data-qt-event="header_nav_guide">Guide</a>
+        <a href="/tasse-vinted/" data-qt-event="header_nav_tasse">Tasse/DAC7</a>
+      </nav>
+      <button class="theme-toggle" data-theme-toggle aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
   </div>
-  <div class="market-toast" id="market-toast" role="status" aria-live="polite"></div>
 </header>
 
 <!-- TABS NAV -->
@@ -310,21 +283,6 @@
             </div>
           </div>
 
-          <div class="breakdown breakdown-card">
-            <div class="br-row br-main"><span class="br-key">Prezzo di vendita (tu incassi)</span><span class="br-val" id="br-prezzo">€ 0,00</span></div>
-            <div class="br-row" id="br-sped-row" style="display:none"><span class="br-key">− Spedizione</span><span class="br-val neg" id="br-sped"></span></div>
-            <div class="br-row" id="br-imb-row" style="display:none"><span class="br-key">− Imballaggio</span><span class="br-val neg" id="br-imb"></span></div>
-            <div class="br-row" id="br-bump-row" style="display:none"><span class="br-key">− Bump (in evidenza)</span><span class="br-val neg" id="br-bump"></span></div>
-            <div class="br-row" id="br-costo-row" style="display:none"><span class="br-key">− Costo d'acquisto</span><span class="br-val neg" id="br-costo"></span></div>
-            <div class="br-row total"><span class="br-key">= Guadagno netto (stima)</span><span class="br-val pos" id="br-netto">€ 0,00</span></div>
-            <div class="br-row br-info" id="br-comm-row"><span class="br-key" id="br-comm-key">Commissione (a carico dell'acquirente)</span><span class="br-val" id="br-comm">€ 0,00</span></div>
-          </div>
-
-          <div class="result-warning">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span>Questo è un risultato stimato e non garantito. Le commissioni, le condizioni e le promozioni di Vinted possono variare nel tempo e influire sul guadagno finale.</span>
-          </div>
-
           <!-- SIMULATORE OFFERTE -->
           <button class="offerte-toggle" id="offerte-toggle" onclick="toggleOfferte()" aria-expanded="false" data-qt-event="open_simulatore_offerte">
             <span class="offerte-toggle-left">
@@ -376,6 +334,22 @@
             </div>
           </div>
 
+
+          <div class="breakdown breakdown-card">
+            <div class="br-row br-main"><span class="br-key">Prezzo di vendita (tu incassi)</span><span class="br-val" id="br-prezzo">€ 0,00</span></div>
+            <div class="br-row" id="br-sped-row" style="display:none"><span class="br-key">− Spedizione</span><span class="br-val neg" id="br-sped"></span></div>
+            <div class="br-row" id="br-imb-row" style="display:none"><span class="br-key">− Imballaggio</span><span class="br-val neg" id="br-imb"></span></div>
+            <div class="br-row" id="br-bump-row" style="display:none"><span class="br-key">− Bump (in evidenza)</span><span class="br-val neg" id="br-bump"></span></div>
+            <div class="br-row" id="br-costo-row" style="display:none"><span class="br-key">− Costo d'acquisto</span><span class="br-val neg" id="br-costo"></span></div>
+            <div class="br-row total"><span class="br-key">= Guadagno netto (stima)</span><span class="br-val pos" id="br-netto">€ 0,00</span></div>
+            <div class="br-row br-info" id="br-comm-row"><span class="br-key" id="br-comm-key">Commissione (a carico dell'acquirente)</span><span class="br-val" id="br-comm">€ 0,00</span></div>
+          </div>
+
+          <div class="result-warning">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Questo è un risultato stimato e non garantito. Le commissioni, le condizioni e le promozioni di Vinted possono variare nel tempo e influire sul guadagno finale.</span>
+          </div>
+
           <!-- COPIA MESSAGGIO -->
           <button class="btn-copy" id="btn-copy" onclick="copiaTesto()" data-qt-event="copy_buyer_message">
             <span class="btn-copy-main">
@@ -388,7 +362,7 @@
           <button class="btn-copy btn-copy-secondary" id="btn-copy-summary" onclick="copiaRiepilogo()" data-qt-event="copy_summary">
             <span class="btn-copy-main">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17h8"/><path d="M8 13h8"/><path d="M8 9h4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
-              Copia riepilogo
+              Copia risultato
             </span>
             <span class="btn-copy-sub">Utile per appunti, gruppi o per confrontare offerte.</span>
           </button>
@@ -814,20 +788,7 @@
   </div>
 </section>
 
-<section class="roadmap-vote" aria-labelledby="roadmap-vote-title">
-  <div class="roadmap-vote-inner">
-    <p class="roadmap-kicker">Roadmap</p>
-    <h2 id="roadmap-vote-title">Quale piattaforma vuoi dopo?</h2>
-    <p class="roadmap-vote-text">Vinted è già disponibile. Aiutami a scegliere il prossimo calcolatore.</p>
-    <div class="roadmap-vote-row" id="roadmap-vote-row">
-      <button type="button" onclick="voteNextPlatform('Cardmarket')">Cardmarket</button>
-      <button type="button" onclick="voteNextPlatform('Subito')">Subito</button>
-      <button type="button" onclick="voteNextPlatform('eBay')">eBay</button>
-      <button type="button" onclick="voteNextPlatform('Wallapop')">Wallapop</button>
-    </div>
-    <p class="roadmap-vote-thanks" id="roadmap-vote-thanks" role="status" aria-live="polite"></p>
-  </div>
-</section>
+
 
 <footer class="site-footer">
   <div class="footer-inner">
@@ -844,6 +805,15 @@
         ciao@quantotengo.it
       </a>
       <p class="footer-mail-note">Hai notato una tariffa cambiata o hai un suggerimento? Scrivimi, mi aiuti a tenere lo strumento aggiornato.</p>
+
+      <form class="alert-form" action="FORM_ENDPOINT" method="POST" data-alert-form>
+        <label for="alert-email-vinted">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
+        <div class="alert-form-row">
+          <input id="alert-email-vinted" type="email" name="email" placeholder="La tua email" autocomplete="email" required>
+          <button type="submit">Avvisami</button>
+        </div>
+        <p class="alert-form-note">Inserisci solo l'email: la useremo soltanto per questo avviso.</p>
+      </form>
     </div>
   </div>
 
@@ -853,6 +823,6 @@
   </div>
 </footer>
 <script src="config.js?v=20260626-final-fixes"></script>
-<script src="../assets/engine.js?v=20260626-final-fixes"></script>
+<script src="../assets/engine.js?v=20260702"></script>
 </body>
 </html>

@@ -194,9 +194,9 @@ section{padding:2.45rem 0 2.98rem}
   .trust:first-child{padding-left:.35rem}
   .preview{margin-top:.25rem}
   .nav{gap:.5rem}
-  /* Home mobile: mantém só FAQ e tema no topo; os links Vinted/Tasse ficam no desktop. */
-  .site-header .nav a[href="/vinted/"],
-  .site-header .nav a[href="/tasse-vinted/"]{display:none}
+  .site-header .header-nav{max-width:min(68vw,380px);overflow-x:auto;scrollbar-width:none}
+  .site-header .header-nav::-webkit-scrollbar{display:none}
+  .site-header .header-nav a{white-space:nowrap;font-size:.72rem}
 }
 @media(max-width:380px){
   .hero h1{font-size:1.56rem}
@@ -241,3 +241,8 @@ section{padding:2.45rem 0 2.98rem}
 .pv-coin svg{width:14.3px;height:14.3px}
 
 .guide-card-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-bottom:.35rem}.guide-badge{display:inline-flex;align-items:center;border-radius:999px;padding:.16rem .45rem;font-size:.58rem;line-height:1;font-weight:900;letter-spacing:.06em;text-transform:uppercase;background:var(--gold-bg);color:#7a5a12;border:1px solid rgba(217,169,60,.28)}[data-theme="dark"] .guide-badge{color:#f2cf75}@media(max-width:640px){.guide-card-top{display:block}.guide-badge{margin-top:.25rem}}
+
+/* Header navigation */
+.header-nav{overflow-x:auto;scrollbar-width:none;max-width:min(60vw,560px)}
+.header-nav::-webkit-scrollbar{display:none}
+.header-nav a{white-space:nowrap}

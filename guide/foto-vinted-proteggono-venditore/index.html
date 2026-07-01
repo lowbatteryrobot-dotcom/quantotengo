@@ -26,7 +26,7 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="https://www.quantotengo.it/assets/foto-vinted-proteggono-venditore-og.jpg" name="twitter:image"/><meta content="Foto fronte e retro di un maglione beige usato come esempio per una guida sulle foto Vinted che proteggono il venditore." name="twitter:image:alt"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="/assets/pages.css?v=20260704" rel="stylesheet"/>
+<link href="/assets/pages.css?v=20260706" rel="stylesheet"/>
 <script>
 (function(){
   function initTheme(){
@@ -64,10 +64,21 @@
 </script>
 <script>
 (function(){
+  function qtTrack(name, data){
+    if(window.umami && typeof window.umami.track === 'function') window.umami.track(name, data || {});
+  }
   function initTracking(){
     document.querySelectorAll('[data-qt-event]').forEach(function(el){
       el.addEventListener('click', function(){
-        if(window.umami && typeof window.umami.track === 'function') window.umami.track(el.getAttribute('data-qt-event'));
+        qtTrack(el.getAttribute('data-qt-event'), {
+          source_path: window.location.pathname,
+          target_href: el.getAttribute('href') || ''
+        });
+      });
+    });
+    document.querySelectorAll('[data-alert-form]').forEach(function(form){
+      form.addEventListener('submit', function(){
+        qtTrack('alert_form_submit', { source_path: window.location.pathname });
       });
     });
   }
@@ -79,7 +90,12 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quali foto mettere in un annuncio Vinted?","acceptedAnswer":{"@type":"Answer","text":"Metti una prima foto chiara dell’articolo intero, fronte e retro, etichetta con taglia o marca, dettagli del tessuto, eventuali difetti, misure utili e foto specifiche per scarpe, borse o oggetti."}},{"@type":"Question","name":"Devo fotografare anche i difetti su Vinted?","acceptedAnswer":{"@type":"Answer","text":"Sì. I difetti vanno mostrati nelle foto e descritti nell’annuncio. Questo rende l’annuncio più chiaro e riduce ambiguità dopo la consegna."}},{"@type":"Question","name":"Serve fotografare l’etichetta?","acceptedAnswer":{"@type":"Answer","text":"È consigliabile fotografare etichetta di taglia, marca e composizione quando presenti, perché aiutano l’acquirente a valutare meglio l’articolo e riducono domande sulla vestibilità o sul materiale."}},{"@type":"Question","name":"Le foto evitano sempre una contestazione?","acceptedAnswer":{"@type":"Answer","text":"No. Le foto non garantiscono l’esito di una segnalazione, ma un annuncio chiaro, con difetti e dettagli visibili, riduce incomprensioni e rende più facile spiegare lo stato reale dell’articolo."}}]}</script>
 </head>
 <body>
-<header class="site-header"><div class="header-inner"><a class="logo" href="/"><div class="logo-mark"><svg aria-hidden="true" height="33" viewBox="0 0 100 100" width="33"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"></path><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"></path><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"></path><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"></path><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"></path><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"></path><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"></path><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"></path><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"></path><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"></path><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"></path></svg></div><span>Quanto<span class="logo-accent">Tengo</span></span></a><div class="header-right"><a class="header-calculator-btn" data-qt-event="header_cta_vinted" href="/vinted/">Calcolatore Vinted</a><button aria-label="Cambia tema chiaro/scuro" class="theme-toggle" data-theme-toggle="" title="Tema chiaro/scuro"><svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="18"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button></div></div></header>
+<header class="site-header"><div class="header-inner"><a href="/" class="logo"><div class="logo-mark"><svg width="33" height="33" viewBox="0 0 100 100" aria-hidden="true"><path d="M18 70 L50 84 L82 70 L82 76 L50 90 L18 76 Z" fill="var(--coin-gold)"/><path d="M18 62 L50 76 L82 62 L82 68 L50 82 L18 68 Z" fill="#4fc4a8"/><path d="M18 31 L50 46 L50 69 L18 54 Z" fill="#0c5651"/><path d="M82 31 L50 46 L50 69 L82 54 Z" fill="#0f6a64"/><path d="M50 16 L18 31 L50 46 L50 16 Z" fill="#12736d"/><path d="M50 16 L82 31 L50 46 L50 16 Z" fill="#0d5d57"/><path d="M44 43.5 L56 43.5 L56 66 L50 68.7 L44 66 Z" fill="#0a4c47"/><path d="M50 24 L34 28 L40 31 L50 28.5 Z" fill="#0e635d"/><path d="M50 24 L66 28 L60 31 L50 28.5 Z" fill="#0b524d"/><path d="M40 31 L50 28.5 L60 31 L50 34 Z" fill="#073a36"/><path d="M48 23 L52 23 L52 27 L50 28 L48 27 Z" fill="#15807a"/></svg></div><span>Quanto<span class="logo-accent">Tengo</span></span></a><div class="header-right"><nav class="header-nav" aria-label="Navigazione principale">
+        <a href="/">Home</a>
+        <a href="/vinted/" data-qt-event="header_nav_vinted">Calcolatore Vinted</a>
+        <a href="/guide/" data-qt-event="header_nav_guide">Guide</a>
+        <a href="/tasse-vinted/" data-qt-event="header_nav_tasse">Tasse/DAC7</a>
+      </nav><button class="theme-toggle" data-theme-toggle aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
 <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span><a href="/guide/">Guide</a><span aria-hidden="true">›</span><span>Foto Vinted che proteggono il venditore</span></nav>
 <main><div class="wrap"><article class="article">
 <p class="eyebrow">Guida Vinted</p>
