@@ -32,6 +32,17 @@
     <priority>0.78</priority>
   </url>
   <url>
+    <loc>https://www.quantotengo.it/guide/checklist-annuncio-vinted/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.78</priority>
+    <image:image>
+      <image:loc>https://www.quantotengo.it/assets/foto-vinted-fronte-retro-maglione-1200.jpg</image:loc>
+      <image:title>Checklist annuncio Vinted prima di pubblicare</image:title>
+      <image:caption>Esempio visivo per controllare foto, descrizione e dettagli prima di pubblicare un annuncio Vinted.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.quantotengo.it/chi-siamo/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.35</priority>
