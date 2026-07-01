@@ -266,3 +266,16 @@ section{padding:2.45rem 0 2.98rem}
 [data-theme="dark"] .btn-ghost{background:rgba(255,253,245,.045);border-color:rgba(101,184,177,.42);color:#8dd7d1}[data-theme="dark"] .btn-ghost:hover{background:rgba(101,184,177,.13)}
 [data-theme="dark"] .theme-toggle{border-color:rgba(255,253,245,.12)}
 [data-theme="dark"] .card,[data-theme="dark"] .hero-card,[data-theme="dark"] .market-card{box-shadow:0 16px 42px rgba(0,0,0,.28)}
+
+/* Header mobile fix: evita collisione tra logo, nav e toggle nella homepage. */
+.header-right{display:flex;align-items:center;justify-content:flex-end;gap:1rem;min-width:0;flex:1}
+.site-header .header-nav{min-width:0}
+@media(max-width:600px){
+  .site-header .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.55rem .9rem;padding:.85rem 0}
+  .site-header .logo{font-size:1rem;min-width:0}.site-header .logo svg{width:28px;height:28px;flex:0 0 auto}.site-header .logo span{white-space:nowrap}
+  .site-header .header-right{display:contents}
+  .site-header .theme-toggle{grid-column:2;grid-row:1;justify-self:end;width:34px;height:34px}
+  .site-header .header-nav{grid-column:1/-1;grid-row:2;width:100%;max-width:100%!important;overflow-x:auto;justify-content:flex-start;gap:.75rem;padding:.1rem .05rem .05rem;margin:0 -0.05rem;scrollbar-width:none}
+  .site-header .header-nav a{font-size:.76rem;line-height:1.2;white-space:nowrap;flex:0 0 auto}
+}
+@media(max-width:380px){.site-header .header-nav{gap:.62rem}.site-header .header-nav a{font-size:.72rem}}

@@ -32,6 +32,7 @@ let spedOn = false, bumpOn = false, offerteOpen = false;
 let offerteAutoOpened = false;
 let obSpedOn = false, obBumpOn = false;
 let bumpMode = 'auto'; // 'auto' = stima automatica | 'manual' = importo inserito dall'utente
+let obBumpMode = 'auto'; // modalità Bump nel Prezzo Obiettivo
 let storicoList = [];
 let calculationTracked = false;
 let obiettivoTracked = false;
@@ -41,6 +42,11 @@ let offerteInteractionTracked = false;
 // Il parametro prezzo serve solo alla stima automatica.
 function getBumpEffettivo(prezzo) {
   if (bumpMode === 'manual') return v('inp-bump-manual');
+  return getBump(prezzo);
+}
+
+function getObBumpEffettivo(prezzo) {
+  if (obBumpMode === 'manual') return v('ob-bump-manual');
   return getBump(prezzo);
 }
 
@@ -298,6 +304,8 @@ function calcolaInverso() {
   if (guadagno === 0 && costo === 0) {
     document.getElementById('inv-prezzo2').textContent = '\u20AC\u00a0\u2014';
     document.getElementById('inv-sub2').innerHTML = 'Inserisci il guadagno desiderato';
+    const bumpTag = document.getElementById('ob-bump-tag');
+    if (bumpTag) bumpTag.style.display = 'none';
     return;
   }
 
@@ -306,7 +314,7 @@ function calcolaInverso() {
   // (e dipende dal prezzo, quindi si itera). Lo stesso vale per il Bump.
   let prezzo = guadagno + costo + imb + sped;
   for (let i = 0; i < 40; i++) {
-    const bumpEst = obBumpOn ? getBump(prezzo) : 0;
+    const bumpEst = obBumpOn ? getObBumpEffettivo(prezzo) : 0;
     const commVend = commissioneACaricoVenditore() ? getCommissione(prezzo) : 0;
     const nuovo = guadagno + costo + imb + sped + bumpEst + commVend;
     if (Math.abs(nuovo - prezzo) < 0.001) break;
@@ -315,11 +323,17 @@ function calcolaInverso() {
 
   const comm = getCommissione(prezzo);
   const totAcq = commissioneACaricoVenditore() ? prezzo : prezzo + comm;
+  const bumpOb = obBumpOn ? getObBumpEffettivo(prezzo) : 0;
+  const bumpTag = document.getElementById('ob-bump-tag');
+  if (bumpTag) {
+    if (obBumpOn) { bumpTag.style.display = ''; bumpTag.textContent = '− ' + fmt(bumpOb); }
+    else { bumpTag.style.display = 'none'; }
+  }
   document.getElementById('inv-prezzo2').textContent = fmt(prezzo);
   if (commissioneACaricoVenditore()) {
-    document.getElementById('inv-sub2').innerHTML = `Commissione: <strong>${fmt(comm)}</strong> (a tuo carico, gi\u00e0 inclusa nel calcolo)`;
+    document.getElementById('inv-sub2').innerHTML = `Commissione: <strong>${fmt(comm)}</strong> (a tuo carico, già inclusa nel calcolo)`;
   } else {
-    document.getElementById('inv-sub2').innerHTML = `L'acquirente pager\u00e0: <strong>${fmt(totAcq)}</strong> (di cui ${fmt(comm)} di commissione, a suo carico)`;
+    document.getElementById('inv-sub2').innerHTML = `L'acquirente pagherà: <strong>${fmt(totAcq)}</strong> (di cui ${fmt(comm)} di commissione, a suo carico)`;
   }
 }
 
@@ -710,6 +724,7 @@ document.addEventListener('submit', function(e) {
 async function submitAlertForm(form) {
   const action = (form.getAttribute('action') || '').trim();
   const isPlaceholder = !action || action === 'FORM_ENDPOINT' || action.indexOf('FORM_ENDPOINT') !== -1;
+  const usesFormSubmit = action.indexOf('formsubmit.co') !== -1;
   const note = form.querySelector('.alert-form-note');
   const btn = form.querySelector('button[type="submit"]');
   const originalBtn = btn ? btn.textContent : '';
@@ -718,9 +733,13 @@ async function submitAlertForm(form) {
 
   if (isPlaceholder) {
     form.classList.add('is-error');
-    if (note) note.textContent = "Modulo pronto: sostituisci FORM_ENDPOINT con l'endpoint del provider statico per attivare l'invio.";
+    if (note) note.textContent = "Modulo non ancora collegato: configura l'endpoint del provider statico per attivare l'invio.";
     return;
   }
+
+  setHiddenFormValue(form, 'source_path', window.location.pathname);
+  setHiddenFormValue(form, 'source_url', window.location.href);
+  setHiddenFormValue(form, 'form_name', 'vinted_fee_alert');
 
   if (!window.fetch || !window.FormData) {
     // Fallback estremo: con un endpoint reale lascia lavorare il provider statico.
@@ -744,11 +763,24 @@ async function submitAlertForm(form) {
     trackEvent('alert_form_success', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
   } catch (err) {
     form.classList.add('is-error');
-    if (note) note.textContent = "Invio non riuscito. Controlla l'endpoint del form e riprova.";
+    if (note) note.textContent = usesFormSubmit
+      ? "Invio non riuscito. Se è il primo test, controlla ciao@quantotengo.it e conferma FormSubmit; poi riprova."
+      : "Invio non riuscito. Controlla l'endpoint del form e riprova.";
     trackEvent('alert_form_error', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = originalBtn || 'Avvisami'; }
   }
+}
+
+function setHiddenFormValue(form, name, value) {
+  let input = form.querySelector('input[name="' + name + '"]');
+  if (!input) {
+    input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    form.appendChild(input);
+  }
+  input.value = value;
 }
 
 // ============================================================
@@ -916,6 +948,20 @@ function thinBorder(rgb) {
   return { top:s, bottom:s, left:s, right:s };
 }
 
+
+function setObBumpMode(mode) {
+  obBumpMode = mode === 'manual' ? 'manual' : 'auto';
+  const autoBtn = document.getElementById('ob-bump-mode-auto');
+  const manualBtn = document.getElementById('ob-bump-mode-manual');
+  const manualField = document.getElementById('ob-bump-manual-field');
+  const autoNote = document.getElementById('ob-bump-auto-note');
+  if (autoBtn) autoBtn.classList.toggle('active', obBumpMode === 'auto');
+  if (manualBtn) manualBtn.classList.toggle('active', obBumpMode === 'manual');
+  if (manualField) manualField.style.display = obBumpMode === 'manual' ? '' : 'none';
+  if (autoNote) autoNote.style.display = obBumpMode === 'manual' ? 'none' : '';
+  calcolaInverso();
+}
+
 // OBIETTIVO TAB TOGGLES
 (function() {
   document.getElementById('ob-toggle-sped').addEventListener('click', () => {
@@ -927,10 +973,13 @@ function thinBorder(rgb) {
   document.getElementById('ob-toggle-bump').addEventListener('click', () => {
     obBumpOn = !obBumpOn;
     document.getElementById('ob-toggle-bump').classList.toggle('on', obBumpOn);
+    const detail = document.getElementById('ob-bump-detail');
+    if (detail) detail.classList.toggle('show', obBumpOn);
     calcolaInverso();
   });
-  ['inp-inv2','ob-costo','ob-imb','ob-sped'].forEach(id => {
-    document.getElementById(id).addEventListener('input', calcolaInverso);
+  ['inp-inv2','ob-costo','ob-imb','ob-sped','ob-bump-manual'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', calcolaInverso);
   });
 })();
 

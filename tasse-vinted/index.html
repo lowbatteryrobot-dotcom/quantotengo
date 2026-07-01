@@ -143,7 +143,11 @@
 </div>
 <p class="updated">Ultimo aggiornamento: 26 giugno 2026. Le regole e le tariffe possono cambiare: verifica sempre le fonti ufficiali.</p>
 </article></div></main>
-<footer class="footer"><div class="wrap"><form class="alert-form" action="FORM_ENDPOINT" method="POST" data-alert-form>
+<footer class="footer"><div class="wrap"><form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form>
+        <input type="hidden" name="_subject" value="Nuovo avviso tariffe Vinted — QuantoTengo.it">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
   <label for="alert-email-tasse">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
   <div class="alert-form-row">
     <input id="alert-email-tasse" type="email" name="email" placeholder="La tua email" autocomplete="email" required>
@@ -190,6 +194,7 @@ QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/"
   function submitAlertForm(form){
     var action = (form.getAttribute('action') || '').trim();
     var isPlaceholder = !action || action === 'FORM_ENDPOINT' || action.indexOf('FORM_ENDPOINT') !== -1;
+    var usesFormSubmit = action.indexOf('formsubmit.co') !== -1;
     var note = form.querySelector('.alert-form-note');
     var btn = form.querySelector('button[type="submit"]');
     var originalBtn = btn ? btn.textContent : '';
@@ -197,9 +202,13 @@ QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/"
 
     if(isPlaceholder){
       form.classList.add('is-error');
-      if(note) note.textContent = "Modulo pronto: sostituisci FORM_ENDPOINT con l'endpoint del provider statico per attivare l'invio.";
+      if(note) note.textContent = "Modulo non ancora collegato: configura l'endpoint del provider statico per attivare l'invio.";
       return;
     }
+    setHiddenFormValue(form, 'source_path', window.location.pathname);
+    setHiddenFormValue(form, 'source_url', window.location.href);
+    setHiddenFormValue(form, 'form_name', 'vinted_fee_alert');
+
     if(!window.fetch || !window.FormData){
       HTMLFormElement.prototype.submit.call(form);
       return;
@@ -219,11 +228,24 @@ QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/"
       qtTrack('alert_form_success', { source_path: window.location.pathname });
     }).catch(function(){
       form.classList.add('is-error');
-      if(note) note.textContent = "Invio non riuscito. Controlla l'endpoint del form e riprova.";
+      if(note) note.textContent = usesFormSubmit
+        ? "Invio non riuscito. Se è il primo test, controlla ciao@quantotengo.it e conferma FormSubmit; poi riprova."
+        : "Invio non riuscito. Controlla l'endpoint del form e riprova.";
       qtTrack('alert_form_error', { source_path: window.location.pathname });
     }).finally(function(){
       if(btn){ btn.disabled = false; btn.textContent = originalBtn || 'Avvisami'; }
     });
+  }
+
+  function setHiddenFormValue(form, name, value){
+    var input = form.querySelector('input[name="' + name + '"]');
+    if(!input){
+      input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      form.appendChild(input);
+    }
+    input.value = value;
   }
   document.querySelectorAll('[data-alert-form]').forEach(function(form){
     form.addEventListener('submit', function(e){

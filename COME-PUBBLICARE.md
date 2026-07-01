@@ -81,3 +81,12 @@ per sicurezza, così non rischi di lasciare versioni vecchie.
 ## Pagina informativa Tasse Vinted
 
 È stata aggiunta `/tasse-vinted/` con scopo informativo generale. La pagina distingue tra commissioni della piattaforma, Protezione Acquisti, DAC7 e possibili obblighi fiscali. Non presenta la calcolatrice come strumento fiscale e contiene disclaimer visibili. Dopo il deploy, invia anche questa URL a Google Search Console/Bing e verifica che il link nel sitemap sia raggiungibile.
+
+
+## Modulo email / Avvisami
+
+I moduli nel footer di `/vinted/` e `/tasse-vinted/` usano un endpoint statico FormSubmit:
+
+`https://formsubmit.co/ajax/ciao@quantotengo.it`
+
+Al primo invio FormSubmit può chiedere una conferma via email a `ciao@quantotengo.it`. Dopo la conferma, gli invii successivi arrivano a quell'indirizzo. Se preferisci Formspree, Formspark, Basin o un altro provider, sostituisci solo l'attributo `action` dei due form mantenendo `method="POST"` e `data-alert-form`.

@@ -700,3 +700,56 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .header-right{flex:1;justify-content:flex-end}.header-nav{min-width:0}.logo{flex:0 0 auto}
 @media(max-width:760px){.header-nav{max-width:clamp(150px,48vw,430px)}}
 @media(max-width:420px){.logo span{font-size:.92rem}.logo-mark,.logo-mark svg{width:26px;height:26px}.header-nav{max-width:calc(100vw - 13rem)}}
+
+/* ===== Prezzo Obiettivo — layout più vicino alla calcolatrice ===== */
+.obiettivo-hero-strip{position:relative;display:flex;align-items:flex-start;gap:1rem;margin:0 0 1.35rem;padding:1.25rem 1.35rem;border:1px solid color-mix(in oklch,var(--primary) 22%,var(--border));border-radius:var(--r-xl);background:linear-gradient(135deg,var(--primary-light),var(--surface) 52%,var(--gold-bg));box-shadow:var(--shadow-sm);overflow:hidden}
+.obiettivo-hero-strip::after{content:'';position:absolute;right:-3.2rem;top:-3.4rem;width:9rem;height:9rem;border-radius:50%;background:rgba(246,215,139,.34);pointer-events:none}
+.obiettivo-hero-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;background:var(--primary);color:white;box-shadow:0 8px 18px color-mix(in oklch,var(--primary) 22%,transparent)}
+.obiettivo-eyebrow{font-size:.66rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);margin-bottom:.15rem}
+.obiettivo-hero-strip h2{font-size:1.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 .5rem .35rem 0;color:var(--text)}
+.obiettivo-hero-strip p{font-size:.88rem;line-height:1.55;color:var(--text-muted);max-width:44rem;margin:0}
+.obiettivo-grid{align-items:stretch}
+.obiettivo-card{height:100%;position:relative;overflow:hidden}
+.obiettivo-card::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),var(--coin-gold));opacity:.95}
+.obiettivo-card-head{align-items:flex-start;margin-bottom:1.2rem}
+.obiettivo-card-head .card-head-label{display:block;color:var(--text);font-size:.88rem;letter-spacing:.02em;text-transform:none;font-weight:800;line-height:1.25}
+.obiettivo-card-head-icon{background:var(--primary-light);color:var(--primary)}
+.obiettivo-card-head-icon.gold{background:var(--gold-bg);color:#8a6d1e;border:1px solid rgba(217,169,60,.32)}
+.obiettivo-head-sub{display:block;margin-top:.12rem;font-size:.72rem;line-height:1.35;color:var(--text-muted);font-weight:600}
+.obiettivo-focus-field{padding:1rem;background:var(--gold-bg);border:1px solid rgba(217,169,60,.34);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+.obiettivo-focus-field label{color:#8a6d1e}
+.obiettivo-money-input input{background:var(--surface);border-color:rgba(217,169,60,.38);font-size:1.18rem;font-weight:850;letter-spacing:-.015em}
+.obiettivo-costs-box{margin:1rem 0;padding:1rem;border-radius:var(--r-lg);background:var(--surface-2);border:1px solid var(--border)}
+.obiettivo-box-title{display:flex;align-items:center;gap:.45rem;margin-bottom:.85rem;font-size:.72rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted)}
+.obiettivo-box-title span{width:20px;height:20px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:var(--surface);border:1px solid var(--border);color:var(--warning);font-size:1rem;line-height:1}
+.obiettivo-options{display:flex;flex-direction:column;gap:.65rem;margin-bottom:1rem}
+.obiettivo-options .toggle-row,.obiettivo-options .bump-top{margin:0;background:var(--surface);border-color:var(--border)}
+.ob-toggle-card{box-shadow:var(--shadow-sm)}
+.ob-toggle-icon{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;margin-right:.35rem;border-radius:999px;background:var(--primary-light);color:var(--primary);vertical-align:middle}
+.ob-toggle-icon svg{display:block}
+.ob-field-extra{margin:.1rem 0 .1rem;padding:.85rem;background:var(--surface-2);border:1px dashed var(--border);border-radius:var(--r-md)}
+.ob-bump-wrap{border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-sm)}
+.ob-bump-top{padding:.78rem 1rem}.ob-bump-top .bump-top-label{display:flex;align-items:center;color:var(--text-muted)}
+.ob-bump-detail{background:var(--surface-2);padding:.7rem 1rem .85rem}.ob-bump-detail.show{display:block}
+.obiettivo-result-card{margin-top:1rem;padding:1.15rem 1.2rem;text-align:left;background:linear-gradient(135deg,var(--primary),#0c817c);border:0;color:#fff;box-shadow:0 12px 28px color-mix(in oklch,var(--primary) 26%,transparent)}
+.obiettivo-result-card .reverse-result-label{color:rgba(255,255,255,.78);font-size:.68rem;margin-bottom:.22rem}
+.obiettivo-result-card .reverse-result-value{color:#fff;font-size:2.05rem;line-height:1.05;text-shadow:0 1px 0 rgba(0,0,0,.08)}
+.obiettivo-result-card .reverse-result-sub{color:rgba(255,255,255,.78);font-size:.78rem;line-height:1.5;max-width:100%}
+.obiettivo-result-card .reverse-result-sub strong{color:#fff}
+.obiettivo-mini-note{display:flex;align-items:flex-start;gap:.45rem;margin-top:.8rem;font-size:.72rem;line-height:1.45;color:var(--text-faint)}
+.obiettivo-mini-note svg{flex:0 0 auto;margin-top:1px;color:var(--primary)}
+.obiettivo-step-list{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1rem}
+.ob-step-card{padding:.9rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}
+.ob-step-card .ob-step-num{background:var(--primary);color:#fff;border-color:transparent;box-shadow:0 5px 12px color-mix(in oklch,var(--primary) 20%,transparent)}
+.obiettivo-formula-card{background:var(--gold-bg);border-color:rgba(217,169,60,.34);margin-bottom:1rem}
+.obiettivo-formula-card .ob-formula-label{color:#8a6d1e}.obiettivo-formula-card .ob-formula-code{color:var(--text);font-weight:800;font-family:'Plus Jakarta Sans','Helvetica Neue',sans-serif}
+.obiettivo-alert-note{display:flex;align-items:flex-start;gap:.6rem;padding:.9rem 1rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-lg);font-size:.76rem;line-height:1.55;color:var(--text-muted)}
+.obiettivo-alert-note span{flex:0 0 auto}.obiettivo-alert-note strong{color:var(--text)}
+[data-theme="dark"] .obiettivo-hero-strip{background:linear-gradient(135deg,rgba(101,184,177,.13),var(--surface) 52%,rgba(231,197,107,.10));border-color:rgba(101,184,177,.22)}
+[data-theme="dark"] .obiettivo-hero-strip::after{background:rgba(231,197,107,.10)}
+[data-theme="dark"] .obiettivo-card-head-icon.gold,[data-theme="dark"] .obiettivo-focus-field,[data-theme="dark"] .obiettivo-formula-card{background:#282217;border-color:rgba(231,197,107,.22)}
+[data-theme="dark"] .obiettivo-focus-field label,[data-theme="dark"] .obiettivo-formula-card .ob-formula-label{color:#f2cf75}
+[data-theme="dark"] .obiettivo-money-input input,[data-theme="dark"] .obiettivo-options .toggle-row,[data-theme="dark"] .obiettivo-options .bump-top,[data-theme="dark"] .ob-bump-wrap{background:#201f1b;border-color:rgba(255,253,245,.10)}
+[data-theme="dark"] .obiettivo-costs-box,[data-theme="dark"] .ob-field-extra,[data-theme="dark"] .ob-bump-detail,[data-theme="dark"] .ob-step-card,[data-theme="dark"] .obiettivo-alert-note{background:#171612;border-color:rgba(255,253,245,.10)}
+[data-theme="dark"] .obiettivo-result-card{background:linear-gradient(135deg,#286f6b,#1f5d59);box-shadow:0 16px 32px rgba(0,0,0,.28)}
+@media(max-width:700px){.obiettivo-hero-strip{padding:1.05rem 1rem;gap:.8rem;border-radius:1rem}.obiettivo-hero-icon{width:38px;height:38px;border-radius:12px}.obiettivo-hero-strip h2{font-size:1.15rem}.obiettivo-hero-strip p{font-size:.82rem}.obiettivo-card{padding:1.2rem}.obiettivo-result-card .reverse-result-value{font-size:1.85rem}}
