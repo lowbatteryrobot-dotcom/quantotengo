@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20260703-obiettivo-mobile">
+<link rel="stylesheet" href="../assets/style.css?v=20260704-visual-unify">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -152,18 +152,27 @@
   <!-- TAB: CALCOLATORE                                             -->
   <!-- ============================================================ -->
   <div id="panel-calcolo" class="tab-panel active">
-    <div class="page-intro">
-      <h1 id="page-h1">Calcolatore Guadagno Vinted</h1>
-      <p id="page-intro-text">Scopri in pochi secondi <strong>quanto guadagni davvero</strong> su Vinted, al netto di commissioni, Bump e spedizione. Inserisci il prezzo di vendita e il costo dell'articolo: il calcolo è immediato, gratuito e senza registrazione.</p>
+    <div class="tool-hero-strip calc-hero-strip" aria-label="Calcolatore Vinted">
+      <div class="tool-hero-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+      </div>
+      <div>
+        <div class="tool-eyebrow">Calcolo netto</div>
+        <h1 id="page-h1">Calcolatore Guadagno Vinted</h1>
+        <p id="page-intro-text">Scopri in pochi secondi <strong>quanto guadagni davvero</strong> su Vinted, al netto di commissioni, Bump e spedizione. Inserisci il prezzo di vendita e il costo dell'articolo: il calcolo è immediato, gratuito e senza registrazione.</p>
+      </div>
     </div>
     <div class="grid-2">
 
       <!-- COLONNA SINISTRA: INPUT -->
       <div>
-        <div class="card">
-          <div class="card-head">
-            <span class="card-head-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
-            <span class="card-head-label">Dettagli Vendita</span>
+        <div class="card calc-card calc-input-card">
+          <div class="card-head calc-card-head">
+            <span class="card-head-icon calc-card-head-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></span>
+            <div>
+              <span class="card-head-label">Dettagli Vendita</span>
+              <span class="calc-head-sub">Prezzo, costi, spedizione e Bump</span>
+            </div>
           </div>
 
           <div class="field">
@@ -253,10 +262,13 @@
 
       <!-- COLONNA DESTRA: RISULTATI -->
       <div>
-        <div class="card">
-          <div class="card-head">
-            <span class="card-head-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
-            <span class="card-head-label">Risultato Stimato</span>
+        <div class="card calc-card calc-result-card">
+          <div class="card-head calc-card-head">
+            <span class="card-head-icon calc-card-head-icon gold"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+            <div>
+              <span class="card-head-label">Risultato Stimato</span>
+              <span class="calc-head-sub">Netto, margine, ROI e offerte</span>
+            </div>
           </div>
 
           <div class="result-hero" id="kpi-box">
@@ -398,7 +410,7 @@
   <!-- TAB: PREZZO OBIETTIVO                                        -->
   <!-- ============================================================ -->
   <div id="panel-obiettivo" class="tab-panel">
-    <div class="obiettivo-hero-strip" aria-label="Prezzo Obiettivo">
+    <div class="tool-hero-strip obiettivo-hero-strip" aria-label="Prezzo Obiettivo">
       <div class="obiettivo-hero-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
       </div>
@@ -867,6 +879,6 @@
   </div>
 </footer>
 <script src="config.js?v=20260626-final-fixes"></script>
-<script src="../assets/engine.js?v=20260703-obiettivo-bump"></script>
+<script src="../assets/engine.js?v=20260704-visual-unify"></script>
 </body>
 </html>

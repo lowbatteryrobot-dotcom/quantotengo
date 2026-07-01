@@ -279,3 +279,37 @@ section{padding:2.45rem 0 2.98rem}
   .site-header .header-nav a{font-size:.76rem;line-height:1.2;white-space:nowrap;flex:0 0 auto}
 }
 @media(max-width:380px){.site-header .header-nav{gap:.62rem}.site-header .header-nav a{font-size:.72rem}}
+
+/* ============================================================
+   Header mobile parity with calculator + darker teal buttons
+   ============================================================ */
+[data-theme="dark"]{
+  --primary:#4fa7a1;
+  --primary-hover:#5bb6af;
+  --primary-light:#173130;
+  --primary-soft:#173130;
+}
+[data-theme="dark"] .btn-primary{background:#256f6b;color:#fff}
+[data-theme="dark"] .btn-primary:hover{background:#2d7d78}
+[data-theme="dark"] .btn-ghost{background:rgba(255,253,245,.045);border-color:rgba(79,167,161,.30);color:#6fc0ba}
+[data-theme="dark"] .btn-ghost:hover{background:rgba(79,167,161,.11);border-color:rgba(79,167,161,.38)}
+@media(max-width:600px){
+  .site-header .header-inner{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:1rem 0}
+  .site-header .header-right{display:flex;align-items:center;justify-content:flex-end;gap:.65rem;min-width:0;flex:1}
+  .site-header .logo{font-size:1rem;min-width:0;flex:0 0 auto}
+  .site-header .logo svg{width:28px;height:28px;flex:0 0 auto}
+  .site-header .logo span{white-space:nowrap}
+  .site-header .header-nav{grid-column:auto;grid-row:auto;width:auto;max-width:min(66vw,430px)!important;overflow-x:auto;justify-content:flex-start;gap:.75rem;padding:0;margin:0;scrollbar-width:none}
+  .site-header .header-nav a{font-size:.76rem;line-height:1.2;white-space:nowrap;flex:0 0 auto}
+  .site-header .theme-toggle{grid-column:auto;grid-row:auto;justify-self:auto;width:34px;height:34px;flex:0 0 auto}
+}
+@media(max-width:420px){
+  .site-header .header-nav{gap:.55rem;max-width:min(62vw,300px)!important}
+  .site-header .header-nav a{font-size:.7rem}
+  .site-header .logo span{font-size:.92rem}
+  .site-header .logo svg{width:26px;height:26px}
+}
+
+/* Fine tune: same mobile nav width as calculator. */
+@media(max-width:600px){.site-header .header-nav{max-width:clamp(150px,48vw,430px)!important}}
+@media(max-width:420px){.site-header .header-nav{max-width:calc(100vw - 13rem)!important}}

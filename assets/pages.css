@@ -96,3 +96,14 @@
 .header-right{flex:1;justify-content:flex-end}.header-nav{min-width:0}.logo{flex:0 0 auto}
 @media(max-width:760px){.header-nav{max-width:clamp(150px,48vw,430px)}}
 @media(max-width:420px){.logo span{font-size:.92rem}.logo-mark,.logo-mark svg{width:26px;height:26px}.header-nav{max-width:calc(100vw - 13rem)}}
+
+/* Dark mode refinement: teal meno chiaro sui pulsanti delle guide/pagine interne. */
+[data-theme="dark"]{--primary:#4fa7a1;--primary-hover:#5bb6af;--primary-soft:#173130}
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .alert-form button{background:#256f6b;color:#fff}
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .alert-form button:hover{background:#2d7d78}
+[data-theme="dark"] .header-calculator-btn,
+[data-theme="dark"] .btn-ghost{color:#6fc0ba;border-color:rgba(79,167,161,.30)}
+[data-theme="dark"] .header-calculator-btn:hover,
+[data-theme="dark"] .btn-ghost:hover{background:rgba(79,167,161,.11);border-color:rgba(79,167,161,.38)}
