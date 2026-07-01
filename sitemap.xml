@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.quantotengo.it/</loc>
     <changefreq>weekly</changefreq>
@@ -52,5 +52,25 @@
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
+    <image:image>
+      <image:loc>https://www.quantotengo.it/assets/foto-vinted-fronte-retro-maglione-1200.jpg</image:loc>
+      <image:title>Foto Vinted fronte e retro di un maglione</image:title>
+      <image:caption>Foto fronte e retro di un maglione beige per mostrare forma, proporzioni e stato generale dell’articolo.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.quantotengo.it/assets/foto-vinted-etichetta-taglia-composizione-maglione-1200.jpg</image:loc>
+      <image:title>Etichetta taglia e composizione per annuncio Vinted</image:title>
+      <image:caption>Dettaglio dell’etichetta con marca fittizia, taglia M, composizione e simboli di lavaggio.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.quantotengo.it/assets/foto-vinted-difetto-macchia-maglione-1200.jpg</image:loc>
+      <image:title>Foto di un difetto da mostrare su Vinted</image:title>
+      <image:caption>Dettaglio di una piccola macchia su un maglione, utile per rendere l’annuncio più chiaro e onesto.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.quantotengo.it/assets/foto-vinted-misure-maglione-metro-1200.jpg</image:loc>
+      <image:title>Foto misure maglione con metro per Vinted</image:title>
+      <image:caption>Maglione con metro da sarta per mostrare la larghezza da ascella ad ascella.</image:caption>
+    </image:image>
   </url>
 </urlset>
