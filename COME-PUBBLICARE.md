@@ -95,3 +95,9 @@ Al primo invio FormSubmit può chiedere una conferma via email a `ciao@quantoten
 ## Moduli “Avvisami”
 
 I moduli email nel footer usano FormSubmit verso `ciao@quantotengo.it`. Sono presenti su pagine Vinted, guide, home, Cardmarket e peso volumetrico: ogni modulo invia solo l’email e il contesto della pagina. Al primo invio in produzione, confermare FormSubmit dall’email ricevuta su `ciao@quantotengo.it`.
+
+
+## Nota aggiornamento 2026-07-02 home hub
+- Homepage riformulata come hub di calcolatori QuantoTengo.
+- Navigazione principale semplificata: il logo porta alla home; il menu punta alle aree Vinted, Spedizioni, Guide e Tasse Vinted.
+- Il calcolatore peso volumetrico usa unità cm/kg come suffisso dei campi.

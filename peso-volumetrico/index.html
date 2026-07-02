@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20260702-peso-polish">
+<link rel="stylesheet" href="../assets/style.css?v=20260702-home-hub">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -115,10 +115,10 @@
     </a>
     <div class="header-right">
       <nav class="header-nav" aria-label="Navigazione principale">
-        <a href="/">Home</a>
-        <a href="/vinted/" data-qt-event="header_nav_vinted">Calcolatore Vinted</a>
+        <a href="/vinted/" data-qt-event="header_nav_vinted">Vinted</a>
+        <a href="/peso-volumetrico/" data-qt-event="header_nav_pesovol">Spedizioni</a>
         <a href="/guide/" data-qt-event="header_nav_guide">Guide</a>
-        <a href="/tasse-vinted/" data-qt-event="header_nav_tasse">Tasse/DAC7</a>
+        <a href="/tasse-vinted/" data-qt-event="header_nav_tasse">Tasse Vinted</a>
       </nav>
       <button class="theme-toggle" data-theme-toggle aria-label="Cambia tema chiaro/scuro" title="Tema chiaro/scuro"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </div>
@@ -154,32 +154,32 @@
         <div class="field">
           <label for="inp-lung">Lunghezza</label>
           <div class="input-wrap">
-            <span class="input-pre">cm</span>
-            <input type="number" id="inp-lung" min="0" step="1" placeholder="es. 40" inputmode="decimal">
+            <span class="input-suf">cm</span>
+            <input type="number" id="inp-lung" min="0" step="1" placeholder="es. 40" inputmode="decimal" class="no-pre has-suf">
           </div>
         </div>
 
         <div class="field">
           <label for="inp-larg">Larghezza</label>
           <div class="input-wrap">
-            <span class="input-pre">cm</span>
-            <input type="number" id="inp-larg" min="0" step="1" placeholder="es. 30" inputmode="decimal">
+            <span class="input-suf">cm</span>
+            <input type="number" id="inp-larg" min="0" step="1" placeholder="es. 30" inputmode="decimal" class="no-pre has-suf">
           </div>
         </div>
 
         <div class="field">
           <label for="inp-alt">Altezza</label>
           <div class="input-wrap">
-            <span class="input-pre">cm</span>
-            <input type="number" id="inp-alt" min="0" step="1" placeholder="es. 20" inputmode="decimal">
+            <span class="input-suf">cm</span>
+            <input type="number" id="inp-alt" min="0" step="1" placeholder="es. 20" inputmode="decimal" class="no-pre has-suf">
           </div>
         </div>
 
         <div class="field">
           <label for="inp-peso">Peso reale</label>
           <div class="input-wrap">
-            <span class="input-pre">kg</span>
-            <input type="number" id="inp-peso" min="0" step="0.1" placeholder="es. 1.5" inputmode="decimal">
+            <span class="input-suf">kg</span>
+            <input type="number" id="inp-peso" min="0" step="0.1" placeholder="es. 1.5" inputmode="decimal" class="no-pre has-suf">
           </div>
         </div>
 
@@ -489,6 +489,6 @@
   calc();
 })();
 </script>
-<script src="/assets/alert-form.js?v=20260702-peso-polish" defer></script>
+<script src="/assets/alert-form.js?v=20260702-home-hub" defer></script>
 </body>
 </html>
