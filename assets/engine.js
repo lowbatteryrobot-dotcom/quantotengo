@@ -739,7 +739,7 @@ async function submitAlertForm(form) {
 
   setHiddenFormValue(form, 'source_path', window.location.pathname);
   setHiddenFormValue(form, 'source_url', window.location.href);
-  setHiddenFormValue(form, 'form_name', 'vinted_fee_alert');
+  setHiddenFormValue(form, 'form_name', form.getAttribute('data-form-name') || 'vinted_fee_alert');
 
   if (!window.fetch || !window.FormData) {
     // Fallback estremo: con un endpoint reale lascia lavorare il provider statico.
@@ -759,7 +759,7 @@ async function submitAlertForm(form) {
     if (!res.ok) throw new Error('Form endpoint error');
     form.reset();
     form.classList.add('is-success');
-    if (note) note.textContent = 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
+    if (note) note.textContent = form.getAttribute('data-success-msg') || 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
     trackEvent('alert_form_success', { source_path: window.location.pathname, marketplace: CFG.id || CFG.nome || 'unknown' });
   } catch (err) {
     form.classList.add('is-error');

@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <script>/* Tema: applica subito la scelta salvata per evitare flash */(function(){try{var t=localStorage.getItem('qt_theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else{var d=window.matchMedia&&!window.matchMedia('(max-width:767px)').matches&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();</script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -31,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20260705-guide-strip-clean">
+<link rel="stylesheet" href="../assets/style.css?v=20260702-peso-polish">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -901,10 +900,11 @@
       </a>
       <p class="footer-mail-note">Hai notato una tariffa cambiata o hai un suggerimento? Scrivimi, mi aiuti a tenere lo strumento aggiornato.</p>
 
-      <form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form>
+      <form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form data-form-name="vinted_updates_alert" data-success-msg="Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.">
         <input type="hidden" name="_subject" value="Nuovo avviso tariffe Vinted — QuantoTengo.it">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="source_page" value="/vinted/">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
         <label for="alert-email-vinted">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
         <div class="alert-form-row">
@@ -918,10 +918,10 @@
 
   <div class="footer-legal">
     <p><strong>⚠️ Valori stimati</strong> — I calcoli si basano sulle commissioni Vinted note (5% + €0,70 Protezione Acquisti, costo Bump stimato). Il guadagno netto è un'<strong>indicazione orientativa</strong>, non un importo garantito. Le tariffe potrebbero variare. Ultima verifica commissioni: giugno 2026.</p>
-    <p class="footer-copy">QuantoTengo.it è uno strumento gratuito e indipendente per venditori online e marketplace, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime fornite a solo scopo informativo e non costituiscono consulenza finanziaria, fiscale o d'investimento. <a href="/privacy/">Privacy</a> · <a href="/chi-siamo/">Chi siamo</a> · <a href="/guide/">Guide</a> · <a href="/tasse-vinted/">Tasse Vinted</a></p>
+    <p class="footer-copy">QuantoTengo.it è uno strumento gratuito e indipendente per venditori online e marketplace, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime fornite a solo scopo informativo e non costituiscono consulenza finanziaria, fiscale o d'investimento. <a href="/peso-volumetrico/">Peso volumetrico</a> · <a href="/privacy/">Privacy</a> · <a href="/chi-siamo/">Chi siamo</a> · <a href="/guide/">Guide</a> · <a href="/tasse-vinted/">Tasse Vinted</a></p>
   </div>
 </footer>
 <script src="config.js?v=20260626-final-fixes"></script>
-<script src="../assets/engine.js?v=20260702-theme-persist"></script>
+<script src="../assets/engine.js?v=20260702-peso-polish"></script>
 </body>
 </html>

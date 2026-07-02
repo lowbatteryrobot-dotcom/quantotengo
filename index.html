@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <script>/* Tema: applica subito la scelta salvata per evitare flash */(function(){try{var t=localStorage.getItem('qt_theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else{var d=window.matchMedia&&!window.matchMedia('(max-width:767px)').matches&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();</script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -39,7 +38,7 @@
       "name": "QuantoTengo.it",
       "alternateName": "QuantoTengo per venditori online",
       "url": "https://www.quantotengo.it/",
-      "description": "Calcolatori di guadagno netto per venditori online e marketplace. Disponibile per Vinted, con altri marketplace in arrivo.",
+      "description": "Calcolatori pratici per venditori online: guadagno netto Vinted, peso volumetrico delle spedizioni e guide essenziali per vendere con più chiarezza.",
       "inLanguage": "it-IT",
       "publisher": {
         "@id": "https://www.quantotengo.it/#org"
@@ -69,13 +68,19 @@
           "position": 1,
           "name": "Calcolatore Vinted",
           "url": "https://www.quantotengo.it/vinted/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Calcolatore peso volumetrico",
+          "url": "https://www.quantotengo.it/peso-volumetrico/"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="/assets/home.css?v=20260702-theme-persist">
+<link rel="stylesheet" href="/assets/home.css?v=20260702-peso-polish">
 
 <script>
 (function(){
@@ -141,11 +146,11 @@ function toggleTheme(){
           <span class="btn-label"><span>Calcola con Vinted</span><span class="btn-sub">Bump, spedizione e offerte</span></span>
           <span class="btn-arrow" aria-hidden="true">→</span>
         </a>
-        <button type="button" class="btn btn-ghost btn-soon" aria-disabled="true" title="Calcolatore Cardmarket in arrivo" data-qt-event="home_cta_cardmarket_soon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="14" height="18" rx="2"/><path d="M7 5V3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2"/></svg>
-          <span class="btn-label"><span>Cardmarket</span><span class="btn-sub">In arrivo</span></span>
-          <span class="soon-inline" aria-hidden="true">Presto</span>
-        </button>
+        <a href="/peso-volumetrico/" class="btn btn-ghost" data-qt-event="home_cta_pesovol">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <span class="btn-label"><span>Peso volumetrico</span><span class="btn-sub">Quanto paghi per spedire</span></span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
       </div>
       <div class="trust-row">
         <span class="trust"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>Gratis</span>
@@ -283,7 +288,7 @@ function toggleTheme(){
    <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title">Marketplace supportati e in arrivo</h2>
-      <p class="sec-sub">Oggi puoi calcolare il guadagno su Vinted. Il prossimo calcolatore sarà Cardmarket, poi eBay.</p>
+      <p class="sec-sub">Oggi puoi calcolare il guadagno su Vinted e il peso volumetrico delle spedizioni. Il calcolatore Cardmarket è in preparazione.</p>
     </div>
     <div class="platforms">
       <a href="/vinted/" class="pcard" data-qt-event="home_platform_vinted">
@@ -311,12 +316,13 @@ function toggleTheme(){
 
 <footer class="site-footer">
   <div class="wrap">
-    <form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form>
-        <input type="hidden" name="_subject" value="Nuovo avviso tariffe Vinted — QuantoTengo.it">
+    <form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form data-form-name="quanto_tengo_updates_alert" data-success-msg="Grazie! Ti avviseremo solo per aggiornamenti utili su QuantoTengo.it, senza newsletter.">
+        <input type="hidden" name="_subject" value="Nuovo avviso QuantoTengo — calcolatori e vendite online">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="source_page" value="/">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
-  <label for="alert-email-home">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
+  <label for="alert-email-home">Ti avvisiamo su aggiornamenti utili: Vinted, spedizioni e nuovi calcolatori. Niente spam, niente newsletter.</label>
   <div class="alert-form-row">
     <input id="alert-email-home" type="email" name="email" placeholder="La tua email" autocomplete="email" required>
     <button type="submit">Avvisami</button>
@@ -326,7 +332,7 @@ function toggleTheme(){
     
     <p class="footer-legal">
       QuantoTengo.it<span class="sep">·</span>Calcolatori per venditori online e marketplace<span class="sep">·</span>Progetto gratuito e indipendente, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime a solo scopo informativo e non sono consulenza finanziaria, fiscale o d'investimento.<br>
-      <a href="/privacy/">Privacy</a><span class="sep">·</span><a href="/chi-siamo/">Chi siamo</a><span class="sep">·</span><a href="/guide/">Guide</a><span class="sep">·</span><a href="/tasse-vinted/">Tasse Vinted</a><span class="sep">·</span>Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a>
+      <a href="/peso-volumetrico/">Peso volumetrico</a><span class="sep">·</span><a href="/privacy/">Privacy</a><span class="sep">·</span><a href="/chi-siamo/">Chi siamo</a><span class="sep">·</span><a href="/guide/">Guide</a><span class="sep">·</span><a href="/tasse-vinted/">Tasse Vinted</a><span class="sep">·</span>Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a>
     </p>
   </div>
 </footer>
@@ -349,6 +355,6 @@ function toggleTheme(){
   });
 })();
 </script>
-<script src="/assets/alert-form.js?v=20260702" defer></script>
+<script src="/assets/alert-form.js?v=20260702-peso-polish" defer></script>
 </body>
 </html>

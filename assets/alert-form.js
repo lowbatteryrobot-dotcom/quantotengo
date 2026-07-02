@@ -38,7 +38,8 @@
 
     setHiddenFormValue(form, 'source_path', window.location.pathname);
     setHiddenFormValue(form, 'source_url', window.location.href);
-    setHiddenFormValue(form, 'form_name', form.getAttribute('data-form-name') || 'vinted_fee_alert');
+    var formName = form.getAttribute('data-form-name') || 'quanto_tengo_alert';
+    setHiddenFormValue(form, 'form_name', formName);
 
     if(!window.fetch || !window.FormData){
       HTMLFormElement.prototype.submit.call(form);
@@ -56,14 +57,14 @@
       if(!res.ok) throw new Error('Form endpoint error');
       form.reset();
       form.classList.add('is-success');
-      if(note) note.textContent = form.getAttribute('data-success-msg') || 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
-      qtTrack('alert_form_success', { source_path: window.location.pathname });
+      if(note) note.textContent = form.getAttribute('data-success-msg') || 'Grazie! Ti avviseremo solo per aggiornamenti rilevanti, senza newsletter.';
+      qtTrack('alert_form_success', { source_path: window.location.pathname, form_name: formName });
     }).catch(function(){
       form.classList.add('is-error');
       if(note) note.textContent = usesFormSubmit
         ? "Invio non riuscito. Se è il primo test, controlla ciao@quantotengo.it e conferma FormSubmit; poi riprova."
         : "Invio non riuscito. Controlla l'endpoint del form e riprova.";
-      qtTrack('alert_form_error', { source_path: window.location.pathname });
+      qtTrack('alert_form_error', { source_path: window.location.pathname, form_name: formName });
     }).finally(function(){
       if(btn){ btn.disabled = false; btn.textContent = originalBtn || 'Avvisami'; }
     });

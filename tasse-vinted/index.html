@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <script>/* Tema: applica subito la scelta salvata per evitare flash */(function(){try{var t=localStorage.getItem('qt_theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else{var d=window.matchMedia&&!window.matchMedia('(max-width:767px)').matches&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();</script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -30,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/pages.css?v=20260702-theme-persist">
+<link rel="stylesheet" href="/assets/pages.css?v=20260702-peso-polish">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -145,10 +144,11 @@
 </div>
 <p class="updated">Ultimo aggiornamento: 26 giugno 2026. Le regole e le tariffe possono cambiare: verifica sempre le fonti ufficiali.</p>
 </article></div></main>
-<footer class="footer"><div class="wrap"><form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form>
+<footer class="footer"><div class="wrap"><form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form data-form-name="vinted_updates_alert" data-success-msg="Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.">
         <input type="hidden" name="_subject" value="Nuovo avviso tariffe Vinted — QuantoTengo.it">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="source_page" value="/tasse-vinted/">
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
   <label for="alert-email-tasse">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
   <div class="alert-form-row">
@@ -157,7 +157,7 @@
   </div>
   <p class="alert-form-note" role="status" aria-live="polite">Inserisci solo l'email: la useremo soltanto per questo avviso.</p>
 </form>
-QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/">Calcolatore Vinted</a> · <a href="/guide/">Guide</a> · <a href="/chi-siamo/">Chi siamo</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a></div></footer>
+QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/">Calcolatore Vinted</a> · <a href="/peso-volumetrico/">Peso volumetrico</a> · <a href="/guide/">Guide</a> · <a href="/chi-siamo/">Chi siamo</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a></div></footer>
 
 <script>
 (function(){
@@ -210,7 +210,7 @@ QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/"
     }
     setHiddenFormValue(form, 'source_path', window.location.pathname);
     setHiddenFormValue(form, 'source_url', window.location.href);
-    setHiddenFormValue(form, 'form_name', 'vinted_fee_alert');
+    setHiddenFormValue(form, 'form_name', form.getAttribute('data-form-name') || 'vinted_fee_alert');
 
     if(!window.fetch || !window.FormData){
       HTMLFormElement.prototype.submit.call(form);
@@ -227,7 +227,7 @@ QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/"
       if(!res.ok) throw new Error('Form endpoint error');
       form.reset();
       form.classList.add('is-success');
-      if(note) note.textContent = 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
+      if(note) note.textContent = form.getAttribute('data-success-msg') || 'Grazie! Ti avviseremo solo se cambiano commissioni o Protezione Acquisti.';
       qtTrack('alert_form_success', { source_path: window.location.pathname });
     }).catch(function(){
       form.classList.add('is-error');

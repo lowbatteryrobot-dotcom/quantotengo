@@ -873,3 +873,12 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 [data-theme="dark"] .panel-card{background:linear-gradient(180deg,#1f1d19,#25231f);border-color:rgba(79,167,161,.18)}
 [data-theme="dark"] .storico-panel-card .session-disclaimer,[data-theme="dark"] .faq-panel-card .faq-item{background:#201f1b;border-color:rgba(255,253,245,.11)}
 @media(max-width:700px){.tool-hero-strip h2{font-size:1.15rem}.panel-card{padding:1.2rem}.panel-card-head{margin-bottom:1rem}.faq-panel-card .faq-q{padding:.92rem .9rem}.faq-panel-card .faq-a{padding:.05rem .9rem 1rem}}
+
+
+/* Peso volumetrico: divisori leggibili su mobile e dark mode più sobrio */
+.div-mode-row .bump-mode-btn{line-height:1.25;white-space:normal}
+@media(max-width:560px){
+  .div-mode-row .bump-mode-btn{flex:1 1 calc(50% - .45rem);text-align:center;min-height:2.55rem}
+  .div-mode-row .bump-mode-btn[data-div="custom"]{flex-basis:100%}
+}
+[data-theme="dark"] .div-mode-row .bump-mode-btn.active{background:rgba(79,152,163,.16);border-color:rgba(79,152,163,.44);color:#8fcfca}
