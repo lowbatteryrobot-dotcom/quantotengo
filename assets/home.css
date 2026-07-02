@@ -502,3 +502,31 @@ section{padding:2.65rem 0}
 .hero-text .cta-row,.hero-text .trust-row{margin-left:0;margin-right:0}
 @media(min-width:701px){.hero-text .trust-row{min-height:44px}.hero-text .trust{white-space:nowrap}}
 @media(max-width:700px){.cta-row::before{content:'Da dove vuoi partire'} .hero h1{max-width:17ch}}
+
+
+/* Final hero polish — reassurance line semplice, non-card, centrata sotto i CTA */
+.hero-action-stack{display:inline-flex;flex-direction:column;align-items:center;max-width:100%}
+.hero-action-stack .cta-row{max-width:none;margin:0 0 .62rem;justify-content:center;align-items:stretch}
+.hero-action-stack .trust-row{width:auto;max-width:100%;margin:0;justify-content:center;text-align:center;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;gap:0}
+.hero-action-stack .trust{font-size:.76rem;font-weight:700;color:var(--text-muted);padding:0 .72rem;white-space:nowrap}
+.hero-action-stack .trust:first-child{padding-left:0}
+.hero-action-stack .trust:last-child{padding-right:0}
+.hero-action-stack .trust svg{width:14px;height:14px;color:var(--coin-gold-deep)}
+[data-theme="dark"] .hero-action-stack .trust-row{background:transparent;box-shadow:none;border:0}
+
+/* Il card “Quanto vuoi guadagnare?” resta evidenziato, ma senza badge sovrapposto. */
+.tool-card-price::after{content:none!important;display:none!important}
+.tool-card-price .tool-card-top{padding-right:0!important}
+.tool-card-price{background:linear-gradient(180deg,var(--surface),color-mix(in srgb,var(--gold-bg) 34%,var(--surface)));border-color:rgba(217,169,60,.28)}
+[data-theme="dark"] .tool-card-price{background:linear-gradient(180deg,var(--surface),rgba(242,207,117,.07));border-color:rgba(242,207,117,.24)}
+
+@media(max-width:700px){
+  .hero-action-stack{display:flex;align-items:stretch;width:100%}
+  .hero-action-stack .cta-row{width:100%;margin-bottom:.55rem}
+  .hero-action-stack .trust-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.28rem .55rem;margin:0 0 1.15rem;text-align:center}
+  .hero-action-stack .trust{font-size:.72rem;padding:0 .45rem!important;border-right:0!important;white-space:normal;justify-content:center}
+}
+@media(max-width:420px){
+  .hero-action-stack .trust-row{display:grid;grid-template-columns:1fr;gap:.2rem;justify-items:center}
+  .hero-action-stack .trust{padding:0!important}
+}
