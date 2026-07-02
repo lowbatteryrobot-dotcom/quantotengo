@@ -852,3 +852,23 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 [data-theme="dark"] .obiettivo-hero-icon{background:#173130;color:#6fc0ba;border-color:rgba(79,167,161,.26)}
 [data-theme="dark"] .calc-card-head-icon.gold,
 [data-theme="dark"] .obiettivo-card-head-icon.gold{background:#282217;border-color:rgba(231,197,107,.22);color:#e7c56b}
+
+/* ============================================================
+   Panel polish — Storico + FAQ + gradient line on main cards
+   ============================================================ */
+.card{position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.95;pointer-events:none}
+.tool-hero-strip h2{font-size:1.35rem;line-height:1.15;letter-spacing:-.025em;margin:0 .5rem .35rem 0;color:var(--text)}
+.panel-card{background:linear-gradient(180deg,var(--surface),var(--surface-2));border-color:color-mix(in oklch,var(--primary) 12%,var(--border));box-shadow:var(--shadow-sm)}
+.panel-card-head{align-items:flex-start;margin-bottom:1.15rem}
+.panel-card-head .card-head-label{display:block;color:var(--text);font-size:.88rem;letter-spacing:.02em;text-transform:none;font-weight:800;line-height:1.25}
+.storico-panel-card .session-disclaimer{margin-bottom:1rem;background:var(--surface);border-color:color-mix(in oklch,var(--primary) 12%,var(--border))}
+.faq-panel-card .faq-list{gap:.58rem}
+.faq-panel-card .faq-item{background:var(--surface);border-color:color-mix(in oklch,var(--primary) 10%,var(--border))}
+.faq-panel-card .faq-q{padding:1.02rem 1.1rem}
+.faq-panel-card .faq-a{padding:.15rem 1.1rem 1.15rem}
+.guide-strip-inner,.alert-form,.guide-mini-card{position:relative;overflow:hidden}
+.guide-strip-inner::before,.alert-form::before,.guide-mini-card::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.9;pointer-events:none}
+[data-theme="dark"] .panel-card{background:linear-gradient(180deg,#1f1d19,#25231f);border-color:rgba(79,167,161,.18)}
+[data-theme="dark"] .storico-panel-card .session-disclaimer,[data-theme="dark"] .faq-panel-card .faq-item{background:#201f1b;border-color:rgba(255,253,245,.11)}
+@media(max-width:700px){.tool-hero-strip h2{font-size:1.15rem}.panel-card{padding:1.2rem}.panel-card-head{margin-bottom:1rem}.faq-panel-card .faq-q{padding:.92rem .9rem}.faq-panel-card .faq-a{padding:.05rem .9rem 1rem}}
