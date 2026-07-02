@@ -882,3 +882,8 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
   .div-mode-row .bump-mode-btn[data-div="custom"]{flex-basis:100%}
 }
 [data-theme="dark"] .div-mode-row .bump-mode-btn.active{background:rgba(79,152,163,.16);border-color:rgba(79,152,163,.44);color:#8fcfca}
+
+/* Final polish: numeric unit labels must behave as suffixes on calculators. */
+.input-wrap .input-suf{right:1rem;left:auto}
+.input-wrap input.no-pre{padding-left:1rem!important}
+.input-wrap input.has-suf{padding-right:3rem!important}
