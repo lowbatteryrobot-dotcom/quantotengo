@@ -313,3 +313,9 @@ section{padding:2.45rem 0 2.98rem}
 /* Fine tune: same mobile nav width as calculator. */
 @media(max-width:600px){.site-header .header-nav{max-width:clamp(150px,48vw,430px)!important}}
 @media(max-width:420px){.site-header .header-nav{max-width:calc(100vw - 13rem)!important}}
+
+
+/* Gradient line — esempio rapido in homepage */
+.preview{position:relative;overflow:hidden}
+.preview::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.92;pointer-events:none}
+.preview-head{padding-top:1.15rem}

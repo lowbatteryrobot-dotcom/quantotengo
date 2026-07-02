@@ -867,8 +867,9 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .faq-panel-card .faq-item{background:var(--surface);border-color:color-mix(in oklch,var(--primary) 10%,var(--border))}
 .faq-panel-card .faq-q{padding:1.02rem 1.1rem}
 .faq-panel-card .faq-a{padding:.15rem 1.1rem 1.15rem}
-.guide-strip-inner,.alert-form,.guide-mini-card{position:relative;overflow:hidden}
-.guide-strip-inner::before,.alert-form::before,.guide-mini-card::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.9;pointer-events:none}
+.guide-strip-inner,.alert-form{position:relative;overflow:hidden}
+.guide-strip-inner::before,.alert-form::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.9;pointer-events:none}
+.guide-mini-card::before{content:none!important;display:none!important}
 [data-theme="dark"] .panel-card{background:linear-gradient(180deg,#1f1d19,#25231f);border-color:rgba(79,167,161,.18)}
 [data-theme="dark"] .storico-panel-card .session-disclaimer,[data-theme="dark"] .faq-panel-card .faq-item{background:#201f1b;border-color:rgba(255,253,245,.11)}
 @media(max-width:700px){.tool-hero-strip h2{font-size:1.15rem}.panel-card{padding:1.2rem}.panel-card-head{margin-bottom:1rem}.faq-panel-card .faq-q{padding:.92rem .9rem}.faq-panel-card .faq-a{padding:.05rem .9rem 1rem}}

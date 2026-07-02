@@ -107,3 +107,10 @@
 [data-theme="dark"] .btn-ghost{color:#6fc0ba;border-color:rgba(79,167,161,.30)}
 [data-theme="dark"] .header-calculator-btn:hover,
 [data-theme="dark"] .btn-ghost:hover{background:rgba(79,167,161,.11);border-color:rgba(79,167,161,.38)}
+
+
+/* Gradient line — card principale di /guide/ e articoli guida */
+.article{position:relative;overflow:hidden}
+.article::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.92;pointer-events:none}
+.article > .eyebrow:first-child,
+.article > .updated-top:first-child{margin-top:.25rem}
