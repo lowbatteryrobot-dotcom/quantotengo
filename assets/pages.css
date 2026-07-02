@@ -114,3 +114,7 @@
 .article::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.92;pointer-events:none}
 .article > .eyebrow:first-child,
 .article > .updated-top:first-child{margin-top:.25rem}
+
+/* Focus visibile da tastiera (parità con style.css del calcolatore) */
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:.4rem}
+.alert-form input[type="email"]:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(1,105,111,.14)}

@@ -2,6 +2,8 @@
 <html lang="it" data-theme="light">
 <head>
 <meta charset="UTF-8">
+<script>/* Tema: applica subito la scelta salvata per evitare flash */(function(){try{var t=localStorage.getItem('qt_theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else{var d=window.matchMedia&&!window.matchMedia('(max-width:767px)').matches&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -38,19 +40,42 @@
       "alternateName": "QuantoTengo per venditori online",
       "url": "https://www.quantotengo.it/",
       "description": "Calcolatori di guadagno netto per venditori online e marketplace. Disponibile per Vinted, con altri marketplace in arrivo.",
-      "inLanguage": "it-IT"
+      "inLanguage": "it-IT",
+      "publisher": {
+        "@id": "https://www.quantotengo.it/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.quantotengo.it/#org",
+      "name": "QuantoTengo.it",
+      "url": "https://www.quantotengo.it/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.quantotengo.it/apple-touch-icon.png",
+        "width": 180,
+        "height": 180
+      },
+      "email": "ciao@quantotengo.it",
+      "description": "Progetto indipendente italiano: calcolatori e guide per venditori online e marketplace.",
+      "image": "https://www.quantotengo.it/assets/og-home.png"
     },
     {
       "@type": "ItemList",
       "name": "Calcolatori disponibili",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Calcolatore Vinted", "url": "https://www.quantotengo.it/vinted/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Calcolatore Vinted",
+          "url": "https://www.quantotengo.it/vinted/"
+        }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="/assets/home.css?v=20260705-preview-gradient">
+<link rel="stylesheet" href="/assets/home.css?v=20260702-theme-persist">
 
 <script>
 (function(){
@@ -94,14 +119,13 @@ function applyTheme(t){
   if(moon&&sun){ moon.style.display = t==='dark'?'none':''; sun.style.display = t==='dark'?'':'none'; }
 }
 function toggleTheme(){
-  var cur=document.documentElement.getAttribute('data-theme');
-  if(!cur){ var isMobile = window.matchMedia('(max-width: 767px)').matches; cur = (!isMobile && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark':'light'; }
-  applyTheme(cur==='dark'?'light':'dark');
+  var cur=document.documentElement.getAttribute('data-theme') || 'light';
+  var next = cur==='dark'?'light':'dark';
+  applyTheme(next);
+  try{localStorage.setItem('qt_theme', next);}catch(e){}
 }
 (function(){
-  var isMobile = window.matchMedia('(max-width: 767px)').matches;
-  var prefersDark = !isMobile && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(prefersDark?'dark':'light');
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
 })();
 </script>
 
@@ -244,11 +268,11 @@ function toggleTheme(){
         <p>Formula, prezzo finale e impatto sulla percezione dell'acquirente.</p>
         <span>Approfondisci →</span>
       </a>
-      <a class="guide-card-home" href="/guide/" data-qt-event="home_guide_index">
-        <small>Archivio</small>
-        <h3>Tutte le guide</h3>
-        <p>Uno spazio dedicato agli articoli, senza trasformare la navigazione in un catalogo.</p>
-        <span>Apri le guide →</span>
+      <a class="guide-card-home" href="/tasse-vinted/" data-qt-event="home_guide_tasse_dac7">
+        <small>Tasse e DAC7</small>
+        <h3>Vendo su Vinted: devo pagare tasse?</h3>
+        <p>Soglie DAC7, cosa segnala la piattaforma e differenza tra incasso e guadagno.</p>
+        <span>Leggi la guida →</span>
       </a>
     </div>
    </div>
@@ -259,7 +283,7 @@ function toggleTheme(){
    <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title">Marketplace supportati e in arrivo</h2>
-      <p class="sec-sub">Oggi puoi calcolare il guadagno su Vinted. Stiamo lavorando anche a Cardmarket, Subito, eBay e Wallapop.</p>
+      <p class="sec-sub">Oggi puoi calcolare il guadagno su Vinted. Il prossimo calcolatore sarà Cardmarket, poi eBay.</p>
     </div>
     <div class="platforms">
       <a href="/vinted/" class="pcard" data-qt-event="home_platform_vinted">
@@ -276,11 +300,9 @@ function toggleTheme(){
       </article>
     </div>
 
-    <div class="soon-label">In arrivo</div>
+    <div class="soon-label">In programma</div>
     <div class="soon-row">
-      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#e30613"></span>Subito</span><span class="sp-tag">Presto</span></div>
-      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#0064d2"></span>eBay</span><span class="sp-tag">Presto</span></div>
-      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#13c1ac"></span>Wallapop</span><span class="sp-tag">Presto</span></div>
+      <div class="soon-pill"><span class="sp-left"><span class="sp-dot" style="background:#0064d2"></span>eBay</span><span class="sp-tag">In programma</span></div>
     </div>
    </div>
   </section>
@@ -289,6 +311,19 @@ function toggleTheme(){
 
 <footer class="site-footer">
   <div class="wrap">
+    <form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form>
+        <input type="hidden" name="_subject" value="Nuovo avviso tariffe Vinted — QuantoTengo.it">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+  <label for="alert-email-home">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
+  <div class="alert-form-row">
+    <input id="alert-email-home" type="email" name="email" placeholder="La tua email" autocomplete="email" required>
+    <button type="submit">Avvisami</button>
+  </div>
+  <p class="alert-form-note" role="status" aria-live="polite">Inserisci solo l'email: la useremo soltanto per questo avviso.</p>
+</form>
+    
     <p class="footer-legal">
       QuantoTengo.it<span class="sep">·</span>Calcolatori per venditori online e marketplace<span class="sep">·</span>Progetto gratuito e indipendente, non affiliato, sponsorizzato o approvato da Vinted, Cardmarket, Subito, eBay, Wallapop, Depop o altri marketplace citati. Tutti i marchi appartengono ai rispettivi proprietari. I calcoli sono stime a solo scopo informativo e non sono consulenza finanziaria, fiscale o d'investimento.<br>
       <a href="/privacy/">Privacy</a><span class="sep">·</span><a href="/chi-siamo/">Chi siamo</a><span class="sep">·</span><a href="/guide/">Guide</a><span class="sep">·</span><a href="/tasse-vinted/">Tasse Vinted</a><span class="sep">·</span>Hai un suggerimento? <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a>
@@ -309,7 +344,11 @@ function toggleTheme(){
     if (!el) return;
     qtTrack(el.getAttribute('data-qt-event'), { page: 'home' });
   });
+  document.addEventListener('submit', function(e){
+    if (e.target.closest('[data-alert-form]')) qtTrack('alert_form_submit', { source_path: window.location.pathname });
+  });
 })();
 </script>
+<script src="/assets/alert-form.js?v=20260702" defer></script>
 </body>
 </html>

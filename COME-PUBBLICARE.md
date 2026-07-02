@@ -85,8 +85,8 @@ per sicurezza, così non rischi di lasciare versioni vecchie.
 
 ## Modulo email / Avvisami
 
-I moduli nel footer di `/vinted/` e `/tasse-vinted/` usano un endpoint statico FormSubmit:
+I moduli email nel footer del sito usano un endpoint statico FormSubmit:
 
 `https://formsubmit.co/ajax/ciao@quantotengo.it`
 
-Al primo invio FormSubmit può chiedere una conferma via email a `ciao@quantotengo.it`. Dopo la conferma, gli invii successivi arrivano a quell'indirizzo. Se preferisci Formspree, Formspark, Basin o un altro provider, sostituisci solo l'attributo `action` dei due form mantenendo `method="POST"` e `data-alert-form`.
+Al primo invio FormSubmit può chiedere una conferma via email a `ciao@quantotengo.it`. Dopo la conferma, gli invii successivi arrivano a quell'indirizzo. Se preferisci Formspree, Formspark, Basin o un altro provider, sostituisci solo l'attributo `action` dei form mantenendo `method="POST"` e `data-alert-form`.

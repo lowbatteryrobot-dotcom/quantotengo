@@ -319,3 +319,41 @@ section{padding:2.45rem 0 2.98rem}
 .preview{position:relative;overflow:hidden}
 .preview::before{content:'';position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--coin-gold));opacity:.92;pointer-events:none}
 .preview-head{padding-top:1.15rem}
+
+/* ============================================================
+   Alert form nel footer della home (parità con le pagine interne)
+   ============================================================ */
+.site-footer .alert-form{
+  background:var(--surface);border:1px solid var(--border);border-radius:1rem;
+  padding:1rem 1.15rem;margin:0 auto 1.5rem;max-width:34rem;text-align:left;color:var(--text-muted)
+}
+.alert-form label{display:block;font-size:.92rem;line-height:1.45;font-weight:800;color:var(--text);margin-bottom:.65rem}
+.alert-form-row{display:flex;gap:.55rem;align-items:center}
+.alert-form input[type="email"]{
+  flex:1;min-width:0;border:1px solid var(--border);border-radius:.75rem;
+  padding:.78rem .85rem;background:var(--surface-2);color:var(--text);font:inherit
+}
+.alert-form button{
+  border:0;border-radius:.75rem;padding:.78rem .95rem;background:var(--primary);color:#fff;
+  font:inherit;font-weight:900;cursor:pointer;white-space:nowrap
+}
+.alert-form button:hover{background:var(--primary-hover)}
+.alert-form button:disabled{opacity:.72;cursor:wait}
+.alert-form-note{font-size:.78rem;color:var(--text-faint);margin:.55rem 0 0}
+.alert-form.is-success{border-color:rgba(67,122,34,.25);background:#edf5e6}
+.alert-form.is-error{border-color:rgba(150,66,25,.24);background:#fdf3eb}
+.alert-form.is-success .alert-form-note{color:#437a22;font-weight:800}
+.alert-form.is-error .alert-form-note{color:#964219;font-weight:800}
+@media(max-width:520px){.alert-form-row{display:grid;grid-template-columns:1fr}.alert-form button{width:100%}}
+[data-theme="dark"] .site-footer .alert-form{background:#1f1d19;border-color:rgba(255,253,245,.12)}
+[data-theme="dark"] .alert-form input[type="email"]{background:#26241f;border-color:rgba(255,253,245,.13);color:var(--text)}
+[data-theme="dark"] .alert-form button{background:#256f6b}
+[data-theme="dark"] .alert-form button:hover{background:#2d7d78}
+[data-theme="dark"] .alert-form.is-success{background:#1f2d18;border-color:rgba(139,194,112,.24)}
+[data-theme="dark"] .alert-form.is-error{background:#302012;border-color:rgba(210,138,86,.28)}
+[data-theme="dark"] .alert-form.is-success .alert-form-note{color:#a7d890}
+[data-theme="dark"] .alert-form.is-error .alert-form-note{color:#e0a46f}
+
+/* Focus visibile da tastiera */
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:.4rem}
+.alert-form input[type="email"]:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(1,105,111,.14)}

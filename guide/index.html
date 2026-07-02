@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<script>/* Tema: applica subito la scelta salvata per evitare flash */(function(){try{var t=localStorage.getItem('qt_theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}else{var d=window.matchMedia&&!window.matchMedia('(max-width:767px)').matches&&window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <title>Guide Vinted e consigli per venditori online | QuantoTengo.it</title>
 <meta name="description" content="Guide semplici su Vinted, offerte, foto, checklist, commissioni, Protezione Acquisti e guadagno netto per venditori online.">
 <link rel="canonical" href="https://www.quantotengo.it/guide/">
 <meta name="robots" content="index, follow"><meta name="theme-color" content="#01696f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Guide Vinted e consigli per venditori online">
+<meta property="og:description" content="Guide semplici su Vinted: offerte, foto, checklist annuncio, commissioni, Protezione Acquisti e tasse. Pratiche e senza teoria inutile.">
+<meta property="og:url" content="https://www.quantotengo.it/guide/">
+<meta property="og:site_name" content="QuantoTengo.it">
+<meta property="og:image" content="https://www.quantotengo.it/assets/og-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QuantoTengo.it — guide e calcolatori per venditori online.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.quantotengo.it/assets/og-home.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/pages.css?v=20260705-guide-gradient">
+<link rel="stylesheet" href="/assets/pages.css?v=20260702-theme-persist">
 <script>
 (function(){
   function initTheme(){
@@ -16,7 +30,7 @@
     if (!btn) return;
     var root = document.documentElement;
     var isMobile = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
-    var dark = !isMobile && window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
     function updateIcon(){
       btn.innerHTML = dark
         ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
@@ -27,6 +41,7 @@
     btn.addEventListener('click', function(){
       dark = !dark;
       root.setAttribute('data-theme', dark ? 'dark' : 'light');
+      try{localStorage.setItem('qt_theme', dark ? 'dark' : 'light');}catch(e){}
       updateIcon();
     });
   }
@@ -86,4 +101,17 @@
 <a class="guide-card" href="/tasse-vinted/" data-qt-event="guide_index_tasse_vinted"><small>Tasse e DAC7</small><h2>Tasse Vinted: cosa sapere</h2><p>DAC7, costi della piattaforma e differenza tra guadagno operativo e tema fiscale.</p></a>
 <a class="guide-card" href="/vinted/" data-qt-event="guide_index_calcolatore_vinted"><small>Strumento</small><h2>Calcolatore guadagno Vinted</h2><p>Calcola quanto ti resta davvero dopo costi, imballaggio, Bump e offerte.</p></a>
 </div></section></div></main>
-<footer class="footer"><div class="wrap">QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/">Calcolatore Vinted</a> · <a href="/guide/">Guide</a> · <a href="/chi-siamo/">Chi siamo</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a></div></footer></body></html>
+<footer class="footer"><div class="wrap"><form class="alert-form" action="https://formsubmit.co/ajax/ciao@quantotengo.it" method="POST" data-alert-form>
+        <input type="hidden" name="_subject" value="Nuovo avviso tariffe Vinted — QuantoTengo.it">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+  <label for="alert-email-guide-index">Ti avvisiamo se Vinted cambia commissioni o Protezione Acquisti. Niente spam, niente newsletter.</label>
+  <div class="alert-form-row">
+    <input id="alert-email-guide-index" type="email" name="email" placeholder="La tua email" autocomplete="email" required>
+    <button type="submit">Avvisami</button>
+  </div>
+  <p class="alert-form-note" role="status" aria-live="polite">Inserisci solo l'email: la useremo soltanto per questo avviso.</p>
+</form>
+QuantoTengo.it · Guide e calcolatori per venditori online · <a href="/vinted/">Calcolatore Vinted</a> · <a href="/guide/">Guide</a> · <a href="/chi-siamo/">Chi siamo</a> · <a href="/privacy/">Privacy</a> · <a href="mailto:ciao@quantotengo.it">ciao@quantotengo.it</a></div></footer><script src="/assets/alert-form.js?v=20260702" defer></script>
+</body></html>
