@@ -118,3 +118,14 @@
 /* Focus visibile da tastiera (parità con style.css del calcolatore) */
 :focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:.4rem}
 .alert-form input[type="email"]:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(1,105,111,.14)}
+
+
+/* Sales polish — guide cards with a highlighted practical path */
+.guide-card.featured-guide{border-color:rgba(217,169,60,.34);background:linear-gradient(135deg,var(--surface),rgba(253,246,227,.56))}
+.guide-card.featured-guide::before{content:'';position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--primary),#4fc4a8,var(--gold));border-radius:1rem 1rem 0 0}
+.article .mini-cta-row{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.2rem 0 1.6rem}
+.article .mini-cta-row a{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:.7rem 1rem;font-weight:900;text-decoration:none}
+.article .mini-cta-row a:first-child{background:var(--primary);color:#fff}
+.article .mini-cta-row a:last-child{border:1.5px solid var(--primary);color:var(--primary);background:var(--surface)}
+[data-theme="dark"] .guide-card.featured-guide{background:linear-gradient(135deg,var(--surface),rgba(242,207,117,.08));border-color:rgba(242,207,117,.22)}
+@media(max-width:640px){.article .mini-cta-row{display:grid;grid-template-columns:1fr}.article .mini-cta-row a{width:100%}}

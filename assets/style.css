@@ -887,3 +887,22 @@ input[type=number]{-moz-appearance:textfield;appearance:textfield}
 .input-wrap .input-suf{right:1rem;left:auto}
 .input-wrap input.no-pre{padding-left:1rem!important}
 .input-wrap input.has-suf{padding-right:3rem!important}
+
+
+/* ============================================================
+   Sales polish — CTA verso calcolo inverso senza tono aggressivo
+   ============================================================ */
+.netto-target-cta{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.85rem;margin:1rem 0;padding:.9rem .95rem;border:1px solid rgba(217,169,60,.36);border-radius:var(--r-lg);background:linear-gradient(135deg,rgba(246,215,139,.18),rgba(224,240,240,.36));box-shadow:0 6px 18px rgba(1,105,111,.06)}
+.netto-target-icon{width:38px;height:38px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--gold-bg);color:#8a6d1e;flex-shrink:0}
+.netto-target-cta strong{display:block;font-size:.92rem;line-height:1.25;color:var(--text)}
+.netto-target-cta span{display:block;margin-top:.15rem;font-size:.78rem;line-height:1.4;color:var(--text-muted)}
+.netto-target-cta button{border:0;border-radius:999px;background:var(--primary);color:#fff;font-weight:800;font-size:.8rem;padding:.58rem .8rem;cursor:pointer;white-space:nowrap;transition:background var(--transition),transform var(--transition)}
+.netto-target-cta button:hover{background:var(--primary-hover);transform:translateY(-1px)}
+.obiettivo-hero-strip .obiettivo-eyebrow{color:var(--coin-gold-deep)}
+#tab-obiettivo{min-width:max-content}
+[data-theme="dark"] .netto-target-cta{background:linear-gradient(135deg,rgba(242,207,117,.12),rgba(79,152,163,.14));border-color:rgba(242,207,117,.22);box-shadow:0 8px 24px rgba(0,0,0,.20)}
+[data-theme="dark"] .netto-target-icon{background:rgba(242,207,117,.14);color:#f2cf75}
+@media(max-width:700px){.netto-target-cta{grid-template-columns:auto 1fr;align-items:flex-start}.netto-target-cta button{grid-column:1/-1;width:100%;margin-top:.15rem}.tabs-nav{gap:.35rem}.tab-btn{padding:.65rem .72rem}}
+
+/* Deep-link anchors for tabbed panels */
+.anchor-target{display:block;position:relative;top:-86px;width:1px;height:1px;overflow:hidden}

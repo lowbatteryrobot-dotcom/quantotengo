@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css?v=20260702-tools-polish">
+<link rel="stylesheet" href="../assets/style.css?v=20260702-coherence">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -139,10 +139,10 @@
 
 <!-- TABS NAV -->
 <nav class="tabs-nav" role="tablist">
-  <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('calcolo')"   id="tab-calcolo" data-qt-event="tab_calcolatore">Calcolatore</button>
-  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('obiettivo')" id="tab-obiettivo" data-qt-event="tab_prezzo_obiettivo">Prezzo Obiettivo</button>
-  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('storico')"   id="tab-storico" data-qt-event="tab_storico">Storico</button>
-  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('faq')"       id="tab-faq" data-qt-event="tab_faq">FAQ</button>
+  <button class="tab-btn active" role="tab" aria-selected="true"  onclick="switchTab('calcolo')"   id="tab-calcolo" aria-controls="panel-calcolo" data-qt-event="tab_calcolatore">Calcolatore</button>
+  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('obiettivo')" id="tab-obiettivo" aria-controls="panel-obiettivo" data-qt-event="tab_quanto_vuoi_guadagnare">Quanto vuoi guadagnare?</button>
+  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('storico')"   id="tab-storico" aria-controls="panel-storico" data-qt-event="tab_storico">Storico</button>
+  <button class="tab-btn"        role="tab" aria-selected="false" onclick="switchTab('faq')"       id="tab-faq" aria-controls="panel-faq" data-qt-event="tab_faq">FAQ</button>
   <a class="tab-btn" href="#guide-vinted" data-qt-event="tab_guide_vinted" aria-label="Vai alle guide Vinted">Guide</a>
   <a class="tab-btn" href="/tasse-vinted/" data-qt-event="tab_tasse_vinted" aria-label="Guida informativa su tasse Vinted e DAC7">Tasse/DAC7</a>
 </nav>
@@ -152,7 +152,7 @@
   <!-- ============================================================ -->
   <!-- TAB: CALCOLATORE                                             -->
   <!-- ============================================================ -->
-  <div id="panel-calcolo" class="tab-panel active">
+  <div id="panel-calcolo" class="tab-panel active" role="tabpanel" aria-labelledby="tab-calcolo">
     <div class="tool-hero-strip calc-hero-strip" aria-label="Calcolatore Vinted">
       <div class="tool-hero-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
@@ -363,6 +363,17 @@
             <span>Questo è un risultato stimato e non garantito. Le commissioni, le condizioni e le promozioni di Vinted possono variare nel tempo e influire sul guadagno finale.</span>
           </div>
 
+          <div class="netto-target-cta" id="netto-target-cta">
+            <div class="netto-target-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            </div>
+            <div>
+              <strong>Vuoi tenere una cifra precisa?</strong>
+              <span>Parti dal netto desiderato e scopri a quanto mettere l'annuncio.</span>
+            </div>
+            <button type="button" onclick="switchTab('obiettivo')" data-qt-event="result_cta_quanto_vuoi_guadagnare">Trova il prezzo →</button>
+          </div>
+
           <!-- COPIA MESSAGGIO -->
           <button class="btn-copy" id="btn-copy" onclick="copiaTesto()" data-qt-event="copy_buyer_message">
             <span class="btn-copy-main">
@@ -408,17 +419,18 @@
 
 
   <!-- ============================================================ -->
-  <!-- TAB: PREZZO OBIETTIVO                                        -->
+  <!-- TAB: QUANTO VUOI GUADAGNARE?                                 -->
   <!-- ============================================================ -->
-  <div id="panel-obiettivo" class="tab-panel">
-    <div class="tool-hero-strip obiettivo-hero-strip" aria-label="Prezzo Obiettivo">
+  <div id="panel-obiettivo" class="tab-panel" role="tabpanel" aria-labelledby="tab-obiettivo">
+    <span id="quanto-vuoi-guadagnare" class="anchor-target" aria-hidden="true"></span>
+    <div class="tool-hero-strip obiettivo-hero-strip" aria-label="Quanto vuoi guadagnare">
       <div class="obiettivo-hero-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
       </div>
       <div>
-        <div class="obiettivo-eyebrow">Calcolo inverso</div>
-        <h2>Prezzo Obiettivo</h2>
-        <p>Parti da quanto vuoi guadagnare e scopri il prezzo minimo da chiedere, con costi reali, spedizione e Bump.</p>
+        <div class="obiettivo-eyebrow">Prezzo obiettivo</div>
+        <h2>Quanto vuoi guadagnare?</h2>
+        <p>Calcola a quanto dovresti vendere per ottenere il netto che hai in mente.</p>
       </div>
     </div>
 
@@ -502,7 +514,7 @@
           </div>
 
           <div class="reverse-result obiettivo-result-card">
-            <div class="reverse-result-label">Prezzo minimo da chiedere</div>
+            <div class="reverse-result-label">Prezzo da chiedere</div>
             <div class="reverse-result-value" id="inv-prezzo2">€ —</div>
             <div class="reverse-result-sub" id="inv-sub2">Inserisci il guadagno desiderato</div>
           </div>
@@ -569,7 +581,8 @@
   <!-- ============================================================ -->
   <!-- TAB: STORICO                                                 -->
   <!-- ============================================================ -->
-  <div id="panel-storico" class="tab-panel">
+  <div id="panel-storico" class="tab-panel" role="tabpanel" aria-labelledby="tab-storico">
+    <span id="storico" class="anchor-target" aria-hidden="true"></span>
 
     <div class="tool-hero-strip storico-hero-strip" aria-label="Storico simulazioni">
       <div class="tool-hero-icon" aria-hidden="true">
@@ -622,7 +635,8 @@
   <!-- ============================================================ -->
   <!-- TAB: FAQ                                                     -->
   <!-- ============================================================ -->
-  <div id="panel-faq" class="tab-panel">
+  <div id="panel-faq" class="tab-panel" role="tabpanel" aria-labelledby="tab-faq">
+    <span id="faq" class="anchor-target" aria-hidden="true"></span>
 
     <div class="tool-hero-strip faq-hero-strip" aria-label="FAQ">
       <div class="tool-hero-icon" aria-hidden="true">
@@ -853,6 +867,11 @@
       <a class="guide-strip-all" href="/guide/" data-qt-event="vinted_guide_index">Tutte le guide →</a>
     </div>
     <div class="guide-strip-grid">
+      <a class="guide-mini-card guide-mini-card-featured" href="/guide/quanto-vuoi-guadagnare-vinted/" data-qt-event="vinted_guide_quanto_vuoi_guadagnare">
+        <div class="guide-card-top"><small>Prezzo Vinted</small><span class="guide-badge">Nuovo</span></div>
+        <h3>Quanto vuoi guadagnare?</h3>
+        <p>Parti dal netto desiderato e scopri a quanto mettere l'annuncio.</p>
+      </a>
       <a class="guide-mini-card" href="/guide/offerte-vinted-conviene-accettare/" data-qt-event="vinted_guide_offerte">
         <div class="guide-card-top"><small>Offerte Vinted</small><span class="guide-badge">Nuovo</span></div>
         <h3>Conviene accettare un'offerta?</h3>
@@ -893,7 +912,7 @@
         </div>
         <span>Quanto<span class="logo-accent">Tengo</span></span>
       </div>
-      <p class="footer-about">Ho creato QuantoTengo.it come piccolo progetto indipendente per venditori online: volevo uno strumento semplice e veloce per capire quanto guadagno davvero rivendendo su Vinted. Mi è stato utile, così ho deciso di renderlo gratuito anche per te. Non è un'azienda: è un progetto fatto con cura, che cerco di tenere leggero, onesto e senza fronzoli.</p>
+      <p class="footer-about">Ho creato QuantoTengo.it come piccolo progetto indipendente per venditori online: volevo strumenti semplici per fare i conti prima di vendere online: margini, offerte, spedizioni e prezzo da chiedere. Mi sono stati utili, così ho deciso di renderli gratuiti anche per te. Non è un'azienda: è un progetto fatto con cura, che cerco di tenere leggero, onesto e senza fronzoli.</p>
       <a href="mailto:ciao@quantotengo.it" class="footer-mail">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
         ciao@quantotengo.it
@@ -922,6 +941,6 @@
   </div>
 </footer>
 <script src="config.js?v=20260626-final-fixes"></script>
-<script src="../assets/engine.js?v=20260702-peso-polish"></script>
+<script src="../assets/engine.js?v=20260702-coherence"></script>
 </body>
 </html>

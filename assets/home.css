@@ -176,7 +176,7 @@ section{padding:2.45rem 0 2.98rem}
   /* Su mobile la scelta dello strumento resta prima dell'esempio rapido.
      Vinted ha più enfasi; Cardmarket resta affiancato ma secondario. */
   .cta-row{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:.65rem;margin:1.35rem 0 1rem;align-items:stretch}
-  .cta-row::before{content:'Scegli lo strumento';grid-column:1/-1;display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.1rem}
+  .cta-row::before{content:'Da dove vuoi partire';grid-column:1/-1;display:block;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.1rem}
   .cta-row .btn{width:100%;min-height:70px;justify-content:flex-start;padding:.9rem .9rem;border-radius:1rem;box-shadow:var(--shadow-sm)}
   .cta-row .btn:hover{transform:none}
   .btn-label{display:flex;flex-direction:column;align-items:flex-start;gap:.22rem;line-height:1.25;min-width:0}
@@ -378,7 +378,7 @@ section{padding:2.45rem 0 2.98rem}
    Home polish — QuantoTengo as umbrella of useful tools
    ============================================================ */
 .hero-kicker,.sec-kicker{display:block;margin:0 0 .55rem;font-size:.72rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--primary)}
-.hero h1{max-width:13ch}
+.hero h1{max-width:18ch}
 .hero .lead{max-width:39rem}
 .preview-head{letter-spacing:-.01em}
 .hub-mini-row{grid-template-columns:auto 1fr;gap:.75rem;padding:.78rem 0}
@@ -441,7 +441,7 @@ section{padding:2.65rem 0}
   .guides-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:700px){
-  .hero h1{max-width:14ch}
+  .hero h1{max-width:16ch}
   .compact-tools-grid{grid-template-columns:1fr 1fr;gap:.65rem}
   .tool-card{padding:.9rem .9rem .85rem;border-radius:.9rem}
   .tool-type{display:none}
@@ -468,3 +468,37 @@ section{padding:2.65rem 0}
 [data-theme="dark"] .guide-callout-actions a:first-child:hover{background:#2d7d78}
 .tool-card .pcard-cta{color:var(--primary)!important}
 [data-theme="dark"] .tool-card .pcard-cta{color:#6fc0ba!important}
+
+
+/* ============================================================
+   Sales polish — più energia, più ordine visivo
+   ============================================================ */
+.hero-text .cta-row{max-width:560px;margin-bottom:.85rem}
+.hero-text .trust-row{max-width:560px;margin-top:.15rem;padding:.65rem .75rem;border:1px solid var(--border);border-radius:999px;background:color-mix(in srgb,var(--surface) 82%,transparent);box-shadow:var(--shadow-sm);justify-content:center;gap:0}
+.hero-text .trust{font-size:.76rem;padding:0 .78rem}
+.hero-text .trust:first-child{padding-left:.2rem}
+.hero-text .trust:last-child{padding-right:.2rem}
+.compact-tools-grid{grid-template-columns:repeat(auto-fit,minmax(176px,1fr));max-width:980px;margin:0 auto}
+.tool-card-price::after{content:'Più usato per decidere il prezzo';position:absolute;right:.75rem;top:.75rem;border-radius:999px;background:var(--gold-bg);border:1px solid rgba(217,169,60,.28);color:#7a5a12;font-size:.55rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase;padding:.18rem .42rem;max-width:8.5rem;text-align:center;line-height:1.15}
+.tool-card-price .tool-card-top{padding-right:6.5rem}
+.guide-card-home-featured{border-color:rgba(217,169,60,.35);background:linear-gradient(135deg,var(--surface),rgba(253,246,227,.65))}
+.guide-card-home-featured span{color:#8a6d1e}
+.cta-row .btn-ghost{border-color:rgba(1,105,111,.24)}
+[data-theme="dark"] .hero-text .trust-row{background:rgba(31,29,25,.72);box-shadow:0 10px 30px rgba(0,0,0,.22)}
+[data-theme="dark"] .tool-card-price::after{background:rgba(242,207,117,.14);color:#f2cf75;border-color:rgba(242,207,117,.24)}
+[data-theme="dark"] .guide-card-home-featured{background:linear-gradient(135deg,var(--surface),rgba(242,207,117,.08));border-color:rgba(242,207,117,.24)}
+@media(max-width:700px){
+  .hero-text .cta-row{max-width:none;margin-bottom:.7rem}
+  .hero-text .trust-row{max-width:none;border-radius:1rem;padding:.55rem .6rem;margin:0 0 1.15rem;display:grid;grid-template-columns:1fr;gap:.28rem;text-align:left;justify-items:start}
+  .hero-text .trust{padding:.05rem .1rem!important;font-size:.74rem}
+  .tool-card-price::after{display:none}
+  .tool-card-price .tool-card-top{padding-right:0}
+  .compact-tools-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:420px){.compact-tools-grid{grid-template-columns:1fr}.tool-card{min-height:auto}}
+
+
+/* Coherence check — homepage rhythm */
+.hero-text .cta-row,.hero-text .trust-row{margin-left:0;margin-right:0}
+@media(min-width:701px){.hero-text .trust-row{min-height:44px}.hero-text .trust{white-space:nowrap}}
+@media(max-width:700px){.cta-row::before{content:'Da dove vuoi partire'} .hero h1{max-width:17ch}}

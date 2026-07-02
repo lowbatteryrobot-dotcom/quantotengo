@@ -89,7 +89,7 @@ I moduli nel footer di `/vinted/` e `/tasse-vinted/` usano un endpoint statico F
 
 `https://formsubmit.co/ajax/ciao@quantotengo.it`
 
-Al primo invio FormSubmit può chiedere una conferma via email a `ciao@quantotengo.it`. Dopo la conferma, gli invii successivi arrivano a quell'indirizzo. Se preferisci Formspree, Formspark, Basin o un altro provider, sostituisci solo l'attributo `action` dei due form mantenendo `method="POST"` e `data-alert-form`.
+Al primo invio FormSubmit può chiedere una conferma via email a `ciao@quantotengo.it`. Dopo la conferma, gli invii successivi arrivano a quell'indirizzo. Se preferisci Formspree, Formspark, Basin o un altro provider, sostituisci solo l'attributo `action` dei form mantenendo `method="POST"` e `data-alert-form`.
 
 
 ## Moduli “Avvisami”
@@ -101,3 +101,6 @@ I moduli email nel footer usano FormSubmit verso `ciao@quantotengo.it`. Sono pre
 - Homepage riformulata come hub di calcolatori QuantoTengo.
 - Navigazione principale semplificata: il logo porta alla home; il menu punta alle aree Vinted, Spedizioni, Guide e Tasse Vinted.
 - Il calcolatore peso volumetrico usa unità cm/kg come suffisso dei campi.
+
+
+Nota 2026-07-02: aggiunta la guida `/guide/quanto-vuoi-guadagnare-vinted/` e deep link `/vinted/#quanto-vuoi-guadagnare` per aprire direttamente il calcolo inverso.

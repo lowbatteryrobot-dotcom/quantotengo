@@ -634,14 +634,54 @@ function comingSoon(nome) {
 // ============================================================
 // TABS
 // ============================================================
-function switchTab(name) {
-  ['calcolo','obiettivo','storico','faq'].forEach(t => {
-    document.getElementById('panel-' + t).classList.toggle('active', t === name);
+function switchTab(name, opts) {
+  const validTabs = ['calcolo','obiettivo','storico','faq'];
+  if (!validTabs.includes(name)) name = 'calcolo';
+  validTabs.forEach(t => {
+    const panel = document.getElementById('panel-' + t);
     const btn = document.getElementById('tab-' + t);
-    btn.classList.toggle('active', t === name);
-    btn.setAttribute('aria-selected', t === name ? 'true' : 'false');
+    if (panel) panel.classList.toggle('active', t === name);
+    if (btn) {
+      btn.classList.toggle('active', t === name);
+      btn.setAttribute('aria-selected', t === name ? 'true' : 'false');
+    }
   });
+  if (!opts || opts.updateHash !== false) {
+    const hashMap = { calcolo: '', obiettivo: 'quanto-vuoi-guadagnare', storico: 'storico', faq: 'faq' };
+    const nextHash = hashMap[name] ? '#' + hashMap[name] : window.location.pathname;
+    if (window.history && window.history.replaceState) {
+      if (hashMap[name]) window.history.replaceState(null, '', nextHash);
+      else window.history.replaceState(null, '', window.location.pathname);
+    }
+  }
   if (name === 'storico') renderStorico();
+}
+
+function tabFromHash(hash) {
+  const h = (hash || '').replace('#','').toLowerCase();
+  if (['quanto-vuoi-guadagnare','prezzo-obiettivo','a-quanto-vendere'].includes(h)) return 'obiettivo';
+  if (h === 'storico') return 'storico';
+  if (h === 'faq') return 'faq';
+  return null;
+}
+
+function openTabFromHash() {
+  const rawHash = window.location.hash || '';
+  const tab = tabFromHash(rawHash);
+  if (!tab) return;
+  switchTab(tab, { updateHash:false });
+
+  const targetId = rawHash.replace('#','');
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (target) {
+    window.setTimeout(() => {
+      try {
+        target.scrollIntoView({ behavior: 'auto', block: 'start' });
+      } catch (e) {
+        target.scrollIntoView(true);
+      }
+    }, 0);
+  }
 }
 
 // ============================================================
@@ -1008,3 +1048,5 @@ applyConfig();
 loadStorico();
 renderStorico();
 calcola();
+openTabFromHash();
+window.addEventListener('hashchange', openTabFromHash);
